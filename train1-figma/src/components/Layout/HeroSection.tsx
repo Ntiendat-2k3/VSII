@@ -1,22 +1,13 @@
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { Home, MapPin, Compass, Map, Building2, ClipboardList, Globe } from 'lucide-react';
+import HeroTabs from './HeroTabs';
 import { PALETTE, GRADIENT } from '../../theme';
 
+const MotionStack = motion(Stack);
 const MotionBox = motion(Box);
-
-
-const TAB_ITEMS = [
-  { label: 'Tổng quan', icon: <Home size={18} />, active: false },
-  { label: 'Vị trí', icon: <MapPin size={18} />, active: false },
-  { label: 'Phân khu', icon: <Compass size={18} />, active: false },
-  { label: 'Mặt bằng quỹ căn', icon: <Map size={18} />, active: true },
-  { label: 'Quỹ căn', icon: <Building2 size={18} />, active: false },
-  { label: 'Chính sách bán hàng', icon: <ClipboardList size={18} />, active: false },
-  { label: 'Tin tức', icon: <Globe size={18} />, active: false },
-];
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -35,21 +26,19 @@ const itemVariants: Variants = {
 
 const HeroSection = () => {
   return (
-    <MotionBox
+    <MotionStack
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      spacing={{ xs: 3, md: 4 }}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: { xs: 3, md: 4 },
         px: { xs: 1.5, md: 3 },
         pt: 2,
         pb: 3,
       }}
     >
       {/* Breadcrumb */}
-      <MotionBox variants={itemVariants} sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+      <MotionStack direction="row" spacing={0.5} sx={{ alignItems: 'center' }} variants={itemVariants}>
         <Typography
           sx={{
             fontWeight: 500,
@@ -82,20 +71,19 @@ const HeroSection = () => {
         >
           Vinhomes Ocean Park 3
         </Typography>
-      </MotionBox>
+      </MotionStack>
 
       {/* Title + Share */}
-      <MotionBox
+      <MotionStack
         variants={itemVariants}
+        direction={{ xs: 'column', md: 'row' }}
+        spacing={3}
         sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
           alignItems: { xs: 'flex-start', md: 'flex-end' },
-          gap: 3,
         }}
       >
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, flex: 1 }}>
+        <Stack spacing={1} sx={{ flex: 1 }}>
           <Typography
             variant="h1"
             sx={{
@@ -116,21 +104,21 @@ const HeroSection = () => {
           >
             Theo dõi thông tin chi tiết và bảng giá, mặt bằng, tiến độ và chính sách bán hàng dự án VINHOMES OCEAN PARK 3.
           </Typography>
-        </Box>
+        </Stack>
 
-        <MotionBox
+        <MotionStack
+          direction="row"
+          spacing={1}
           whileHover={{ scale: 1.05, opacity: 0.9 }}
           whileTap={{ scale: 0.95 }}
           sx={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 1,
             px: 3,
             py: 1.5,
             background: GRADIENT.PRIMARY,
             borderRadius: '8px',
             cursor: 'pointer',
             whiteSpace: 'nowrap',
+            alignItems: 'center',
           }}
         >
           <Typography
@@ -142,8 +130,8 @@ const HeroSection = () => {
           >
             ↗ Chia sẻ
           </Typography>
-        </MotionBox>
-      </MotionBox>
+        </MotionStack>
+      </MotionStack>
 
       {/* Hero Image */}
       <MotionBox
@@ -177,58 +165,8 @@ const HeroSection = () => {
       </MotionBox>
 
       {/* Tab navigation */}
-      <Box
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: { xs: 1, md: 3 },
-          px: 2,
-          py: 2,
-          background: GRADIENT.PRIMARY,
-          borderRadius: '16px',
-          overflowX: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          '&::-webkit-scrollbar': { display: 'none' },
-          msOverflowStyle: 'none',
-          scrollbarWidth: 'none',
-        }}
-      >
-        {TAB_ITEMS.map((tab) => (
-          <MotionBox
-            key={tab.label}
-            whileHover={{ scale: 1.05 }}
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1,
-              px: { xs: 2, md: 3 },
-              py: { xs: 1.5, md: 2 },
-              borderRadius: '32px',
-              backgroundColor: tab.active
-                ? 'rgba(42, 82, 190, 0.2)'
-                : PALETTE.BACKGROUND_DEFAULT + '00',
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              flexShrink: 0,
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', color: PALETTE.SURFACE_LIGHT }}>
-              {tab.icon}
-            </Box>
-            <Typography
-              sx={{
-                fontWeight: tab.active ? 600 : 500,
-                fontSize: { xs: '0.875rem', md: '0.9375rem' },
-                color: PALETTE.SURFACE_LIGHT,
-              }}
-            >
-              {tab.label}
-            </Typography>
-          </MotionBox>
-        ))}
-      </Box>
-
-    </MotionBox>
+      <HeroTabs />
+    </MotionStack>
   );
 };
 

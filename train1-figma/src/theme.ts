@@ -16,6 +16,12 @@ const PALETTE = {
   ACCENT_BORDER: '#BFC7F8',
   SURFACE_LIGHT: '#EEF0FD',
   ACCENT_GREEN: '#00C8B3',
+  GREY_LIGHT: '#EAEAEA',
+  HOVER_LIGHT: '#F5F5F5',
+  WHITE: '#FFFFFF',
+  WHITE_ALPHA_10: 'rgba(255, 255, 255, 0.1)',
+  WHITE_ALPHA_30: 'rgba(255, 255, 255, 0.3)',
+  SHADOW_LIGHT: 'rgba(0, 0, 0, 0.1)',
 } as const;
 
 const GRADIENT = {

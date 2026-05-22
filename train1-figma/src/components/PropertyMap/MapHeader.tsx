@@ -1,4 +1,4 @@
-import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import InputAdornment from '@mui/material/InputAdornment';
 import TextField from '@mui/material/TextField';
@@ -12,14 +12,13 @@ interface MapHeaderProps {
 
 const MapHeader = ({ searchValue, onSearchChange }: MapHeaderProps) => {
   return (
-    <Box
+    <Stack
+      direction={{ xs: 'column', md: 'row' }}
+      spacing={{ xs: 2, md: 0 }}
       sx={{
-        display: 'flex',
-        flexDirection: { xs: 'column', md: 'row' },
+        width: '100%',
         justifyContent: 'space-between',
         alignItems: { xs: 'flex-start', md: 'center' },
-        gap: { xs: 2, md: 0 },
-        width: '100%',
       }}
     >
       <Typography
@@ -34,8 +33,16 @@ const MapHeader = ({ searchValue, onSearchChange }: MapHeaderProps) => {
         Mặt bằng quỹ căn
       </Typography>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, width: { xs: '100%', md: 'auto' } }}>
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{
+          width: { xs: '100%', md: 'auto' },
+          alignItems: 'center',
+        }}
+      >
         <TextField
+          id="search-property-input"
           size="small"
           placeholder="Tìm vị trí căn theo mã căn"
           value={searchValue}
@@ -48,6 +55,9 @@ const MapHeader = ({ searchValue, onSearchChange }: MapHeaderProps) => {
                 </InputAdornment>
               ),
             },
+            htmlInput: {
+              'aria-label': 'Tìm vị trí căn theo mã căn',
+            },
           }}
           sx={{
             width: { xs: '100%', md: 350 },
@@ -57,8 +67,8 @@ const MapHeader = ({ searchValue, onSearchChange }: MapHeaderProps) => {
             },
           }}
         />
-      </Box>
-    </Box>
+      </Stack>
+    </Stack>
   );
 };
 

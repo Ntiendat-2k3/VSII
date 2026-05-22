@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from './theme';
@@ -11,26 +12,27 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box
+      <Stack
         sx={{
           maxWidth: 1440,
           mx: 'auto',
-          display: 'flex',
-          flexDirection: 'column',
           minHeight: '100vh',
           backgroundColor: 'background.default',
         }}
       >
         <Navbar />
-        <HeroSection />
+        
+        <Box component="main" sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+          <HeroSection />
 
-        {/* Map Section */}
-        <Box sx={{ px: { xs: 0, md: 3 }, pb: { xs: 2, md: 3 } }}>
-          <PropertyMap />
+          {/* Map Section */}
+          <Box sx={{ px: { xs: 0, md: 3 }, pb: { xs: 2, md: 3 } }}>
+            <PropertyMap />
+          </Box>
         </Box>
 
         <Footer />
-      </Box>
+      </Stack>
     </ThemeProvider>
   );
 };

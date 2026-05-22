@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { Flame } from 'lucide-react';
@@ -13,7 +14,7 @@ interface PropertyMarkerProps {
   onClick: (id: string) => void;
 }
 
-const PropertyMarker = ({ property, isSelected, onClick }: PropertyMarkerProps) => {
+const PropertyMarker = memo(({ property, isSelected, onClick }: PropertyMarkerProps) => {
   const { code, isHot, status, position } = property;
 
   const getMarkerStyles = () => {
@@ -79,7 +80,7 @@ const PropertyMarker = ({ property, isSelected, onClick }: PropertyMarkerProps) 
           whiteSpace: 'nowrap',
           boxShadow: isSelected
             ? `0 0 0 3px ${PALETTE.PRIMARY_LIGHT}`
-            : '0px 4px 10px rgba(0,0,0,0.1)',
+            : `0px 4px 10px ${PALETTE.SHADOW_LIGHT}`,
         }}
       >
         {isHot && (
@@ -107,11 +108,11 @@ const PropertyMarker = ({ property, isSelected, onClick }: PropertyMarkerProps) 
           borderLeft: '6px solid transparent',
           borderRight: '6px solid transparent',
           borderTop: `6px solid ${styles.borderColor}`,
-          filter: 'drop-shadow(0px 2px 2px rgba(0,0,0,0.1))'
+          filter: `drop-shadow(0px 2px 2px ${PALETTE.SHADOW_LIGHT})`
         }}
       />
     </MotionBox>
   );
-};
+});
 
 export default PropertyMarker;

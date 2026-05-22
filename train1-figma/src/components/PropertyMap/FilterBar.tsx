@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import { SquareCheck, Square, Flame } from 'lucide-react';
@@ -36,24 +36,23 @@ const FilterBar = ({
   );
 
   return (
-    <Box
+    <Stack
+      direction="row"
+      useFlexGap
+      spacing={2}
       sx={{
-        display: 'flex',
-        flexDirection: 'row',
+        flexWrap: 'wrap',
         alignItems: 'center',
         justifyContent: { xs: 'flex-start', md: 'center' },
-        gap: 2,
-        flexWrap: 'wrap',
         pb: { xs: 1, md: 0 },
       }}
     >
       {/* HOT filter chip */}
-      <Box
+      <Stack
+        direction="row"
+        spacing={1}
         onClick={onToggleHot}
         sx={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: 1,
           px: '16px',
           py: '8px',
           borderRadius: `${BORDER_RADIUS.PILL}px`,
@@ -61,6 +60,7 @@ const FilterBar = ({
           cursor: 'pointer',
           flexShrink: 0,
           transition: 'all 0.2s ease',
+          alignItems: 'center',
           '&:hover': {
             opacity: 0.9,
             transform: 'scale(1.02)',
@@ -73,7 +73,7 @@ const FilterBar = ({
           checkedIcon={<SquareCheck size={18} color={PALETTE.SURFACE_LIGHT} />}
           sx={{ p: 0 }}
         />
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
           <Typography
             sx={{
               fontWeight: 500,
@@ -84,21 +84,20 @@ const FilterBar = ({
             Căn HOT
           </Typography>
           <Flame size={16} color={PALETTE.SURFACE_LIGHT} />
-        </Box>
-      </Box>
+        </Stack>
+      </Stack>
 
       {/* Type filter chips */}
       {ALL_TYPES.map((type) => {
         const isActive = activeFilters.includes(type);
 
         return (
-          <Box
+          <Stack
             key={type}
+            direction="row"
+            spacing={1}
             onClick={handleToggle(type)}
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1,
               px: '16px',
               py: '8px',
               borderRadius: `${BORDER_RADIUS.PILL}px`,
@@ -108,6 +107,7 @@ const FilterBar = ({
               cursor: 'pointer',
               flexShrink: 0,
               transition: 'all 0.2s ease',
+              alignItems: 'center',
               '&:hover': {
                 opacity: 0.9,
                 transform: 'scale(1.02)',
@@ -135,10 +135,10 @@ const FilterBar = ({
             >
               {PROPERTY_TYPE_LABELS[type]}
             </Typography>
-          </Box>
+          </Stack>
         );
       })}
-    </Box>
+    </Stack>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 import MapHeader from './MapHeader';
 import FilterBar from './FilterBar';
 import MapCanvas from './MapCanvas';
@@ -59,7 +60,7 @@ const PropertyMap = () => {
   }, [showHotOnly, searchValue]);
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, md: 3 } }}>
+    <Stack spacing={{ xs: 2, md: 3 }} sx={{ width: '100%' }}>
       <Box sx={{ px: { xs: 1.5, md: 0 } }}>
         <MapHeader
           searchValue={searchValue}
@@ -80,7 +81,7 @@ const PropertyMap = () => {
         selectedId={selectedId}
         onSelectProperty={handleSelectProperty}
       />
-    </Box>
+    </Stack>
   );
 };
 
