@@ -8,32 +8,7 @@ interface PopupHeaderProps {
 }
 
 const PopupHeader = ({ code, isHot }: PopupHeaderProps) => {
-  if (isHot) {
-    return (
-      <Stack
-        direction="row"
-        spacing={0.5}
-        sx={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          p: '12px 8px',
-          backgroundColor: PALETTE.SURFACE_LIGHT,
-          border: `1px solid ${PALETTE.ACCENT_BORDER}`,
-          borderRadius: `${BORDER_RADIUS.SMALL}px`,
-        }}
-      >
-        <Typography
-          sx={{
-            fontWeight: 700,
-            fontSize: '0.9375rem',
-            color: PALETTE.PRIMARY,
-          }}
-        >
-          {code}
-        </Typography>
-      </Stack>
-    );
-  }
+  const isHotTheme = isHot;
 
   return (
     <Stack
@@ -43,7 +18,8 @@ const PopupHeader = ({ code, isHot }: PopupHeaderProps) => {
         justifyContent: 'center',
         alignItems: 'center',
         p: '12px 8px',
-        backgroundColor: PALETTE.ERROR,
+        backgroundColor: isHotTheme ? PALETTE.ERROR : PALETTE.SURFACE_LIGHT,
+        border: isHotTheme ? 'none' : `1px solid ${PALETTE.ACCENT_BORDER}`,
         borderRadius: `${BORDER_RADIUS.SMALL}px`,
       }}
     >
@@ -51,7 +27,7 @@ const PopupHeader = ({ code, isHot }: PopupHeaderProps) => {
         sx={{
           fontWeight: 700,
           fontSize: '0.9375rem',
-          color: PALETTE.SURFACE_LIGHT,
+          color: isHotTheme ? PALETTE.SURFACE_LIGHT : PALETTE.PRIMARY,
         }}
       >
         {code}

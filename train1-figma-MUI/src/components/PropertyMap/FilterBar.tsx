@@ -56,7 +56,7 @@ const FilterBar = ({
           px: '16px',
           py: '8px',
           borderRadius: `${BORDER_RADIUS.PILL}px`,
-          backgroundColor: showHotOnly ? PALETTE.ERROR : PALETTE.PRIMARY,
+          backgroundColor: showHotOnly ? PALETTE.ERROR : PALETTE.BACKGROUND_PAPER,
           cursor: 'pointer',
           flexShrink: 0,
           transition: 'all 0.2s ease',
@@ -69,7 +69,7 @@ const FilterBar = ({
       >
         <Checkbox
           checked={showHotOnly}
-          icon={<Square size={18} color={PALETTE.SURFACE_LIGHT} />}
+          icon={<Square size={18} color={PALETTE.TEXT_SECONDARY} />}
           checkedIcon={<SquareCheck size={18} color={PALETTE.SURFACE_LIGHT} />}
           sx={{ p: 0 }}
         />
@@ -78,12 +78,12 @@ const FilterBar = ({
             sx={{
               fontWeight: 500,
               fontSize: '0.8125rem',
-              color: PALETTE.SURFACE_LIGHT,
+              color: showHotOnly ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
             }}
           >
             Căn HOT
           </Typography>
-          <Flame size={16} color={PALETTE.SURFACE_LIGHT} />
+          <Flame size={16} color={showHotOnly ? PALETTE.SURFACE_LIGHT : PALETTE.ERROR} />
         </Stack>
       </Stack>
 

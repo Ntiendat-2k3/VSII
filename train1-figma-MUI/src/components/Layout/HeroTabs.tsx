@@ -47,7 +47,7 @@ const HeroTabs = () => {
             borderRadius: '32px',
             backgroundColor: tab.active
               ? 'rgba(42, 82, 190, 0.2)'
-              : `${PALETTE.BACKGROUND_DEFAULT}00`,
+              : 'transparent',
             cursor: 'pointer',
             whiteSpace: 'nowrap',
             flexShrink: 0,
