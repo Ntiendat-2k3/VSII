@@ -1,0 +1,1249 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "train1-figma",
+    "languages": [
+      "typescript",
+      "javascript",
+      "html",
+      "json",
+      "markdown"
+    ],
+    "frameworks": [
+      "react",
+      "mui",
+      "leaflet",
+      "framer-motion",
+      "vite"
+    ],
+    "description": "Ứng dụng bản đồ bất động sản (Property Map) tương tác được phát triển bằng React, TypeScript, Material-UI (MUI v9) và Framer Motion, sử dụng bản đồ băm tiles hiệu năng cao với Leaflet và vẽ Marker bằng HTML5 Canvas.",
+    "analyzedAt": "2026-05-27T07:07:41.942Z",
+    "gitCommitHash": "4af4811b048041fe5d0fc35caa7864e9bd8e9a5c"
+  },
+  "nodes": [
+    {
+      "id": "config:.understand-anything/diff-overlay.json",
+      "type": "config",
+      "name": "diff-overlay.json",
+      "filePath": ".understand-anything/diff-overlay.json",
+      "summary": "Lưu trữ thông tin so sánh sự thay đổi giữa các phiên bản đồ họa của bản đồ.",
+      "tags": [
+        "configuration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.understand-anything/fingerprints.json",
+      "type": "config",
+      "name": "fingerprints.json",
+      "filePath": ".understand-anything/fingerprints.json",
+      "summary": "Dấu vân tay cấu trúc của các tệp tin để hỗ trợ việc cập nhật sơ đồ tri thức tăng dần.",
+      "tags": [
+        "configuration",
+        "build-system"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:.understand-anything/knowledge-graph.json",
+      "type": "config",
+      "name": "knowledge-graph.json",
+      "filePath": ".understand-anything/knowledge-graph.json",
+      "summary": "Bản đồ tri thức của toàn bộ dự án lưu trữ thông tin về các node và edge.",
+      "tags": [
+        "configuration",
+        "utility"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:.understand-anything/meta.json",
+      "type": "config",
+      "name": "meta.json",
+      "filePath": ".understand-anything/meta.json",
+      "summary": "Metadata lưu trữ thông tin thời gian phân tích và commit hash cuối cùng của sơ đồ.",
+      "tags": [
+        "configuration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Tài liệu giới thiệu dự án, kiến trúc bản đồ Leaflet, kĩ thuật cắt lát bản đồ và hướng dẫn chạy dev server.",
+      "tags": [
+        "documentation",
+        "entry-point",
+        "overview"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "File HTML chính chứa thẻ div root để render ứng dụng React và liên kết với mã nguồn JavaScript khởi động.",
+      "tags": [
+        "markup",
+        "entry-point"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "File cấu hình dự án định nghĩa các dependencies như Leaflet, MUI v9, Framer Motion và cấu hình các script build.",
+      "tags": [
+        "configuration",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:prompt.md",
+      "type": "document",
+      "name": "prompt.md",
+      "filePath": "prompt.md",
+      "summary": "Tài liệu đặc tả yêu cầu và prompt thiết kế giao diện Figma cho hệ thống bản đồ bất động sản PropertyMap.",
+      "tags": [
+        "documentation",
+        "overview"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:tsconfig.app.json",
+      "type": "config",
+      "name": "tsconfig.app.json",
+      "filePath": "tsconfig.app.json",
+      "summary": "Cấu hình TypeScript cho mã nguồn ứng dụng chạy phía trình duyệt client.",
+      "tags": [
+        "configuration",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "Cấu hình TypeScript chính dẫn tới cấu hình con của ứng dụng và node.",
+      "tags": [
+        "configuration",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.node.json",
+      "type": "config",
+      "name": "tsconfig.node.json",
+      "filePath": "tsconfig.node.json",
+      "summary": "Cấu hình TypeScript cho môi trường chạy Node.js (Vite config, script build).",
+      "tags": [
+        "configuration",
+        "build-system"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "File cấu hình chỉ định danh sách các tệp tin và thư mục bị bỏ qua không phân tích trong sơ đồ tri thức.",
+      "tags": [
+        "configuration",
+        "utility"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:eslint.config.js",
+      "type": "file",
+      "name": "eslint.config.js",
+      "filePath": "eslint.config.js",
+      "summary": "File cấu hình linter ESLint phiên bản mới quy định luật chất lượng mã nguồn cho toàn bộ dự án React/TypeScript.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:public/vips-properties.xml",
+      "type": "config",
+      "name": "vips-properties.xml",
+      "filePath": "public/vips-properties.xml",
+      "summary": "File XML chứa cấu hình hoặc dữ liệu bất động sản liên quan đến hệ thống.",
+      "tags": [
+        "configuration",
+        "database"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/generate-tiles.js",
+      "type": "file",
+      "name": "generate-tiles.js",
+      "filePath": "scripts/generate-tiles.js",
+      "summary": "Script tự động băm/cắt ảnh gốc thành các mảnh nhỏ (tiles) ở các mức zoom khác nhau phục vụ cho hiển thị bản đồ Leaflet hiệu năng cao.",
+      "tags": [
+        "utility",
+        "script",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-tiles.js:generateTiles",
+      "type": "function",
+      "name": "generateTiles",
+      "filePath": "scripts/generate-tiles.js",
+      "lineRange": [
+        8,
+        27
+      ],
+      "summary": "Hàm xử lý logic generateTiles trong tệp generate-tiles.js.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/start-dashboard.cjs",
+      "type": "file",
+      "name": "start-dashboard.cjs",
+      "filePath": "scripts/start-dashboard.cjs",
+      "summary": "Script khởi chạy giao diện dashboard phân tích mã nguồn và bản đồ tri thức 3D.",
+      "tags": [
+        "utility",
+        "script",
+        "javascript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/App.tsx",
+      "summary": "Component gốc của ứng dụng, thiết lập MUI Custom ThemeProvider, CssBaseline và bố cục responsive gồm Navbar, Hero, PropertyMap, Footer.",
+      "tags": [
+        "component",
+        "entry-point",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/App.tsx",
+      "lineRange": [
+        11,
+        48
+      ],
+      "summary": "Hàm xử lý logic App trong tệp App.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Layout/Footer.tsx",
+      "type": "file",
+      "name": "Footer.tsx",
+      "filePath": "src/components/Layout/Footer.tsx",
+      "summary": "Component Footer chân trang chứa các liên kết nhanh, thông tin bản quyền và cấu trúc layout responsive.",
+      "tags": [
+        "component",
+        "entry-point",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout/Footer.tsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "src/components/Layout/Footer.tsx",
+      "lineRange": [
+        14,
+        165
+      ],
+      "summary": "Hàm xử lý logic Footer trong tệp Footer.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Layout/FooterCompanyInfo.tsx",
+      "type": "file",
+      "name": "FooterCompanyInfo.tsx",
+      "filePath": "src/components/Layout/FooterCompanyInfo.tsx",
+      "summary": "Component hiển thị thông tin giới thiệu công ty, mạng xã hội và thông tin liên lạc ở chân trang Footer.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
+      "type": "function",
+      "name": "FooterCompanyInfo",
+      "filePath": "src/components/Layout/FooterCompanyInfo.tsx",
+      "lineRange": [
+        7,
+        92
+      ],
+      "summary": "Hàm xử lý logic FooterCompanyInfo trong tệp FooterCompanyInfo.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Layout/HeroSection.tsx",
+      "type": "file",
+      "name": "HeroSection.tsx",
+      "filePath": "src/components/Layout/HeroSection.tsx",
+      "summary": "Phần giới thiệu Hero nổi bật chứa tiêu đề, mô tả và tích hợp tabs tìm kiếm nhanh.",
+      "tags": [
+        "component",
+        "entry-point",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout/HeroSection.tsx:HeroSection",
+      "type": "function",
+      "name": "HeroSection",
+      "filePath": "src/components/Layout/HeroSection.tsx",
+      "lineRange": [
+        27,
+        189
+      ],
+      "summary": "Hàm xử lý logic HeroSection trong tệp HeroSection.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Layout/HeroTabs.tsx",
+      "type": "file",
+      "name": "HeroTabs.tsx",
+      "filePath": "src/components/Layout/HeroTabs.tsx",
+      "summary": "Component tabs chuyển đổi nhanh các danh mục tìm kiếm như Mua, Thuê, Dự án.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout/HeroTabs.tsx:HeroTabs",
+      "type": "function",
+      "name": "HeroTabs",
+      "filePath": "src/components/Layout/HeroTabs.tsx",
+      "lineRange": [
+        20,
+        73
+      ],
+      "summary": "Hàm xử lý logic HeroTabs trong tệp HeroTabs.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Layout/Navbar.tsx",
+      "type": "file",
+      "name": "Navbar.tsx",
+      "filePath": "src/components/Layout/Navbar.tsx",
+      "summary": "Thanh điều hướng chính trên cùng của ứng dụng, hiển thị logo, các menu liên kết và hỗ trợ menu Drawer trên di động.",
+      "tags": [
+        "component",
+        "entry-point",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout/Navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "src/components/Layout/Navbar.tsx",
+      "lineRange": [
+        16,
+        167
+      ],
+      "summary": "Hàm xử lý logic Navbar trong tệp Navbar.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/Layout/NavbarDrawer.tsx",
+      "type": "file",
+      "name": "NavbarDrawer.tsx",
+      "filePath": "src/components/Layout/NavbarDrawer.tsx",
+      "summary": "Thanh điều hướng ngăn kéo (Drawer) hiển thị menu dọc tối ưu cho trải nghiệm vuốt chạm trên màn hình di động.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/Layout/NavbarDrawer.tsx:NavbarDrawer",
+      "type": "function",
+      "name": "NavbarDrawer",
+      "filePath": "src/components/Layout/NavbarDrawer.tsx",
+      "lineRange": [
+        18,
+        84
+      ],
+      "summary": "Hàm xử lý logic NavbarDrawer trong tệp NavbarDrawer.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "type": "file",
+      "name": "CanvasMarkerLayer.tsx",
+      "filePath": "src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "summary": "Lớp Marker vẽ trên Canvas tích hợp vào Leaflet để tối ưu hiệu năng hiển thị hàng loạt marker bất động sản mà không gây lag trình duyệt.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "type": "function",
+      "name": "CanvasMarkerLayer",
+      "filePath": "src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "lineRange": [
+        24,
+        187
+      ],
+      "summary": "Hàm xử lý logic CanvasMarkerLayer trong tệp CanvasMarkerLayer.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/FilterBar.tsx",
+      "type": "file",
+      "name": "FilterBar.tsx",
+      "filePath": "src/components/PropertyMap/FilterBar.tsx",
+      "summary": "Thanh công cụ lọc bất động sản cho phép người dùng chọn xem căn theo loại hình và lọc các căn HOT nổi bật.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "type": "function",
+      "name": "FilterBar",
+      "filePath": "src/components/PropertyMap/FilterBar.tsx",
+      "lineRange": [
+        78,
+        147
+      ],
+      "summary": "Hàm xử lý logic FilterBar trong tệp FilterBar.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/components/PropertyMap/index.tsx",
+      "summary": "Component bao bọc chính tích hợp MapHeader, FilterBar và MapCanvas cho phần bản đồ bất động sản.",
+      "tags": [
+        "component",
+        "entry-point",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PropertyMap/index.tsx:PropertyMap",
+      "type": "function",
+      "name": "PropertyMap",
+      "filePath": "src/components/PropertyMap/index.tsx",
+      "lineRange": [
+        18,
+        86
+      ],
+      "summary": "Hàm xử lý logic PropertyMap trong tệp index.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "type": "file",
+      "name": "MapCanvas.tsx",
+      "filePath": "src/components/PropertyMap/MapCanvas.tsx",
+      "summary": "Component bản đồ chính sử dụng React-Leaflet, tích hợp hệ tọa độ CRS.Simple, bản đồ băm tiles và tích hợp lớp Canvas Marker Layer hiệu năng cao hiển thị markers.",
+      "tags": [
+        "component",
+        "entry-point",
+        "typescript"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "type": "function",
+      "name": "MapCanvas",
+      "filePath": "src/components/PropertyMap/MapCanvas.tsx",
+      "lineRange": [
+        37,
+        275
+      ],
+      "summary": "Hàm xử lý logic MapCanvas trong tệp MapCanvas.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/MapHeader.tsx",
+      "type": "file",
+      "name": "MapHeader.tsx",
+      "filePath": "src/components/PropertyMap/MapHeader.tsx",
+      "summary": "Tiêu đề của phần bản đồ bất động sản, hiển thị số lượng kết quả bất động sản tìm thấy.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PropertyMap/MapHeader.tsx:MapHeader",
+      "type": "function",
+      "name": "MapHeader",
+      "filePath": "src/components/PropertyMap/MapHeader.tsx",
+      "lineRange": [
+        13,
+        73
+      ],
+      "summary": "Hàm xử lý logic MapHeader trong tệp MapHeader.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "type": "file",
+      "name": "PopupDetails.tsx",
+      "filePath": "src/components/PropertyMap/PopupDetails.tsx",
+      "summary": "Phần chi tiết hiển thị các thông số kỹ thuật của bất động sản (phòng ngủ, phòng tắm, diện tích, hình ảnh) bên trong Leaflet Popup.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PropertyMap/PopupDetails.tsx:PopupDetails",
+      "type": "function",
+      "name": "PopupDetails",
+      "filePath": "src/components/PropertyMap/PopupDetails.tsx",
+      "lineRange": [
+        13,
+        51
+      ],
+      "summary": "Hàm xử lý logic PopupDetails trong tệp PopupDetails.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "type": "file",
+      "name": "PopupFooter.tsx",
+      "filePath": "src/components/PropertyMap/PopupFooter.tsx",
+      "summary": "Chân trang của Popup hiển thị giá bán và các nút hành động Sleek (Xem chi tiết, Liên hệ).",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "type": "function",
+      "name": "PopupFooter",
+      "filePath": "src/components/PropertyMap/PopupFooter.tsx",
+      "lineRange": [
+        14,
+        111
+      ],
+      "summary": "Hàm xử lý logic PopupFooter trong tệp PopupFooter.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/PropertyMap/PopupHeader.tsx",
+      "type": "file",
+      "name": "PopupHeader.tsx",
+      "filePath": "src/components/PropertyMap/PopupHeader.tsx",
+      "summary": "Tiêu đề của Popup hiển thị loại hình bất động sản và tích hợp nút đóng Popup.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/components/PropertyMap/PopupHeader.tsx:PopupHeader",
+      "type": "function",
+      "name": "PopupHeader",
+      "filePath": "src/components/PropertyMap/PopupHeader.tsx",
+      "lineRange": [
+        10,
+        37
+      ],
+      "summary": "Hàm xử lý logic PopupHeader trong tệp PopupHeader.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "type": "file",
+      "name": "PropertyPopup.tsx",
+      "filePath": "src/components/PropertyMap/PropertyPopup.tsx",
+      "summary": "Component Popup hoàn chỉnh hiển thị thông tin bất động sản, tích hợp PopupHeader, PopupDetails, PopupFooter.",
+      "tags": [
+        "component",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
+      "type": "function",
+      "name": "PropertyPopup",
+      "filePath": "src/components/PropertyMap/PropertyPopup.tsx",
+      "lineRange": [
+        16,
+        74
+      ],
+      "summary": "Hàm xử lý logic PropertyPopup trong tệp PropertyPopup.tsx.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/data/mockData.ts",
+      "type": "file",
+      "name": "mockData.ts",
+      "filePath": "src/data/mockData.ts",
+      "summary": "Cung cấp danh sách 38 căn bất động sản mock phong phú với đầy đủ toạ độ tỷ lệ % trên ảnh thiết kế.",
+      "tags": [
+        "utility",
+        "data-model",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "src/main.tsx",
+      "summary": "File khởi chạy chính của React, bọc App trong StrictMode và render vào DOM element root.",
+      "tags": [
+        "entry-point",
+        "utility",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/theme.ts",
+      "type": "file",
+      "name": "theme.ts",
+      "filePath": "src/theme.ts",
+      "summary": "Định nghĩa theme Material-UI (MUI v9) tùy chỉnh với bảng màu, font chữ, gradient Sleek và overrides style.",
+      "tags": [
+        "configuration",
+        "component",
+        "typescript"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/types/property.ts",
+      "type": "file",
+      "name": "property.ts",
+      "filePath": "src/types/property.ts",
+      "summary": "Định nghĩa các interface và kiểu dữ liệu TypeScript cho thực thể bất động sản (Property).",
+      "tags": [
+        "type-definition",
+        "data-model",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/utils/canvasMarkerRenderer.ts",
+      "type": "file",
+      "name": "canvasMarkerRenderer.ts",
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "summary": "Bộ renderer vẽ Marker bất động sản (thân marker, mã căn, căn HOT, hiệu ứng hover/selected) trực tiếp và mượt mà trên HTML5 Canvas.",
+      "tags": [
+        "utility",
+        "data-model",
+        "typescript"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "function",
+      "name": "drawPropertyMarker",
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "lineRange": [
+        47,
+        242
+      ],
+      "summary": "Hàm xử lý logic drawPropertyMarker trong tệp canvasMarkerRenderer.ts.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/utils/mapUtils.ts",
+      "type": "file",
+      "name": "mapUtils.ts",
+      "filePath": "src/utils/mapUtils.ts",
+      "summary": "Hàm tiện ích chuyển đổi toạ độ tỷ lệ phần trăm từ thiết kế Figma sang LatLng tương ứng trên bản đồ Leaflet.",
+      "tags": [
+        "utility",
+        "data-model",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "function",
+      "name": "convertPercentToLatLng",
+      "filePath": "src/utils/mapUtils.ts",
+      "lineRange": [
+        15,
+        25
+      ],
+      "summary": "Hàm xử lý logic convertPercentToLatLng trong tệp mapUtils.ts.",
+      "tags": [
+        "utility",
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:vite.config.ts",
+      "type": "file",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "Cấu hình Vite bundler quản lý việc build, các plugin và tối ưu chia nhỏ code chunks cho MUI/React.",
+      "tags": [
+        "configuration",
+        "build-system",
+        "typescript"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "config:.understand-anything/meta.json",
+      "target": "config:.understand-anything/knowledge-graph.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.understand-anything/fingerprints.json",
+      "target": "config:.understand-anything/knowledge-graph.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.understand-anything/diff-overlay.json",
+      "target": "config:.understand-anything/knowledge-graph.json",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:prompt.md",
+      "target": "file:src/components/PropertyMap/index.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:index.html",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.app.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.node.json",
+      "target": "file:vite.config.ts",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:scripts/generate-tiles.js",
+      "target": "function:scripts/generate-tiles.js:generateTiles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Layout/Footer.tsx",
+      "target": "function:src/components/Layout/Footer.tsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Layout/FooterCompanyInfo.tsx",
+      "target": "function:src/components/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Layout/HeroSection.tsx",
+      "target": "function:src/components/Layout/HeroSection.tsx:HeroSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Layout/HeroTabs.tsx",
+      "target": "function:src/components/Layout/HeroTabs.tsx:HeroTabs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Layout/Navbar.tsx",
+      "target": "function:src/components/Layout/Navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/Layout/NavbarDrawer.tsx",
+      "target": "function:src/components/Layout/NavbarDrawer.tsx:NavbarDrawer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "function:src/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/FilterBar.tsx",
+      "target": "function:src/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/index.tsx",
+      "target": "function:src/components/PropertyMap/index.tsx:PropertyMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "target": "function:src/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/MapHeader.tsx",
+      "target": "function:src/components/PropertyMap/MapHeader.tsx:MapHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "target": "function:src/components/PropertyMap/PopupDetails.tsx:PopupDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "target": "function:src/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/PopupHeader.tsx",
+      "target": "function:src/components/PropertyMap/PopupHeader.tsx:PopupHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "target": "function:src/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:eslint.config.js",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:src/components/PropertyMap/index.tsx",
+      "target": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "file:src/utils/canvasMarkerRenderer.ts",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/components/PropertyMap/PopupHeader.tsx",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/mapUtils.ts",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/mapUtils.ts",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:vite.config.ts",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:entry-point",
+      "name": "Khởi Chạy Ứng Dụng (Entry Point)",
+      "description": "Điểm bắt đầu và cấu hình gốc của ứng dụng React, chịu trách nhiệm render và cấu hình môi trường.",
+      "nodeIds": [
+        "file:src/App.tsx",
+        "file:src/main.tsx",
+        "file:index.html"
+      ]
+    },
+    {
+      "id": "layer:layout-components",
+      "name": "Thành Phần Khung Giao Diện (Layout Components)",
+      "description": "Các thành phần bố cục chung của ứng dụng như Navbar, Footer và phần giới thiệu Hero Section.",
+      "nodeIds": [
+        "file:src/components/Layout/HeroSection.tsx",
+        "file:src/components/Layout/HeroTabs.tsx",
+        "file:src/components/Layout/Footer.tsx",
+        "file:src/components/Layout/FooterCompanyInfo.tsx",
+        "file:src/components/Layout/Navbar.tsx",
+        "file:src/components/Layout/NavbarDrawer.tsx"
+      ]
+    },
+    {
+      "id": "layer:property-map-feature",
+      "name": "Tính Năng Bản Đồ Bất Động Sản (Property Map Feature)",
+      "description": "Lớp chứa các thành phần cốt lõi của tính năng bản đồ Leaflet, bao gồm Canvas bản đồ băm tiles, lớp Canvas Marker vẽ hiệu năng cao, bộ lọc và popup chi tiết.",
+      "nodeIds": [
+        "file:src/components/PropertyMap/FilterBar.tsx",
+        "file:src/components/PropertyMap/MapCanvas.tsx",
+        "file:src/components/PropertyMap/MapHeader.tsx",
+        "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+        "file:src/components/PropertyMap/index.tsx",
+        "file:src/components/PropertyMap/PopupDetails.tsx",
+        "file:src/components/PropertyMap/PopupFooter.tsx",
+        "file:src/components/PropertyMap/PopupHeader.tsx",
+        "file:src/components/PropertyMap/PropertyPopup.tsx",
+        "file:src/utils/mapUtils.ts",
+        "file:src/utils/canvasMarkerRenderer.ts"
+      ]
+    },
+    {
+      "id": "layer:data-and-config",
+      "name": "Dữ Liệu & Cấu Hình (Data & Config)",
+      "description": "Lớp chứa các kiểu dữ liệu (Types), theme giao diện tùy chỉnh, dữ liệu giả lập, các scripts và các tệp tin cấu hình dự án.",
+      "nodeIds": [
+        "file:src/data/mockData.ts",
+        "file:src/types/property.ts",
+        "file:src/theme.ts",
+        "config:package.json",
+        "config:tsconfig.app.json",
+        "config:tsconfig.json",
+        "config:tsconfig.node.json",
+        "file:eslint.config.js",
+        "file:vite.config.ts",
+        "file:scripts/generate-tiles.js",
+        "file:scripts/start-dashboard.cjs",
+        "config:public/vips-properties.xml"
+      ]
+    },
+    {
+      "id": "layer:docs-and-meta",
+      "name": "Tài Liệu & Metadata (Documentation & Meta)",
+      "description": "Các file tài liệu hướng dẫn và cấu hình metadata hỗ trợ phát triển sơ đồ.",
+      "nodeIds": [
+        "document:README.md",
+        "document:prompt.md",
+        "file:.understand-anything/.understandignore",
+        "config:.understand-anything/diff-overlay.json",
+        "config:.understand-anything/fingerprints.json",
+        "config:.understand-anything/knowledge-graph.json",
+        "config:.understand-anything/meta.json"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "1. Tổng quan dự án & Đặc tả kỹ thuật",
+      "description": "Bắt đầu từ tài liệu README.md và prompt đặc tả thiết kế để hiểu mục tiêu, stack công nghệ và ý tưởng thiết kế của ứng dụng bản đồ bất động sản Property Map tích hợp Leaflet.",
+      "nodeIds": [
+        "document:README.md",
+        "document:prompt.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "2. Khởi động ứng dụng & Cấu hình Theme Sleek",
+      "description": "Tìm hiểu cách ứng dụng boot thông qua main.tsx, khởi chạy component gốc App.tsx và áp dụng Custom Theme Provider (theme.ts) được thiết kế theo chuẩn Figma cao cấp.",
+      "nodeIds": [
+        "file:src/main.tsx",
+        "file:src/App.tsx",
+        "file:src/theme.ts"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "3. Thanh điều hướng & Footer chung",
+      "description": "Khám phá các thành phần bố cục chung như Navbar (NavbarDrawer) và Footer (FooterCompanyInfo) giúp xây dựng giao diện thống nhất, chuyên nghiệp.",
+      "nodeIds": [
+        "file:src/components/Layout/Navbar.tsx",
+        "file:src/components/Layout/Footer.tsx"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "4. Giao diện Hero & Tìm kiếm",
+      "description": "Điểm nhấn đầu tiên khi truy cập trang web với HeroSection giới thiệu dự án và bộ HeroTabs cho phép người dùng chọn danh mục mua/bán/thuê nhanh chóng.",
+      "nodeIds": [
+        "file:src/components/Layout/HeroSection.tsx",
+        "file:src/components/Layout/HeroTabs.tsx"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "5. Trung tâm Bản đồ Leaflet & Dữ liệu",
+      "description": "Xem cách tính năng bản đồ cốt lõi được lắp ráp trong PropertyMap/index.tsx và hiển thị trên MapCanvas (React-Leaflet) sử dụng CRS.Simple, kết hợp dữ liệu giả lập từ mockData.ts.",
+      "nodeIds": [
+        "file:src/components/PropertyMap/index.tsx",
+        "file:src/components/PropertyMap/MapCanvas.tsx",
+        "file:src/data/mockData.ts"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "6. Vẽ Marker trên HTML5 Canvas hiệu năng cao",
+      "description": "Nghiên cứu cách CanvasMarkerLayer vẽ hàng loạt marker cực kỳ mượt mà trực tiếp lên Canvas thay vì render từng HTML element, sử dụng bộ renderer chuyên nghiệp canvasMarkerRenderer.ts.",
+      "nodeIds": [
+        "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+        "file:src/utils/canvasMarkerRenderer.ts"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "7. Kỹ thuật băm bản đồ & Chuyển đổi tọa độ",
+      "description": "Tìm hiểu kĩ thuật băm ảnh sơ đồ chất lượng cao thành các mảnh nhỏ (tiles) qua scripts/generate-tiles.js và cách chuyển đổi toạ độ địa lý ảo CRS.Simple qua src/utils/mapUtils.ts.",
+      "nodeIds": [
+        "file:scripts/generate-tiles.js",
+        "file:src/utils/mapUtils.ts"
+      ]
+    }
+  ]
+}

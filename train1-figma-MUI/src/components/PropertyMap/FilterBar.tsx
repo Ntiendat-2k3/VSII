@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, memo } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
@@ -15,6 +15,59 @@ const ALL_TYPES: PropertyType[] = [
   'shophouse',
 ];
 
+interface FilterChipProps {
+  type: PropertyType;
+  isActive: boolean;
+  onClick: (type: PropertyType) => void;
+}
+
+// 1. Optimized sub-component with React.memo to avoid recreating functions in rendering
+const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
+  const handleClick = useCallback(() => {
+    onClick(type);
+  }, [type, onClick]);
+
+  return (
+    <Stack
+      direction="row"
+      spacing={1}
+      onClick={handleClick}
+      sx={{
+        px: '16px',
+        py: '8px',
+        borderRadius: `${BORDER_RADIUS.PILL}px`,
+        backgroundColor: isActive ? PALETTE.PRIMARY : PALETTE.BACKGROUND_PAPER,
+        cursor: 'pointer',
+        flexShrink: 0,
+        transition: 'all 0.2s ease',
+        alignItems: 'center',
+        '&:hover': {
+          opacity: 0.9,
+          transform: 'scale(1.02)',
+        },
+      }}
+    >
+      <Checkbox
+        checked={isActive}
+        icon={<Square size={18} color={PALETTE.TEXT_SECONDARY} />}
+        checkedIcon={<SquareCheck size={18} color={PALETTE.SURFACE_LIGHT} />}
+        sx={{ p: 0 }}
+      />
+      <Typography
+        variant="caption"
+        sx={{
+          fontWeight: 500,
+          color: isActive ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
+        }}
+      >
+        {PROPERTY_TYPE_LABELS[type]}
+      </Typography>
+    </Stack>
+  );
+});
+
+FilterChip.displayName = 'FilterChip';
+
 interface FilterBarProps {
   activeFilters: PropertyType[];
   showHotOnly: boolean;
@@ -28,13 +81,6 @@ const FilterBar = ({
   onToggleFilter,
   onToggleHot,
 }: FilterBarProps) => {
-  const handleToggle = useCallback(
-    (type: PropertyType) => () => {
-      onToggleFilter(type);
-    },
-    [onToggleFilter],
-  );
-
   return (
     <Stack
       direction="row"
@@ -75,9 +121,9 @@ const FilterBar = ({
         />
         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
           <Typography
+            variant="caption"
             sx={{
               fontWeight: 500,
-              fontSize: '0.8125rem',
               color: showHotOnly ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
             }}
           >
@@ -88,56 +134,14 @@ const FilterBar = ({
       </Stack>
 
       {/* Type filter chips */}
-      {ALL_TYPES.map((type) => {
-        const isActive = activeFilters.includes(type);
-
-        return (
-          <Stack
-            key={type}
-            direction="row"
-            spacing={1}
-            onClick={handleToggle(type)}
-            sx={{
-              px: '16px',
-              py: '8px',
-              borderRadius: `${BORDER_RADIUS.PILL}px`,
-              backgroundColor: isActive
-                ? PALETTE.PRIMARY
-                : PALETTE.BACKGROUND_PAPER,
-              cursor: 'pointer',
-              flexShrink: 0,
-              transition: 'all 0.2s ease',
-              alignItems: 'center',
-              '&:hover': {
-                opacity: 0.9,
-                transform: 'scale(1.02)',
-              },
-            }}
-          >
-            <Checkbox
-              checked={isActive}
-              icon={
-                <Square size={18} color={PALETTE.TEXT_SECONDARY} />
-              }
-              checkedIcon={
-                <SquareCheck size={18} color={PALETTE.SURFACE_LIGHT} />
-              }
-              sx={{ p: 0 }}
-            />
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '0.8125rem',
-                color: isActive
-                  ? PALETTE.SURFACE_LIGHT
-                  : PALETTE.TEXT_SECONDARY,
-              }}
-            >
-              {PROPERTY_TYPE_LABELS[type]}
-            </Typography>
-          </Stack>
-        );
-      })}
+      {ALL_TYPES.map((type) => (
+        <FilterChip
+          key={type}
+          type={type}
+          isActive={activeFilters.includes(type)}
+          onClick={onToggleFilter}
+        />
+      ))}
     </Stack>
   );
 };

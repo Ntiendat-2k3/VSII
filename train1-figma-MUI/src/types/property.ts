@@ -1,4 +1,4 @@
-export type PropertyStatus = 'available' | 'sold' | 'contact';
+export type PropertyStatus = 'available' | 'sold' | 'contact' | 'contacting';
 
 export type PropertyType =
   | 'don-lap'

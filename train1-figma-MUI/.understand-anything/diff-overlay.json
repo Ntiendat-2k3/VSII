@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "baseBranch": "main",
+  "generatedAt": "2026-05-26T20:00:00Z",
+  "changedFiles": [
+    "src/components/PropertyMap/MapCanvas.tsx",
+    "src/components/PropertyMap/MapControls.tsx",
+    "src/components/PropertyMap/PropertyMarker.tsx",
+    "src/components/PropertyMap/PropertyPopup.tsx",
+    "package.json"
+  ],
+  "changedNodeIds": [
+    "file:src/components/PropertyMap/MapCanvas.tsx",
+    "file:src/components/PropertyMap/MapControls.tsx",
+    "file:src/components/PropertyMap/PropertyMarker.tsx",
+    "file:src/components/PropertyMap/PropertyPopup.tsx",
+    "config:package.json"
+  ],
+  "affectedNodeIds": [
+    "file:src/components/PropertyMap/index.tsx",
+    "file:src/types/property.ts",
+    "file:src/theme.ts"
+  ]
+}

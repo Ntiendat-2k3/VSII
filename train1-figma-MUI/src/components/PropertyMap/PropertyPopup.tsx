@@ -11,35 +11,31 @@ const MotionBox = motion(Box);
 
 interface PropertyPopupProps {
   property: Property;
-  position?: 'top' | 'bottom';
 }
 
-const PropertyPopup = ({ property, position = 'top' }: PropertyPopupProps) => {
+const PropertyPopup = ({ property }: PropertyPopupProps) => {
   const { code, isHot, type, area, listedPrice, loanPrice, status } = property;
-  const isBottom = position === 'bottom';
 
   return (
     <AnimatePresence>
       <MotionBox
         key={property.id}
-        initial={{ opacity: 0, scale: 0.5, y: isBottom ? -20 : 20 }}
+        initial={{ opacity: 0, scale: 0.5, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.5, y: isBottom ? -20 : 20 }}
+        exit={{ opacity: 0, scale: 0.5, y: 20 }}
         transition={{ type: 'spring', stiffness: 400, damping: 25 }}
         sx={{
           width: 200,
           display: 'flex',
-          flexDirection: isBottom ? 'column-reverse' : 'column',
+          flexDirection: 'column',
           filter: `drop-shadow(${SHADOW.POPUP})`,
-          transformOrigin: isBottom ? 'top center' : 'bottom center',
+          transformOrigin: 'bottom center',
         }}
       >
         <Box
           sx={{
             backgroundColor: PALETTE.BACKGROUND_DEFAULT,
-            borderRadius: isBottom 
-              ? `0 0 ${BORDER_RADIUS.LARGE}px ${BORDER_RADIUS.LARGE}px`
-              : `${BORDER_RADIUS.LARGE}px ${BORDER_RADIUS.LARGE}px 0 0`,
+            borderRadius: `${BORDER_RADIUS.LARGE}px ${BORDER_RADIUS.LARGE}px 0 0`,
             overflow: 'hidden',
           }}
         >
@@ -50,7 +46,7 @@ const PropertyPopup = ({ property, position = 'top' }: PropertyPopupProps) => {
           </Stack>
         </Box>
 
-        {/* Bottom/Top arrow / triangle */}
+        {/* Bottom arrow / triangle */}
         <Box
           sx={{
             display: 'flex',
@@ -64,7 +60,6 @@ const PropertyPopup = ({ property, position = 'top' }: PropertyPopupProps) => {
               width: '100%',
               height: 18,
               display: 'block',
-              transform: isBottom ? 'rotate(180deg)' : 'none',
             }}
           >
             <path
