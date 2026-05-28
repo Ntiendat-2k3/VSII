@@ -3,7 +3,7 @@ import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { convertPercentToLatLng } from '../../utils/mapUtils';
 import type { Property } from '../../types/property';
-import { drawPropertyMarker, MARKER_WIDTH } from '../../utils/canvasMarkerRenderer';
+import { drawPropertyMarker, MARKER_WIDTH, clearMarkerCache } from '../../utils/canvasMarkerRenderer';
 
 interface CanvasMarkerLayerProps {
   properties: Property[];
@@ -174,6 +174,7 @@ const CanvasMarkerLayer = ({
       map.off('click', handleClick);
       pane.removeChild(canvas);
       map.getContainer().style.cursor = '';
+      clearMarkerCache();
     };
   }, [map]);
 

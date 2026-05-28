@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import { Maximize, Building } from 'lucide-react';
 import type { PropertyType } from '../../types/property';
 import { PROPERTY_TYPE_LABELS } from '../../types/property';
-import { PALETTE, GRADIENT } from '../../theme';
+import { PALETTE } from '../../theme';
 
 interface PopupDetailsProps {
   area: number;
@@ -16,10 +16,7 @@ const PopupDetails = ({ area, type }: PopupDetailsProps) => {
       direction="row"
       sx={{
         justifyContent: 'space-between',
-        pb: '8px',
-        borderBottom: '1px solid',
-        borderImage: GRADIENT.DIVIDER,
-        borderImageSlice: 1,
+        pt: '4px',
       }}
     >
       <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>

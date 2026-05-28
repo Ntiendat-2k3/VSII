@@ -34,16 +34,28 @@ const PropertyPopup = ({ property }: PropertyPopupProps) => {
       >
         <Box
           sx={{
-            backgroundColor: PALETTE.BACKGROUND_DEFAULT,
+            backgroundColor: isHot ? PALETTE.BACKGROUND_DEFAULT : '#F4F7FF',
             borderRadius: `${BORDER_RADIUS.LARGE}px ${BORDER_RADIUS.LARGE}px 0 0`,
-            overflow: 'hidden',
+            p: 1.5,
+            pb: 1,
+            borderBottom: `1px dashed ${PALETTE.BORDER}`,
           }}
         >
-          <Stack spacing={1} sx={{ p: '8px', pb: '4px' }}>
+          <Stack spacing={1}>
             <PopupHeader code={code} isHot={isHot} />
             <PopupDetails area={area} type={type} />
-            <PopupFooter status={status} listedPrice={listedPrice} loanPrice={loanPrice} />
           </Stack>
+        </Box>
+
+        <Box
+          sx={{
+            backgroundColor: PALETTE.BACKGROUND_DEFAULT,
+            borderRadius: `0 0 ${BORDER_RADIUS.LARGE}px ${BORDER_RADIUS.LARGE}px`,
+            p: 1.5,
+            pt: 1,
+          }}
+        >
+          <PopupFooter status={status} listedPrice={listedPrice} loanPrice={loanPrice} />
         </Box>
 
         {/* Bottom arrow / triangle */}

@@ -1,5 +1,6 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import { Flame } from 'lucide-react';
 import { PALETTE, BORDER_RADIUS } from '../../theme';
 
 interface PopupHeaderProps {
@@ -17,12 +18,13 @@ const PopupHeader = ({ code, isHot }: PopupHeaderProps) => {
       sx={{
         justifyContent: 'center',
         alignItems: 'center',
-        p: '12px 8px',
+        p: '6px 8px',
         backgroundColor: isHotTheme ? PALETTE.ERROR : PALETTE.SURFACE_LIGHT,
-        border: isHotTheme ? 'none' : `1px solid ${PALETTE.ACCENT_BORDER}`,
+        border: isHotTheme ? 'none' : `1px solid ${PALETTE.PRIMARY}`,
         borderRadius: `${BORDER_RADIUS.SMALL}px`,
       }}
     >
+      {isHotTheme && <Flame size={16} color={PALETTE.SURFACE_LIGHT} />}
       <Typography
         sx={{
           fontWeight: 700,

@@ -138,6 +138,9 @@ const MapCanvas = ({
             '.custom-leaflet-popup .leaflet-popup-content': {
               margin: 0,
             },
+            '.custom-leaflet-popup .leaflet-popup-content p': {
+              margin: 0,
+            },
             '.custom-leaflet-popup .leaflet-popup-tip-container': {
               display: 'none', // We render our own arrow inside PropertyPopup
             },
@@ -164,6 +167,9 @@ const MapCanvas = ({
             url="/tiles/{z}/{y}/{x}.png"
             noWrap={true}
             bounds={bounds}
+            updateWhenZooming={false}
+            updateWhenIdle={true}
+            keepBuffer={2}
           />
 
           <CanvasMarkerLayer 

@@ -75,6 +75,23 @@ const PopupFooter = ({ status, listedPrice, loanPrice }: PopupFooterProps) => {
     );
   }
 
+  if (status === 'contacting') {
+    return (
+      <Typography
+        sx={{
+          fontWeight: 500,
+          fontStyle: 'italic',
+          fontSize: '0.8125rem',
+          color: PALETTE.TEXT_DISABLED,
+          textAlign: 'center',
+          py: 1,
+        }}
+      >
+        Admin sẽ liên hệ sớm nhất
+      </Typography>
+    );
+  }
+
   /* status === 'contact' */
   return (
     <Stack spacing={1}>
@@ -84,6 +101,7 @@ const PopupFooter = ({ status, listedPrice, loanPrice }: PopupFooterProps) => {
           fontStyle: 'italic',
           fontSize: '0.8125rem',
           color: PALETTE.TEXT_DISABLED,
+          textAlign: 'center',
         }}
       >
         Quỹ ẩn
@@ -98,9 +116,11 @@ const PopupFooter = ({ status, listedPrice, loanPrice }: PopupFooterProps) => {
           fontSize: '0.8125rem',
           color: PALETTE.SURFACE_LIGHT,
           py: '7px',
+          boxShadow: 'none',
           '&:hover': {
             background: GRADIENT.PRIMARY,
             opacity: 0.9,
+            boxShadow: 'none',
           },
         }}
       >
