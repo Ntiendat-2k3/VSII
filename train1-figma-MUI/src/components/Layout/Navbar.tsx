@@ -4,12 +4,12 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import NavbarDrawer from './NavbarDrawer';
 import { PALETTE, SHADOW } from '../../theme';
 
-const MotionTypography = motion(Typography);
-const MotionBox = motion(Box);
+const MotionTypography = m(Typography);
+const MotionBox = m(Box);
 
 const NAV_ITEMS = ['GIỚI THIỆU', 'DỰ ÁN', 'TIN TỨC'];
 

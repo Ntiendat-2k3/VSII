@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useState, useMemo, useEffect, useRef } from 'react';
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Drawer from '@mui/material/Drawer';
@@ -8,24 +8,27 @@ import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme, styled } from '@mui/material/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { MapContainer, TileLayer, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import CanvasMarkerLayer from './CanvasMarkerLayer';
 import PropertyPopup from './PropertyPopup';
-import type { Property, PropertyType } from '../../types/property';
+import type { PropertyUnit } from '../../types/mapApi';
+import type { PropertyType } from '../../types/property';
 import { PALETTE, BORDER_RADIUS } from '../../theme';
 import { convertPercentToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../../utils/mapUtils';
 
 const ITEMS_PER_PAGE = 20;
 
 interface MapCanvasProps {
-  properties: Property[];
+  properties: PropertyUnit[];
   activeFilters: PropertyType[];
   selectedId: string | null;
   onSelectProperty: (id: string | null) => void;
+  focusTarget: { x: number; y: number } | null;
+  projectId: string;
 }
 
 const StyledMapContainer = styled(MapContainer)({
@@ -34,11 +37,41 @@ const StyledMapContainer = styled(MapContainer)({
   touchAction: 'none',
 });
 
+/* ── Inner component to access map instance via useMap() ── */
+interface FlyToHandlerProps {
+  target: { x: number; y: number } | null;
+}
+
+const FlyToHandler = ({ target }: FlyToHandlerProps) => {
+  const map = useMap();
+  const prevTargetRef = useRef<{ x: number; y: number } | null>(null);
+
+  useEffect(() => {
+    if (!target) return;
+    // Avoid re-flying to the same target
+    if (
+      prevTargetRef.current &&
+      prevTargetRef.current.x === target.x &&
+      prevTargetRef.current.y === target.y
+    ) {
+      return;
+    }
+    prevTargetRef.current = target;
+
+    const latLng = convertPercentToLatLng(target.x, target.y);
+    map.flyTo(latLng as L.LatLngTuple, 4, { duration: 1.2 });
+  }, [target, map]);
+
+  return null;
+};
+
 const MapCanvas = ({
   properties,
   activeFilters,
   selectedId,
   onSelectProperty,
+  focusTarget,
+  projectId,
 }: MapCanvasProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
@@ -172,11 +205,14 @@ const MapCanvas = ({
             keepBuffer={2}
           />
 
-          <CanvasMarkerLayer 
+          <CanvasMarkerLayer
             properties={paginatedProperties}
             selectedId={selectedId}
             onSelectProperty={handleMarkerClick}
           />
+
+          {/* FlyTo handler for search-triggered focus */}
+          <FlyToHandler target={focusTarget} />
 
           {/* Render Popup inside Leaflet if not on Mobile */}
           {!isMobile && selectedProperty && (
@@ -188,7 +224,7 @@ const MapCanvas = ({
               closeOnClick={false}
               offset={[0, -25]} // Offset so it doesn't overlap the marker
             >
-              <PropertyPopup property={selectedProperty} />
+              <PropertyPopup property={selectedProperty} projectId={projectId} />
             </Popup>
           )}
         </StyledMapContainer>
@@ -271,7 +307,7 @@ const MapCanvas = ({
             }}
           >
             <Box sx={{ width: '100%', maxWidth: 400, mx: 'auto' }}>
-              <PropertyPopup property={selectedProperty} />
+              <PropertyPopup property={selectedProperty} projectId={projectId} />
             </Box>
           </Drawer>
         )}

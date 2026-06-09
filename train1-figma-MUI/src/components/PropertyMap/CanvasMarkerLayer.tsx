@@ -2,11 +2,11 @@ import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import { convertPercentToLatLng } from '../../utils/mapUtils';
-import type { Property } from '../../types/property';
+import type { PropertyUnit } from '../../types/mapApi';
 import { drawPropertyMarker, MARKER_WIDTH, clearMarkerCache } from '../../utils/canvasMarkerRenderer';
 
 interface CanvasMarkerLayerProps {
-  properties: Property[];
+  properties: PropertyUnit[];
   selectedId: string | null;
   onSelectProperty: (id: string | null) => void;
 }
@@ -85,7 +85,7 @@ const CanvasMarkerLayer = ({
       const unselected = currentProps.filter(p => p.id !== currentSelected);
       const selected = currentProps.find(p => p.id === currentSelected);
 
-      const drawProp = (property: Property, isSelected: boolean) => {
+      const drawProp = (property: PropertyUnit, isSelected: boolean) => {
         const latLng = convertPercentToLatLng(property.position.x, property.position.y);
         
         // Coordinate relative to map container

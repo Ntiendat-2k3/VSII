@@ -23,3 +23,14 @@ export const convertPercentToLatLng = (
   // Chia cho SCALE_FACTOR để khi ở Zoom 4 (scale 16), tọa độ nhân lên khớp đúng pixel.
   return [-yPixel / SCALE_FACTOR, xPixel / SCALE_FACTOR];
 };
+
+/**
+ * Định dạng số tiền VNĐ sang đơn vị tỷ, làm tròn xuống 2 chữ số thập phân.
+ * Ví dụ: 15,129,436,069 VNĐ → "15,12 tỷ"
+ */
+export const formatVndToBillion = (amount: number): string => {
+  if (!amount || isNaN(amount)) return '0,00 tỷ';
+  const billion = amount / 1_000_000_000;
+  const roundedDown = Math.floor(billion * 100) / 100;
+  return roundedDown.toFixed(2).replace('.', ',') + ' tỷ';
+};

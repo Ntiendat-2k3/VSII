@@ -1,8 +1,8 @@
 import { useCallback, memo } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import Checkbox from '@mui/material/Checkbox';
-import { SquareCheck, Square, Flame } from 'lucide-react';
+import AppCheckbox from '../ui/AppCheckbox';
+import { Flame } from 'lucide-react';
 import type { PropertyType } from '../../types/property';
 import { PROPERTY_TYPE_LABELS } from '../../types/property';
 import { PALETTE, BORDER_RADIUS } from '../../theme';
@@ -47,11 +47,8 @@ const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
         },
       }}
     >
-      <Checkbox
+      <AppCheckbox
         checked={isActive}
-        icon={<Square size={18} color={PALETTE.TEXT_SECONDARY} />}
-        checkedIcon={<SquareCheck size={18} color={PALETTE.SURFACE_LIGHT} />}
-        sx={{ p: 0 }}
       />
       <Typography
         variant="caption"
@@ -113,11 +110,8 @@ const FilterBar = ({
           },
         }}
       >
-        <Checkbox
+        <AppCheckbox
           checked={showHotOnly}
-          icon={<Square size={18} color={PALETTE.TEXT_SECONDARY} />}
-          checkedIcon={<SquareCheck size={18} color={PALETTE.SURFACE_LIGHT} />}
-          sx={{ p: 0 }}
         />
         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
           <Typography

@@ -1,20 +1,21 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import PopupHeader from './PopupHeader';
 import PopupDetails from './PopupDetails';
 import PopupFooter from './PopupFooter';
-import type { Property } from '../../types/property';
+import type { PropertyUnit } from '../../types/mapApi';
 import { PALETTE, BORDER_RADIUS, SHADOW } from '../../theme';
 
-const MotionBox = motion(Box);
+const MotionBox = m(Box);
 
 interface PropertyPopupProps {
-  property: Property;
+  property: PropertyUnit;
+  projectId: string;
 }
 
-const PropertyPopup = ({ property }: PropertyPopupProps) => {
-  const { code, isHot, type, area, listedPrice, loanPrice, status } = property;
+const PropertyPopup = ({ property, projectId }: PropertyPopupProps) => {
+  const { code, isHot, type, area, listedPrice, loanPrice, statusCode, inquiryStatusCode } = property;
 
   return (
     <AnimatePresence>
@@ -55,7 +56,14 @@ const PropertyPopup = ({ property }: PropertyPopupProps) => {
             pt: 1,
           }}
         >
-          <PopupFooter status={status} listedPrice={listedPrice} loanPrice={loanPrice} />
+          <PopupFooter
+            statusCode={statusCode}
+            listedPrice={listedPrice}
+            loanPrice={loanPrice}
+            inquiryStatusCode={inquiryStatusCode}
+            unitCode={code}
+            projectId={projectId}
+          />
         </Box>
 
         {/* Bottom arrow / triangle */}

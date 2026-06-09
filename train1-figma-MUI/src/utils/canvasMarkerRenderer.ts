@@ -1,4 +1,4 @@
-import type { Property } from '../types/property';
+import type { PropertyUnit } from '../types/mapApi';
 import { PALETTE } from '../theme';
 
 // Fixed dimensions for the marker card
@@ -49,7 +49,7 @@ export function clearMarkerCache() {
  */
 export function drawPropertyMarker(
   ctx: CanvasRenderingContext2D,
-  property: Property,
+  property: PropertyUnit,
   x: number,
   y: number,
   isSelected: boolean = false
@@ -106,7 +106,7 @@ export function drawPropertyMarker(
 
 function renderMarkerToContext(
   ctx: CanvasRenderingContext2D,
-  property: Property,
+  property: PropertyUnit,
   x: number,
   y: number,
   isSelected: boolean = false

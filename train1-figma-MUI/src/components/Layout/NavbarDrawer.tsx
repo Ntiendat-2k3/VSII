@@ -4,10 +4,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Drawer from '@mui/material/Drawer';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { PALETTE } from '../../theme';
 
-const MotionBox = motion(Box);
+const MotionBox = m(Box);
 
 interface NavbarDrawerProps {
   open: boolean;

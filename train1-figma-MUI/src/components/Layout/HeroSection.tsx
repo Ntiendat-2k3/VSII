@@ -1,13 +1,13 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import HeroTabs from './HeroTabs';
 import { PALETTE, GRADIENT } from '../../theme';
 
-const MotionStack = motion(Stack);
-const MotionBox = motion(Box);
+const MotionStack = m(Stack);
+const MotionBox = m(Box);
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -157,7 +157,7 @@ const HeroSection = () => {
         }}
       >
         <Box
-          component={motion.img}
+          component={m.img}
           src="/hero.png"
           alt="Vinhomes Ocean Park 3"
           initial={{ scale: 1.1 }}

@@ -1,11 +1,11 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { Home, MapPin, Compass, Map, Building2, ClipboardList, Globe } from 'lucide-react';
 import { PALETTE, GRADIENT } from '../../theme';
 
-const MotionStack = motion(Stack);
+const MotionStack = m(Stack);
 
 const TAB_ITEMS = [
   { label: 'Tổng quan', icon: <Home size={18} />, active: false },

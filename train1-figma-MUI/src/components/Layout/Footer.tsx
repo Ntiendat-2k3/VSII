@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -9,7 +9,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import FooterCompanyInfo from './FooterCompanyInfo';
 import { PALETTE, GRADIENT } from '../../theme';
 
-const MotionStack = motion(Stack);
+const MotionStack = m(Stack);
 
 const Footer = () => {
   return (
