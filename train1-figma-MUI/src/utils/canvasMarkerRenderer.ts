@@ -1,4 +1,4 @@
-import type { PropertyUnit } from '../types/mapApi';
+import type { UnitItem } from '../features/property-map/types';
 import { PALETTE } from '../theme';
 
 // Fixed dimensions for the marker card
@@ -11,11 +11,13 @@ export const MARKER_BORDER_RADIUS = 6;
 const COLORS = {
   white: '#FFFFFF',
   primary: PALETTE.PRIMARY,
-  primaryLight: '#E8EFFF', 
+  primaryLight: PALETTE.PRIMARY_LIGHT_BG, 
+  primaryGlow: PALETTE.PRIMARY_LIGHT, 
   error: PALETTE.ERROR, 
   errorLight: PALETTE.ERROR_LIGHT, 
   border: PALETTE.BORDER,
   shadow: PALETTE.SHADOW_LIGHT, 
+  textDisabled: PALETTE.TEXT_DISABLED,
 };
 
 // SVG Paths (24x24 viewport)
@@ -44,24 +46,85 @@ export function clearMarkerCache() {
 }
 
 /**
+ * Helper to get styling attributes based on the 6 Figma states
+ */
+function getMarkerStyle(property: UnitItem) {
+  const { statusCode, inquiryStatusCode, isHot } = property;
+
+  // 1. Hot Available or Hot Hidden (Solid Red background, white text, Flame icon)
+  if (isHot && statusCode !== 'SOLD') {
+    return {
+      fill: COLORS.error,
+      stroke: COLORS.error,
+      text: COLORS.white,
+      isHotStyle: true,
+      isDashed: false,
+    };
+  }
+
+  // 2. Sold (Hot or Normal) (Light Pink background, Red border, Red text)
+  if (statusCode === 'SOLD') {
+    return {
+      fill: COLORS.errorLight,
+      stroke: COLORS.error,
+      text: COLORS.error,
+      isHotStyle: false,
+      isDashed: false,
+    };
+  }
+
+  // 3. Normal Available (Light Blue background, Primary Blue border, Primary Blue text)
+  if (statusCode === 'AVAILABLE') {
+    return {
+      fill: COLORS.primaryLight,
+      stroke: COLORS.primary,
+      text: COLORS.primary,
+      isHotStyle: false,
+      isDashed: false,
+    };
+  }
+
+  // 4. Normal Inquiry Pending/Submitted (White background, Dashed border, Disabled text)
+  if (statusCode === null && inquiryStatusCode != null) {
+    return {
+      fill: COLORS.white,
+      stroke: COLORS.border,
+      text: COLORS.textDisabled,
+      isHotStyle: false,
+      isDashed: true,
+    };
+  }
+
+  // 5. Normal Hidden (White background, Gray border, Blue text)
+  return {
+    fill: COLORS.white,
+    stroke: COLORS.border,
+    text: COLORS.primary,
+    isHotStyle: false,
+    isDashed: false,
+  };
+}
+
+/**
  * Draws the property marker on canvas using Offscreen Cache for extreme performance
  * @returns Height of the rendered marker (to compute bounding box)
  */
 export function drawPropertyMarker(
   ctx: CanvasRenderingContext2D,
-  property: PropertyUnit,
+  property: UnitItem,
   x: number,
   y: number,
   isSelected: boolean = false
 ): number {
-  const cacheKey = `${property.id}-${isSelected}`;
+  const { statusCode, inquiryStatusCode, isHot } = property;
+  const cacheKey = `${property.id || property.unitCode}-${statusCode || 'null'}-${inquiryStatusCode || 'null'}-${isHot || 'false'}-${isSelected}`;
   let cached = markerCache.get(cacheKey);
 
   if (!cached) {
     const contentHeight = 28;
     const totalHeight = contentHeight + MARKER_ARROW_HEIGHT;
 
-    // Padding để chứa đủ phần đổ bóng (shadow) của marker
+    // Padding để chứa đủ phần đổ bóng (shadow/glow) của marker
     const padding = 16;
     const canvasW = MARKER_WIDTH + padding * 2;
     const canvasH = totalHeight + padding * 2;
@@ -106,12 +169,12 @@ export function drawPropertyMarker(
 
 function renderMarkerToContext(
   ctx: CanvasRenderingContext2D,
-  property: PropertyUnit,
+  property: UnitItem,
   x: number,
   y: number,
   isSelected: boolean = false
 ): number {
-  const { code, isHot } = property;
+  const { unitCode: code } = property;
   
   const contentHeight = 28;
   const totalHeight = contentHeight + MARKER_ARROW_HEIGHT;
@@ -121,53 +184,92 @@ function renderMarkerToContext(
   const startY = y - totalHeight;
   ctx.translate(startX, startY);
 
-  // 1. Draw main container with shadow
+  const style = getMarkerStyle(property);
+  const arrowX = MARKER_WIDTH / 2;
+
+  // 1. Draw outer selection highlight ring if selected
+  if (isSelected) {
+    ctx.save();
+    ctx.strokeStyle = COLORS.primaryGlow;
+    ctx.lineWidth = 6;
+    
+    // Outer rounded body highlight
+    drawRoundRect(ctx, 0, 0, MARKER_WIDTH, contentHeight, MARKER_BORDER_RADIUS);
+    ctx.stroke();
+
+    // Outer arrow highlight
+    ctx.beginPath();
+    ctx.moveTo(arrowX - MARKER_ARROW_WIDTH / 2 - 1, contentHeight);
+    ctx.lineTo(arrowX + MARKER_ARROW_WIDTH / 2 + 1, contentHeight);
+    ctx.lineTo(arrowX, totalHeight + 1.5);
+    ctx.closePath();
+    ctx.stroke();
+
+    ctx.restore();
+  }
+
+  // 2. Draw main container with shadow
+  ctx.save();
   ctx.shadowColor = COLORS.shadow;
   ctx.shadowBlur = 8;
   ctx.shadowOffsetY = 2;
   
   drawRoundRect(ctx, 0, 0, MARKER_WIDTH, contentHeight, MARKER_BORDER_RADIUS);
-  ctx.fillStyle = isHot ? COLORS.error : (isSelected ? COLORS.primaryLight : COLORS.white);
+  ctx.fillStyle = style.fill;
   ctx.fill();
+  ctx.restore();
   
-  ctx.shadowColor = 'transparent';
-  
-  ctx.strokeStyle = isSelected ? COLORS.primary : (isHot ? COLORS.error : COLORS.border);
-  ctx.lineWidth = isSelected ? 2 : 1;
+  // 3. Stroke body container
+  ctx.save();
+  ctx.strokeStyle = style.stroke;
+  ctx.lineWidth = 1.5;
+  if (style.isDashed) {
+    ctx.setLineDash([4, 2]);
+  }
+  drawRoundRect(ctx, 0, 0, MARKER_WIDTH, contentHeight, MARKER_BORDER_RADIUS);
   ctx.stroke();
+  ctx.restore();
 
-  // Draw Bottom Arrow
+  // 4. Draw Bottom Arrow
+  ctx.save();
   ctx.beginPath();
-  const arrowX = MARKER_WIDTH / 2;
   ctx.moveTo(arrowX - MARKER_ARROW_WIDTH / 2, contentHeight - 0.5);
   ctx.lineTo(arrowX + MARKER_ARROW_WIDTH / 2, contentHeight - 0.5);
   ctx.lineTo(arrowX, totalHeight);
   ctx.closePath();
-  ctx.fillStyle = isHot ? COLORS.error : (isSelected ? COLORS.primaryLight : COLORS.white);
+  ctx.fillStyle = style.fill;
   ctx.fill();
-  ctx.strokeStyle = isSelected ? COLORS.primary : (isHot ? COLORS.error : COLORS.border);
-  ctx.stroke();
   
-  // Hide line segment under arrow
+  ctx.strokeStyle = style.stroke;
+  ctx.lineWidth = 1.5;
+  if (style.isDashed) {
+    ctx.setLineDash([4, 2]);
+  }
+  ctx.stroke();
+  ctx.restore();
+  
+  // 5. Hide line segment under arrow to blend it cleanly
+  ctx.save();
   ctx.beginPath();
   ctx.moveTo(arrowX - (MARKER_ARROW_WIDTH / 2) + 1, contentHeight);
   ctx.lineTo(arrowX + (MARKER_ARROW_WIDTH / 2) - 1, contentHeight);
-  ctx.strokeStyle = isHot ? COLORS.error : (isSelected ? COLORS.primaryLight : COLORS.white);
-  ctx.lineWidth = 2;
+  ctx.strokeStyle = style.fill;
+  ctx.lineWidth = 2.5;
   ctx.stroke();
+  ctx.restore();
 
-  // Text
-  ctx.fillStyle = isHot ? COLORS.white : COLORS.primary;
+  // 6. Draw Text & Icon
+  ctx.fillStyle = style.text;
   ctx.font = 'bold 13px "Inter", sans-serif';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   
-  if (isHot) {
+  if (style.isHotStyle) {
     ctx.save();
     // Move slightly left and up to align flame with text
     ctx.translate(MARKER_WIDTH / 2 - 24, contentHeight / 2 - 10 + 2);
     ctx.scale(0.7, 0.7);
-    ctx.fillStyle = COLORS.white;
+    ctx.fillStyle = style.text;
     ctx.fill(PATHS.flame);
     ctx.restore();
     ctx.fillText(code, MARKER_WIDTH / 2 + 8, contentHeight / 2 + 1);
@@ -178,3 +280,4 @@ function renderMarkerToContext(
   ctx.restore();
   return totalHeight;
 }
+

@@ -1,14 +1,18 @@
 import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { convertPercentToLatLng } from '../../utils/mapUtils';
-import type { PropertyUnit } from '../../types/mapApi';
+import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../../utils/mapUtils';
+import type { UnitItem } from '../../features/property-map/types';
 import { drawPropertyMarker, MARKER_WIDTH, clearMarkerCache } from '../../utils/canvasMarkerRenderer';
+import { useAppSelector } from '../../store';
 
 interface CanvasMarkerLayerProps {
-  properties: PropertyUnit[];
+  properties: UnitItem[];
   selectedId: string | null;
   onSelectProperty: (id: string | null) => void;
+  mapWidth: number;
+  mapHeight: number;
+  mapMaxZoom: number;
 }
 
 
@@ -25,17 +29,23 @@ const CanvasMarkerLayer = ({
   properties,
   selectedId,
   onSelectProperty,
+  mapWidth,
+  mapHeight,
+  mapMaxZoom,
 }: CanvasMarkerLayerProps) => {
   const map = useMap();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const bboxesRef = useRef<BBox[]>([]);
   const hoveredIdRef = useRef<string | null>(null);
   
+  const mapData = useAppSelector((state) => state.propertyMap.mapData);
+
+
   // Keep refs for callbacks so we don't need to re-bind map events when props change
-  const propsRef = useRef({ properties, selectedId, onSelectProperty });
+  const propsRef = useRef({ properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom });
   useEffect(() => {
-    propsRef.current = { properties, selectedId, onSelectProperty };
-  }, [properties, selectedId, onSelectProperty]);
+    propsRef.current = { properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom };
+  }, [properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom]);
 
   useEffect(() => {
     const canvas = L.DomUtil.create('canvas', 'leaflet-zoom-animated') as HTMLCanvasElement;
@@ -75,30 +85,43 @@ const CanvasMarkerLayer = ({
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      const { properties: currentProps, selectedId: currentSelected } = propsRef.current;
+      const { properties: currentProps, selectedId: currentSelected, mapData: currentMapData, mapWidth: currentMapWidth, mapHeight: currentMapHeight, mapMaxZoom: currentMaxZoom } = propsRef.current;
       const bboxes: BBox[] = [];
 
       // Render markers
       // To optimize, we could filter by bounds, but CRS.Simple maps are usually small enough
       
       // Draw unselected first, then selected on top
-      const unselected = currentProps.filter(p => p.id !== currentSelected);
-      const selected = currentProps.find(p => p.id === currentSelected);
+      const unselected = currentProps.filter(p => String(p.id || p.unitCode) !== currentSelected);
+      const selected = currentProps.find(p => String(p.id || p.unitCode) === currentSelected);
 
-      const drawProp = (property: PropertyUnit, isSelected: boolean) => {
-        const latLng = convertPercentToLatLng(property.position.x, property.position.y);
+      const drawProp = (property: UnitItem, isSelected: boolean) => {
+        const propertyId = String(property.id || property.unitCode);
+        const latLng = currentMapData
+          ? convertPdfCoorsToLatLng(
+              property.x || 0,
+              property.y || 0,
+              property.pageWidth,
+              property.pageHeight,
+              currentMapWidth,
+              currentMapHeight,
+              currentMapData.pageWidth,
+              currentMapData.pageHeight,
+              currentMaxZoom
+            )
+          : convertPercentToLatLng(property.x || 0, property.y || 0);
         
         // Coordinate relative to map container
         const layerPoint = map.latLngToLayerPoint(latLng as L.LatLngTuple);
         const x = layerPoint.x - topLeft.x;
         const y = layerPoint.y - topLeft.y;
 
-        const isHovered = property.id === hoveredIdRef.current;
+        const isHovered = propertyId === hoveredIdRef.current;
         // The renderer handles drawing the entire complex card
         const height = drawPropertyMarker(ctx, property, x, y, isSelected || isHovered);
         
         bboxes.push({
-            id: property.id,
+            id: propertyId,
             left: x - MARKER_WIDTH / 2,
             top: y - height,
             right: x + MARKER_WIDTH / 2,

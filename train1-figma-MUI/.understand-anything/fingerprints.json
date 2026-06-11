@@ -1,8 +1,18 @@
 {
   "version": "1.0.0",
-  "gitCommitHash": "4af4811b048041fe5d0fc35caa7864e9bd8e9a5c",
-  "generatedAt": "2026-05-27T07:09:41.284Z",
+  "gitCommitHash": "0f50b5f932f10ba486604aac2332fe7d53e1898a",
+  "generatedAt": "2026-06-10T19:32:52.614Z",
   "files": {
+    ".github/workflows/react-doctor.yml": {
+      "filePath": ".github/workflows/react-doctor.yml",
+      "contentHash": "de0d719d788db4cbb352eab5d9243bc4a38f9f8c2a959c165fd108ca48dea9f0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
     ".understand-anything/.understandignore": {
       "filePath": ".understand-anything/.understandignore",
       "contentHash": "4ca7c795feb4472bacd82ac252f6c84105ee900a5db7c600dc9be0101bb01dd0",
@@ -25,27 +35,27 @@
     },
     ".understand-anything/fingerprints.json": {
       "filePath": ".understand-anything/fingerprints.json",
-      "contentHash": "6eb18f2afe190d866340598584931056fe104146f739b820d8b9f9924a11eabd",
+      "contentHash": "5aa0bb65e3856dffc5c81a61d097a2c23bfb1a3e79cf7df92041197833dd5d73",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 1440,
+      "totalLines": 1929,
       "hasStructuralAnalysis": true
     },
     ".understand-anything/knowledge-graph.json": {
       "filePath": ".understand-anything/knowledge-graph.json",
-      "contentHash": "d446d1cf314a52b4016857f480d38b5dffcf178017e48524841f28ea0734e7ba",
+      "contentHash": "00540a9859cf3723cb5a760c822e47f8d282afad478327d47bec827d51b72dee",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 1249,
+      "totalLines": 2437,
       "hasStructuralAnalysis": true
     },
     ".understand-anything/meta.json": {
       "filePath": ".understand-anything/meta.json",
-      "contentHash": "bdea5fb4aea01a1066c19cddc46513f9a4c9c025d3b10ef128d7aacd737c920d",
+      "contentHash": "f80f5e2993d1602221f08b8c94ce6f50e0655b4f6d3c57826b6ec14ceccd5064",
       "functions": [],
       "classes": [],
       "imports": [],
@@ -101,6 +111,26 @@
       "totalLines": 23,
       "hasStructuralAnalysis": true
     },
+    "extract_schemas.cjs": {
+      "filePath": "extract_schemas.cjs",
+      "contentHash": "fe1df1716141fc18a1a9bafd2769fc39e568d94d8379d7356ca7611cb8a15dbd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "extract_swagger.cjs": {
+      "filePath": "extract_swagger.cjs",
+      "contentHash": "68f3c0882433f1f74e247442627144eb0f0205842594d629cfe522c2c952ad92",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
     "index.html": {
       "filePath": "index.html",
       "contentHash": "73edc0e91ce636b5eca361a583be12300e89ab5faeb3bcd5ccd1da3c48a865fc",
@@ -111,14 +141,24 @@
       "totalLines": 23,
       "hasStructuralAnalysis": false
     },
-    "package.json": {
-      "filePath": "package.json",
-      "contentHash": "eefa8afa1fe415f5b23ccc4d0f0d3cd6f57ff9bf4cefa896f43506282c2683d8",
+    "map_feature_implementation_report.md": {
+      "filePath": "map_feature_implementation_report.md",
+      "contentHash": "a4263b57a2434b0979e2d8b66191de630c7e628e0e5f315925d3a199bbc16c1a",
       "functions": [],
       "classes": [],
       "imports": [],
       "exports": [],
-      "totalLines": 43,
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "f140e5e0186383c7da29ace051ae7f92524c283da46e44792fa1b13e5fbc8c8d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
       "hasStructuralAnalysis": true
     },
     "prompt.md": {
@@ -197,15 +237,35 @@
       "totalLines": 22,
       "hasStructuralAnalysis": true
     },
+    "SCRUM/Report-Scrum106.md": {
+      "filePath": "SCRUM/Report-Scrum106.md",
+      "contentHash": "9e042951fb1467c9db491f7fb18cd7cd79a354a69c6e83a06fb28f6b2017d409",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 214,
+      "hasStructuralAnalysis": true
+    },
+    "SCRUM/SCRUM-106.md": {
+      "filePath": "SCRUM/SCRUM-106.md",
+      "contentHash": "890918c6b3ac089a9293639bdc19b8a35dd69d6c11854b1235fe19a407ac7fcf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
     "src/App.tsx": {
       "filePath": "src/App.tsx",
-      "contentHash": "dcab986cbf5eae658534515f501dd2d90a8310f2821b9891cfb846595db70c55",
+      "contentHash": "72fb7d0687eddba93265711b3dd6874721d82155d6318d6c608505fa39d6268c",
       "functions": [
         {
           "name": "App",
           "params": [],
           "exported": false,
-          "lineCount": 38
+          "lineCount": 51
         }
       ],
       "classes": [],
@@ -232,6 +292,20 @@
           "source": "@mui/material/CssBaseline",
           "specifiers": [
             "CssBaseline"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "MotionConfig",
+            "LazyMotion",
+            "domAnimation"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "Toaster"
           ]
         },
         {
@@ -263,15 +337,124 @@
           "specifiers": [
             "Footer"
           ]
+        },
+        {
+          "source": "./components/ErrorBoundary",
+          "specifiers": [
+            "ErrorBoundary"
+          ]
         }
       ],
       "exports": [],
-      "totalLines": 51,
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ErrorBoundary.tsx": {
+      "filePath": "src/components/ErrorBoundary.tsx",
+      "contentHash": "d46dc830856451ed1f621067b3416b87703970af0c7fe826d4d435abc55975eb",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ErrorBoundary",
+          "methods": [
+            "getDerivedStateFromError",
+            "componentDidCatch",
+            "render"
+          ],
+          "properties": [
+            "state",
+            "handleReset"
+          ],
+          "exported": false,
+          "lineCount": 51
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Component"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/form/FormTextField.tsx": {
+      "filePath": "src/components/form/FormTextField.tsx",
+      "contentHash": "af7871aa81d96890749e937e1c877e711a6e480972e4d73ecc9bc7428f9c9bdb",
+      "functions": [
+        {
+          "name": "FormTextField",
+          "params": [
+            "{\n  name,\n  control,\n  helperText,\n  ...props\n}"
+          ],
+          "exported": false,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "Controller"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "Control",
+            "FieldPath",
+            "FieldValues"
+          ]
+        },
+        {
+          "source": "../ui/AppTextField",
+          "specifiers": [
+            "AppTextField",
+            "AppTextFieldProps"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 39,
       "hasStructuralAnalysis": true
     },
     "src/components/Layout/Footer.tsx": {
       "filePath": "src/components/Layout/Footer.tsx",
-      "contentHash": "349ccf77f692ac9871d2775a338906d4ff1bcbfe7d655e1cc95c15375932c045",
+      "contentHash": "04b483093d063cc73dcc6a817afd9b37b45a57e9b204af1c6e31e6cc49f97c0b",
       "functions": [
         {
           "name": "Footer",
@@ -303,7 +486,7 @@
         {
           "source": "framer-motion",
           "specifiers": [
-            "motion"
+            "m"
           ]
         },
         {
@@ -400,7 +583,7 @@
     },
     "src/components/Layout/HeroSection.tsx": {
       "filePath": "src/components/Layout/HeroSection.tsx",
-      "contentHash": "1d0a2f7e664ba174d9c66b1a29cf4883fd855e95e88e1f19f145041e6bf072cd",
+      "contentHash": "1b455c32ad688d05bbf2a7bb4324aca60c3ea43f78ab6a44b420c161246e6eaa",
       "functions": [
         {
           "name": "HeroSection",
@@ -432,7 +615,7 @@
         {
           "source": "framer-motion",
           "specifiers": [
-            "motion"
+            "m"
           ]
         },
         {
@@ -461,7 +644,7 @@
     },
     "src/components/Layout/HeroTabs.tsx": {
       "filePath": "src/components/Layout/HeroTabs.tsx",
-      "contentHash": "9b8b8f82184091ba3f267201af08374c0b91ef4135a0ebbbcf520d1af3d422e8",
+      "contentHash": "2491438ee19f504aee517637f51bf15344d6570d11ca6e7d90b9b1d9c7138e9e",
       "functions": [
         {
           "name": "HeroTabs",
@@ -493,7 +676,7 @@
         {
           "source": "framer-motion",
           "specifiers": [
-            "motion"
+            "m"
           ]
         },
         {
@@ -522,7 +705,7 @@
     },
     "src/components/Layout/Navbar.tsx": {
       "filePath": "src/components/Layout/Navbar.tsx",
-      "contentHash": "c8c357596b56007c0198635e908d4f70c5029fd28fb8fb5bfb68bf8c0bdbe032",
+      "contentHash": "6943227ae8f990aae0d14e149f229ae9506439bf18f8a0c7f2ea43e6d91f64cb",
       "functions": [
         {
           "name": "Navbar",
@@ -572,7 +755,7 @@
         {
           "source": "framer-motion",
           "specifiers": [
-            "motion"
+            "m"
           ]
         },
         {
@@ -595,7 +778,7 @@
     },
     "src/components/Layout/NavbarDrawer.tsx": {
       "filePath": "src/components/Layout/NavbarDrawer.tsx",
-      "contentHash": "5ccd42e9c55492732e496125efc6c4ac0db3cba1315bfd7a723d6ef85270e10e",
+      "contentHash": "210763aea77f6193ef4c9935ec4336e5def9ca77bce2ea95bf12d55009e581f2",
       "functions": [
         {
           "name": "NavbarDrawer",
@@ -647,7 +830,7 @@
         {
           "source": "framer-motion",
           "specifiers": [
-            "motion"
+            "m"
           ]
         },
         {
@@ -663,7 +846,7 @@
     },
     "src/components/PropertyMap/CanvasMarkerLayer.tsx": {
       "filePath": "src/components/PropertyMap/CanvasMarkerLayer.tsx",
-      "contentHash": "4fe36fc5a0b7d7dfd0525f244c6bb73de58cf59e5356bf57ab6460b420f37393",
+      "contentHash": "056661fb83e1e6ac73644fa3493d9f3b6ddedfd25c56e93ec2447e0b62b5e3e3",
       "functions": [
         {
           "name": "CanvasMarkerLayer",
@@ -671,7 +854,7 @@
             "{\n  properties,\n  selectedId,\n  onSelectProperty,\n}"
           ],
           "exported": false,
-          "lineCount": 164
+          "lineCount": 166
         }
       ],
       "classes": [],
@@ -702,34 +885,33 @@
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "../../features/property-map/types",
           "specifiers": [
-            "Property"
+            "UnitItem"
           ]
         },
         {
           "source": "../../utils/canvasMarkerRenderer",
           "specifiers": [
             "drawPropertyMarker",
-            "MARKER_WIDTH"
+            "MARKER_WIDTH",
+            "clearMarkerCache"
           ]
         }
       ],
       "exports": [],
-      "totalLines": 190,
+      "totalLines": 192,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/FilterBar.tsx": {
       "filePath": "src/components/PropertyMap/FilterBar.tsx",
-      "contentHash": "9bce52dac9ca14ad2926d3ad4b62fee9e029c9106b72b3062b2cbe6030d44bbd",
+      "contentHash": "f5eec1cb85634ccb8dc1b57c949310a707a1710a5f08b0eda1bdcb0ad13b8e99",
       "functions": [
         {
           "name": "FilterBar",
-          "params": [
-            "{\n  activeFilters,\n  showHotOnly,\n  onToggleFilter,\n  onToggleHot,\n}"
-          ],
+          "params": [],
           "exported": false,
-          "lineCount": 70
+          "lineCount": 73
         }
       ],
       "classes": [],
@@ -754,29 +936,35 @@
           ]
         },
         {
-          "source": "@mui/material/Checkbox",
+          "source": "../ui/AppCheckbox",
           "specifiers": [
-            "Checkbox"
+            "AppCheckbox"
           ]
         },
         {
           "source": "lucide-react",
           "specifiers": [
-            "SquareCheck",
-            "Square",
             "Flame"
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "../../features/property-map/types",
           "specifiers": [
-            "PropertyType"
+            "FilterType",
+            "UNIT_TYPE_LABELS"
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "../../store",
           "specifiers": [
-            "PROPERTY_TYPE_LABELS"
+            "useAppDispatch",
+            "useAppSelector"
+          ]
+        },
+        {
+          "source": "../../store/slices/propertyMapSlice",
+          "specifiers": [
+            "setFilters"
           ]
         },
         {
@@ -788,18 +976,63 @@
         }
       ],
       "exports": [],
-      "totalLines": 150,
+      "totalLines": 141,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/FlyToHandler.tsx": {
+      "filePath": "src/components/PropertyMap/FlyToHandler.tsx",
+      "contentHash": "9e057970bad976882ab63573f695fe044e5a7184ba4aaed44d458c0d4e04be03",
+      "functions": [
+        {
+          "name": "FlyToHandler",
+          "params": [
+            "{ target }"
+          ],
+          "exported": false,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-leaflet",
+          "specifiers": [
+            "useMap"
+          ]
+        },
+        {
+          "source": "leaflet",
+          "specifiers": [
+            "L"
+          ]
+        },
+        {
+          "source": "../../utils/mapUtils",
+          "specifiers": [
+            "convertPercentToLatLng"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 34,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/index.tsx": {
       "filePath": "src/components/PropertyMap/index.tsx",
-      "contentHash": "da7bfb637e6971adb931bd9d783dba505ffed301347d11e59922234a107107e0",
+      "contentHash": "644547c56a9761a80b4952a5ea911228b107a8eac3aaf44606697ec5c6750c65",
       "functions": [
         {
           "name": "PropertyMap",
           "params": [],
           "exported": false,
-          "lineCount": 69
+          "lineCount": 141
         }
       ],
       "classes": [],
@@ -809,7 +1042,7 @@
           "specifiers": [
             "useState",
             "useCallback",
-            "useMemo"
+            "useEffect"
           ]
         },
         {
@@ -822,6 +1055,12 @@
           "source": "@mui/material/Stack",
           "specifiers": [
             "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
           ]
         },
         {
@@ -843,33 +1082,67 @@
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "../../features/property-map/components/LoginForm",
           "specifiers": [
-            "PropertyType"
+            "LoginForm",
+            "LoginFormData"
           ]
         },
         {
-          "source": "../../data/mockData",
+          "source": "../../services/mapService",
           "specifiers": [
-            "MOCK_PROPERTIES"
+            "mapService"
+          ]
+        },
+        {
+          "source": "../../services/apiClient",
+          "specifiers": [
+            "apiClient"
+          ]
+        },
+        {
+          "source": "../../utils/toast",
+          "specifiers": [
+            "showToast"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../store",
+          "specifiers": [
+            "useAppDispatch",
+            "useAppSelector"
+          ]
+        },
+        {
+          "source": "../../store/slices/propertyMapSlice",
+          "specifiers": [
+            "fetchUnits",
+            "fetchMapData",
+            "setFocusUnit"
           ]
         }
       ],
       "exports": [],
-      "totalLines": 89,
+      "totalLines": 161,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/MapCanvas.tsx": {
       "filePath": "src/components/PropertyMap/MapCanvas.tsx",
-      "contentHash": "d4c10d930cdd4cf85e5b7d56a907f315390244ca8fce8074c1e63b4ad3721785",
+      "contentHash": "74055f67639771a2863c75e6eb202eaf6679699029c04cb0d265e047605f5777",
       "functions": [
         {
           "name": "MapCanvas",
           "params": [
-            "{\n  properties,\n  activeFilters,\n  selectedId,\n  onSelectProperty,\n}"
+            "{\n  properties,\n  selectedId,\n  onSelectProperty,\n  focusTarget,\n  projectId,\n}"
           ],
           "exported": false,
-          "lineCount": 239
+          "lineCount": 204
         }
       ],
       "classes": [],
@@ -898,24 +1171,6 @@
           "source": "@mui/material/Drawer",
           "specifiers": [
             "Drawer"
-          ]
-        },
-        {
-          "source": "@mui/material/IconButton",
-          "specifiers": [
-            "IconButton"
-          ]
-        },
-        {
-          "source": "@mui/material/Typography",
-          "specifiers": [
-            "Typography"
-          ]
-        },
-        {
-          "source": "@mui/material/Stack",
-          "specifiers": [
-            "Stack"
           ]
         },
         {
@@ -956,13 +1211,6 @@
           "specifiers": []
         },
         {
-          "source": "lucide-react",
-          "specifiers": [
-            "ChevronLeft",
-            "ChevronRight"
-          ]
-        },
-        {
           "source": "./CanvasMarkerLayer",
           "specifiers": [
             "CanvasMarkerLayer"
@@ -975,17 +1223,27 @@
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "./FlyToHandler",
           "specifiers": [
-            "Property",
-            "PropertyType"
+            "FlyToHandler"
+          ]
+        },
+        {
+          "source": "./MapPagination",
+          "specifiers": [
+            "MapPagination"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitItem"
           ]
         },
         {
           "source": "../../theme",
           "specifiers": [
-            "PALETTE",
-            "BORDER_RADIUS"
+            "PALETTE"
           ]
         },
         {
@@ -998,20 +1256,103 @@
         }
       ],
       "exports": [],
-      "totalLines": 278,
+      "totalLines": 242,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/MapHeader.tsx": {
       "filePath": "src/components/PropertyMap/MapHeader.tsx",
-      "contentHash": "2dc3f0842668856f97f9861aedf942aa58c5e7bc6950fae7372a0df5d5dbe30f",
+      "contentHash": "200a08eae9aef070286351d49685786c5925f4f980e825d66b863536925a3fa5",
       "functions": [
         {
           "name": "MapHeader",
           "params": [
-            "{ searchValue, onSearchChange }"
+            "{ projectId, onSelectUnit }"
           ],
           "exported": false,
-          "lineCount": 61
+          "lineCount": 138
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useRef"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Autocomplete",
+          "specifiers": [
+            "Autocomplete"
+          ]
+        },
+        {
+          "source": "../ui/AppTextField",
+          "specifiers": [
+            "AppTextField"
+          ]
+        },
+        {
+          "source": "@mui/material/InputAdornment",
+          "specifiers": [
+            "InputAdornment"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../services/mapService",
+          "specifiers": [
+            "mapService"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/MapPagination.tsx": {
+      "filePath": "src/components/PropertyMap/MapPagination.tsx",
+      "contentHash": "b285af411d35f4fcee5d9e16d129a10070b64188e0e96f5399866ca053adc767",
+      "functions": [
+        {
+          "name": "MapPagination",
+          "params": [
+            "{\n  currentPage,\n  totalPages,\n  rangeStart,\n  rangeEnd,\n  total,\n  onPrevPage,\n  onNextPage,\n}"
+          ],
+          "exported": false,
+          "lineCount": 67
         }
       ],
       "classes": [],
@@ -1029,37 +1370,33 @@
           ]
         },
         {
-          "source": "@mui/material/InputAdornment",
+          "source": "@mui/material/IconButton",
           "specifiers": [
-            "InputAdornment"
-          ]
-        },
-        {
-          "source": "@mui/material/TextField",
-          "specifiers": [
-            "TextField"
+            "IconButton"
           ]
         },
         {
           "source": "lucide-react",
           "specifiers": [
-            "Search"
+            "ChevronLeft",
+            "ChevronRight"
           ]
         },
         {
           "source": "../../theme",
           "specifiers": [
-            "PALETTE"
+            "PALETTE",
+            "BORDER_RADIUS"
           ]
         }
       ],
       "exports": [],
-      "totalLines": 76,
+      "totalLines": 86,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/PopupDetails.tsx": {
       "filePath": "src/components/PropertyMap/PopupDetails.tsx",
-      "contentHash": "fbeabd3c0b447d562b98e74a8c6f58a56dc39318b1c43253e26eb26591fd023d",
+      "contentHash": "c2bad1fe7a5409c1350ffd30249b44d9ebf502669829e02d4e1ab2ea7bdfe484",
       "functions": [
         {
           "name": "PopupDetails",
@@ -1067,7 +1404,7 @@
             "{ area, type }"
           ],
           "exported": false,
-          "lineCount": 39
+          "lineCount": 36
         }
       ],
       "classes": [],
@@ -1092,44 +1429,44 @@
           ]
         },
         {
-          "source": "../../types/property",
-          "specifiers": [
-            "PropertyType"
-          ]
-        },
-        {
-          "source": "../../types/property",
-          "specifiers": [
-            "PROPERTY_TYPE_LABELS"
-          ]
-        },
-        {
           "source": "../../theme",
           "specifiers": [
-            "PALETTE",
-            "GRADIENT"
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UNIT_TYPE_LABELS"
           ]
         }
       ],
       "exports": [],
-      "totalLines": 54,
+      "totalLines": 50,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/PopupFooter.tsx": {
       "filePath": "src/components/PropertyMap/PopupFooter.tsx",
-      "contentHash": "efb3c83386f2df150fed00c9561b046e07c2a1aede1a71cc695e20188220507d",
+      "contentHash": "4a3908ed4713267d008fa0daf18068db9098bd948950792ee5bf7914d825d45d",
       "functions": [
         {
           "name": "PopupFooter",
           "params": [
-            "{ status, listedPrice, loanPrice }"
+            "{\n  statusCode,\n  listedPrice,\n  loanPrice,\n  inquiryStatusCode: initialInquiryStatus,\n  unitCode,\n  projectId,\n}"
           ],
           "exported": false,
-          "lineCount": 98
+          "lineCount": 151
         }
       ],
       "classes": [],
       "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useCallback"
+          ]
+        },
         {
           "source": "@mui/material/Stack",
           "specifiers": [
@@ -1155,9 +1492,22 @@
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "@mui/material/CircularProgress",
           "specifiers": [
-            "PropertyStatus"
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitStatusCode",
+            "InquiryStatusCode"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "INQUIRY_STATUS_LABELS"
           ]
         },
         {
@@ -1167,15 +1517,33 @@
             "GRADIENT",
             "BORDER_RADIUS"
           ]
+        },
+        {
+          "source": "../../utils/formatters",
+          "specifiers": [
+            "formatPrice"
+          ]
+        },
+        {
+          "source": "../../services/unitInquiryService",
+          "specifiers": [
+            "unitInquiryService"
+          ]
+        },
+        {
+          "source": "../../utils/toast",
+          "specifiers": [
+            "showToast"
+          ]
         }
       ],
       "exports": [],
-      "totalLines": 114,
+      "totalLines": 176,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/PopupHeader.tsx": {
       "filePath": "src/components/PropertyMap/PopupHeader.tsx",
-      "contentHash": "e45779def8b946adca0d35bc0e15cf8b99626047500f94cf221473421df95881",
+      "contentHash": "2d6ee86bb6a68aff95ad01155daf23528d2ad424beecba89bf3a879ed4b24811",
       "functions": [
         {
           "name": "PopupHeader",
@@ -1183,7 +1551,7 @@
             "{ code, isHot }"
           ],
           "exported": false,
-          "lineCount": 28
+          "lineCount": 29
         }
       ],
       "classes": [],
@@ -1201,6 +1569,12 @@
           ]
         },
         {
+          "source": "lucide-react",
+          "specifiers": [
+            "Flame"
+          ]
+        },
+        {
           "source": "../../theme",
           "specifiers": [
             "PALETTE",
@@ -1209,20 +1583,20 @@
         }
       ],
       "exports": [],
-      "totalLines": 40,
+      "totalLines": 42,
       "hasStructuralAnalysis": true
     },
     "src/components/PropertyMap/PropertyPopup.tsx": {
       "filePath": "src/components/PropertyMap/PropertyPopup.tsx",
-      "contentHash": "4f8d99d976d153827b3ab722da508cfd21c3953aed7c202fe70dfd42168b3405",
+      "contentHash": "6ba597e0e9f805f176e9ba210c557cb5ca9089f879d2f23d3ab13b9836f96312",
       "functions": [
         {
           "name": "PropertyPopup",
           "params": [
-            "{ property }"
+            "{ property, projectId }"
           ],
           "exported": false,
-          "lineCount": 59
+          "lineCount": 78
         }
       ],
       "classes": [],
@@ -1242,7 +1616,7 @@
         {
           "source": "framer-motion",
           "specifiers": [
-            "motion",
+            "m",
             "AnimatePresence"
           ]
         },
@@ -1265,9 +1639,9 @@
           ]
         },
         {
-          "source": "../../types/property",
+          "source": "../../features/property-map/types",
           "specifiers": [
-            "Property"
+            "UnitItem"
           ]
         },
         {
@@ -1280,31 +1654,189 @@
         }
       ],
       "exports": [],
-      "totalLines": 77,
+      "totalLines": 97,
       "hasStructuralAnalysis": true
     },
-    "src/data/mockData.ts": {
-      "filePath": "src/data/mockData.ts",
-      "contentHash": "c8eec3c5ab3f3bb31516be023dd7bbbb8d8e9bb0013f3f77bbf12c5957d07f05",
-      "functions": [],
+    "src/components/ui/AppCheckbox.tsx": {
+      "filePath": "src/components/ui/AppCheckbox.tsx",
+      "contentHash": "6ceadbaa9f564f37b6e151e1c9fb7494dde71794afc637d448488a260673090a",
+      "functions": [
+        {
+          "name": "AppCheckbox",
+          "params": [
+            "{ icon, checkedIcon, sx, ...props }"
+          ],
+          "exported": false,
+          "lineCount": 10
+        }
+      ],
       "classes": [],
       "imports": [
         {
-          "source": "../types/property",
+          "source": "@mui/material/Checkbox",
           "specifiers": [
-            "Property"
+            "Checkbox",
+            "CheckboxProps"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "SquareCheck",
+            "Square"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
           ]
         }
       ],
-      "exports": [
-        "MOCK_PROPERTIES"
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/AppTextField.tsx": {
+      "filePath": "src/components/ui/AppTextField.tsx",
+      "contentHash": "e2e00a6f939e3ce1961142b29c9a3b75ec96657d1405930401e2bfd8d6d39f78",
+      "functions": [
+        {
+          "name": "AppTextField",
+          "params": [
+            "{ sx, ...props }"
+          ],
+          "exported": false,
+          "lineCount": 14
+        }
       ],
-      "totalLines": 115,
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/TextField",
+          "specifiers": [
+            "TextField",
+            "TextFieldProps"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "src/features/property-map/components/LoginForm.tsx": {
+      "filePath": "src/features/property-map/components/LoginForm.tsx",
+      "contentHash": "cb5e9302be83676af525e4f417dc0f0195a10ec547446ef24f4864f506967380",
+      "functions": [
+        {
+          "name": "LoginForm",
+          "params": [
+            "{ onLogin, isLoggingIn }"
+          ],
+          "exported": false,
+          "lineCount": 107
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm",
+            "Resolver"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/yup",
+          "specifiers": [
+            "yupResolver"
+          ]
+        },
+        {
+          "source": "yup",
+          "specifiers": [
+            "* as yup"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Lock"
+          ]
+        },
+        {
+          "source": "../../../components/form/FormTextField",
+          "specifiers": [
+            "FormTextField"
+          ]
+        },
+        {
+          "source": "../../../theme",
+          "specifiers": [
+            "PALETTE",
+            "GRADIENT",
+            "SHADOW",
+            "BORDER_RADIUS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 134,
+      "hasStructuralAnalysis": true
+    },
+    "src/features/property-map/types.ts": {
+      "filePath": "src/features/property-map/types.ts",
+      "contentHash": "c23f1b93a9f8ab615bbae8fba13f98068eb0abfbf18607e140f82e012b59ac95",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "FilterType",
+        "INQUIRY_STATUS_LABELS",
+        "UNIT_TYPE_LABELS"
+      ],
+      "totalLines": 103,
       "hasStructuralAnalysis": true
     },
     "src/main.tsx": {
       "filePath": "src/main.tsx",
-      "contentHash": "a20704cbfbcae920faa93780fb40c39967e7f82e40557e9ee7804723f90b6a7f",
+      "contentHash": "21f8eb722b70af5894691cb8ff5462edca0260d507cf9326255da674ef5380b4",
       "functions": [],
       "classes": [],
       "imports": [
@@ -1321,6 +1853,18 @@
           ]
         },
         {
+          "source": "react-redux",
+          "specifiers": [
+            "Provider"
+          ]
+        },
+        {
+          "source": "./store",
+          "specifiers": [
+            "store"
+          ]
+        },
+        {
           "source": "./App",
           "specifiers": [
             "App"
@@ -1328,7 +1872,192 @@
         }
       ],
       "exports": [],
-      "totalLines": 16,
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/apiClient.ts": {
+      "filePath": "src/services/apiClient.ts",
+      "contentHash": "3c63ca5ac58a7be2fe5fea9723fb6cfcab77ebd35dd5362a3b0109f1858f1e6a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "uuid",
+          "specifiers": [
+            "uuidv4"
+          ]
+        }
+      ],
+      "exports": [
+        "apiClient"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/mapService.ts": {
+      "filePath": "src/services/mapService.ts",
+      "contentHash": "16def19ab9a7c391890feaaa615764815e7d292f863c62ae7838bb88e4684eb5",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./apiClient",
+          "specifiers": [
+            "apiClient"
+          ]
+        },
+        {
+          "source": "../features/property-map/types",
+          "specifiers": [
+            "MapGetRequest",
+            "MapGetResponse",
+            "MapSearchRequest",
+            "MapGetCodesRequest",
+            "UnitItem"
+          ]
+        }
+      ],
+      "exports": [
+        "mapService"
+      ],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/unitInquiryService.ts": {
+      "filePath": "src/services/unitInquiryService.ts",
+      "contentHash": "df18849f284efde6c35118484fd60abdccd800bac65cb0f85df6a299eb9166c0",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./apiClient",
+          "specifiers": [
+            "apiClient"
+          ]
+        },
+        {
+          "source": "../features/property-map/types",
+          "specifiers": [
+            "UnitInquiryCreateRequest",
+            "InquiryCreateResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "unitInquiryService"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "src/store/index.ts": {
+      "filePath": "src/store/index.ts",
+      "contentHash": "5b93b3cdd4a132a680303de2f390604a34615960a5dbd13d1ba2b114e050fc81",
+      "functions": [
+        {
+          "name": "useAppDispatch",
+          "params": [],
+          "exported": true,
+          "lineCount": 1
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@reduxjs/toolkit",
+          "specifiers": [
+            "configureStore"
+          ]
+        },
+        {
+          "source": "react-redux",
+          "specifiers": [
+            "useDispatch",
+            "useSelector"
+          ]
+        },
+        {
+          "source": "react-redux",
+          "specifiers": [
+            "TypedUseSelectorHook"
+          ]
+        },
+        {
+          "source": "./slices/propertyMapSlice",
+          "specifiers": [
+            "propertyMapReducer"
+          ]
+        }
+      ],
+      "exports": [
+        "store",
+        "useAppDispatch",
+        "useAppSelector"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "src/store/slices/propertyMapSlice.ts": {
+      "filePath": "src/store/slices/propertyMapSlice.ts",
+      "contentHash": "2b210ebde61fe174734e1f9412bbbc59a19d50723b0ccd8a5bb9a7b9cd996e74",
+      "functions": [
+        {
+          "name": "applyFilters",
+          "params": [
+            "units",
+            "activeFilters"
+          ],
+          "returnType": "UnitItem[]",
+          "exported": false,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@reduxjs/toolkit",
+          "specifiers": [
+            "createSlice",
+            "createAsyncThunk"
+          ]
+        },
+        {
+          "source": "@reduxjs/toolkit",
+          "specifiers": [
+            "PayloadAction"
+          ]
+        },
+        {
+          "source": "../../services/mapService",
+          "specifiers": [
+            "mapService"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "FilterType"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitItem",
+            "MapGetResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "fetchMapData",
+        "fetchUnits",
+        "{ setFilters, setSearchKeyword, setFocusUnit, resetMap }"
+      ],
+      "totalLines": 143,
       "hasStructuralAnalysis": true
     },
     "src/theme.ts": {
@@ -1353,21 +2082,19 @@
       "totalLines": 144,
       "hasStructuralAnalysis": true
     },
-    "src/types/property.ts": {
-      "filePath": "src/types/property.ts",
-      "contentHash": "95ca04c89ac2bef62ce9c92aed463e82e0cbe6147ba372049161c6444ff0d7c9",
+    "src/types/api-spec.ts": {
+      "filePath": "src/types/api-spec.ts",
+      "contentHash": "105aebbaf39d62806b0f11f06162d303f5c61f0253e26bac94933a3fda74a31a",
       "functions": [],
       "classes": [],
       "imports": [],
-      "exports": [
-        "PROPERTY_TYPE_LABELS"
-      ],
-      "totalLines": 35,
+      "exports": [],
+      "totalLines": 7697,
       "hasStructuralAnalysis": true
     },
     "src/utils/canvasMarkerRenderer.ts": {
       "filePath": "src/utils/canvasMarkerRenderer.ts",
-      "contentHash": "5257659ab5d619953a13879c45572bf128421c2fb0c757440adad1a34236d5de",
+      "contentHash": "390af9bb4f861511d136becbbe6db17fec92895b8ef83018168b5b448c5566dd",
       "functions": [
         {
           "name": "drawRoundRect",
@@ -1383,6 +2110,12 @@
           "lineCount": 9
         },
         {
+          "name": "clearMarkerCache",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
           "name": "drawPropertyMarker",
           "params": [
             "ctx",
@@ -1393,21 +2126,28 @@
           ],
           "returnType": "number",
           "exported": true,
-          "lineCount": 196
+          "lineCount": 56
+        },
+        {
+          "name": "renderMarkerToContext",
+          "params": [
+            "ctx",
+            "property",
+            "x",
+            "y",
+            "isSelected"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 74
         }
       ],
       "classes": [],
       "imports": [
         {
-          "source": "../types/property",
+          "source": "../features/property-map/types",
           "specifiers": [
-            "Property"
-          ]
-        },
-        {
-          "source": "../types/property",
-          "specifiers": [
-            "PROPERTY_TYPE_LABELS"
+            "UnitItem"
           ]
         },
         {
@@ -1422,14 +2162,62 @@
         "MARKER_ARROW_HEIGHT",
         "MARKER_ARROW_WIDTH",
         "MARKER_BORDER_RADIUS",
+        "clearMarkerCache",
         "drawPropertyMarker"
       ],
-      "totalLines": 243,
+      "totalLines": 181,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/formatters.test.ts": {
+      "filePath": "src/utils/formatters.test.ts",
+      "contentHash": "185eebf881e6aa63b08b7c68414cc154aa495fe7399cd8636280c532fc5506ee",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vitest",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect"
+          ]
+        },
+        {
+          "source": "./formatters",
+          "specifiers": [
+            "formatPrice"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/formatters.ts": {
+      "filePath": "src/utils/formatters.ts",
+      "contentHash": "9a9fe1fbf9e0ef9f0f132b741dedab1e063b72aa93efa8a080896bf1403b169a",
+      "functions": [
+        {
+          "name": "formatPrice",
+          "params": [
+            "value"
+          ],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "formatPrice"
+      ],
+      "totalLines": 14,
       "hasStructuralAnalysis": true
     },
     "src/utils/mapUtils.ts": {
       "filePath": "src/utils/mapUtils.ts",
-      "contentHash": "e94a3e1058562beecd8bb826d99443a0e9fd13a523f3e5f7d6272fe7842454ed",
+      "contentHash": "3cf636766687aa5d89d3709317cc96519a43176c945ad940f141d61282a5e3e3",
       "functions": [
         {
           "name": "convertPercentToLatLng",
@@ -1439,7 +2227,7 @@
           ],
           "returnType": "[number, number]",
           "exported": true,
-          "lineCount": 11
+          "lineCount": 9
         }
       ],
       "classes": [],
@@ -1449,7 +2237,36 @@
         "IMAGE_HEIGHT",
         "convertPercentToLatLng"
       ],
-      "totalLines": 26,
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/toast.ts": {
+      "filePath": "src/utils/toast.ts",
+      "contentHash": "3499bbddcfa2b39f589fe555ec95a063ac50bf53a1dcae2e60e26bfe1bfbc870",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        }
+      ],
+      "exports": [
+        "showToast"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "swagger.json": {
+      "filePath": "swagger.json",
+      "contentHash": "44bf49cafece54cd73524880f2671a9e65ee5c135b4e321ae68885a40d0283b2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8032,
       "hasStructuralAnalysis": true
     },
     "tsconfig.app.json": {
@@ -1484,7 +2301,7 @@
     },
     "vite.config.ts": {
       "filePath": "vite.config.ts",
-      "contentHash": "6e21c89f0d5eb9e2dd158a6b955f173ecd1277c640c14814594587e6fe93fc05",
+      "contentHash": "da3caeba99e077872db06760847b2eb86da9ca67a01fc32c0efa87730b5e58c8",
       "functions": [],
       "classes": [],
       "imports": [
@@ -1502,7 +2319,7 @@
         }
       ],
       "exports": [],
-      "totalLines": 25,
+      "totalLines": 34,
       "hasStructuralAnalysis": true
     }
   }

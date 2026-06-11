@@ -1,4 +1,5 @@
-import { Component, ReactNode } from 'react';
+import { Component } from 'react';
+import type { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';

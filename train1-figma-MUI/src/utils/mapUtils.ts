@@ -1,16 +1,12 @@
+
 export const IMAGE_WIDTH = 2784;
 export const IMAGE_HEIGHT = 1546;
 
-// Với TileLayer (sharp google layout), ảnh ở zoom 4 map 1:1 với pixel.
-// Leaflet scale ở zoom 4 là 2^4 = 16.
 const MAX_ZOOM = 4;
 const SCALE_FACTOR = Math.pow(2, MAX_ZOOM);
 
 /**
- * Chuyển đổi tọa độ % (Top-Left) sang tọa độ Leaflet CRS.Simple cho TileLayer
- * @param percentX Tọa độ x (%) từ góc trên bên trái
- * @param percentY Tọa độ y (%) từ góc trên bên trái
- * @returns [lat, lng] cho Leaflet
+ * Chuyển đổi tọa độ % (Top-Left) sang tọa độ Leaflet CRS.Simple cho TileLayer.
  */
 export const convertPercentToLatLng = (
   percentX: number,
@@ -19,18 +15,30 @@ export const convertPercentToLatLng = (
   const xPixel = (percentX / 100) * IMAGE_WIDTH;
   const yPixel = (percentY / 100) * IMAGE_HEIGHT;
 
-  // L.CRS.Simple mặc định: lat âm thì đi xuống (giống trục y của ảnh)
-  // Chia cho SCALE_FACTOR để khi ở Zoom 4 (scale 16), tọa độ nhân lên khớp đúng pixel.
   return [-yPixel / SCALE_FACTOR, xPixel / SCALE_FACTOR];
 };
 
-/**
- * Định dạng số tiền VNĐ sang đơn vị tỷ, làm tròn xuống 2 chữ số thập phân.
- * Ví dụ: 15,129,436,069 VNĐ → "15,12 tỷ"
- */
-export const formatVndToBillion = (amount: number): string => {
-  if (!amount || isNaN(amount)) return '0,00 tỷ';
-  const billion = amount / 1_000_000_000;
-  const roundedDown = Math.floor(billion * 100) / 100;
-  return roundedDown.toFixed(2).replace('.', ',') + ' tỷ';
+export const convertPdfCoorsToLatLng = (
+  x: number,
+  y: number,
+  unitPageWidth: number | undefined,
+  unitPageHeight: number | undefined,
+  mapWidth: number,
+  mapHeight: number,
+  mapPageWidth: number | undefined,
+  mapPageHeight: number | undefined,
+  maxZoom: number,
+): [number, number] => {
+  const scaleFactor = Math.pow(2, maxZoom);
+
+  // 1. Find the reference bounds (page dimensions)
+  const pw = unitPageWidth || mapPageWidth || mapWidth || IMAGE_WIDTH;
+  const ph = unitPageHeight || mapPageHeight || mapHeight || IMAGE_HEIGHT;
+
+  // 2. Map relative percentage to actual MapCanvas pixel dimensions
+  const xPixel = (x / pw) * mapWidth;
+  const yPixel = (y / ph) * mapHeight;
+
+  return [-yPixel / scaleFactor, xPixel / scaleFactor];
 };
+

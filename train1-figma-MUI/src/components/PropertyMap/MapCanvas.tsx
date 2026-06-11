@@ -1,34 +1,32 @@
-import { useCallback, useState, useMemo, useEffect, useRef } from 'react';
+import { useCallback, useState, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Drawer from '@mui/material/Drawer';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme, styled } from '@mui/material/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { MapContainer, TileLayer, Popup, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import CanvasMarkerLayer from './CanvasMarkerLayer';
 import PropertyPopup from './PropertyPopup';
-import type { PropertyUnit } from '../../types/mapApi';
-import type { PropertyType } from '../../types/property';
-import { PALETTE, BORDER_RADIUS } from '../../theme';
-import { convertPercentToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../../utils/mapUtils';
+import FlyToHandler from './FlyToHandler';
+import MapPagination from './MapPagination';
+import type { UnitItem } from '../../features/property-map/types';
+import { PALETTE } from '../../theme';
+import { convertPercentToLatLng, convertPdfCoorsToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../../utils/mapUtils';
+import { useAppSelector } from '../../store';
+import { CONFIG } from '../../constants/config';
 
-const ITEMS_PER_PAGE = 20;
+const ITEMS_PER_PAGE = CONFIG.PAGE_SIZE;
 
 interface MapCanvasProps {
-  properties: PropertyUnit[];
-  activeFilters: PropertyType[];
+  properties: UnitItem[];
   selectedId: string | null;
   onSelectProperty: (id: string | null) => void;
   focusTarget: { x: number; y: number } | null;
-  projectId: string;
+  projectId: number;
 }
 
 const StyledMapContainer = styled(MapContainer)({
@@ -37,37 +35,8 @@ const StyledMapContainer = styled(MapContainer)({
   touchAction: 'none',
 });
 
-/* ── Inner component to access map instance via useMap() ── */
-interface FlyToHandlerProps {
-  target: { x: number; y: number } | null;
-}
-
-const FlyToHandler = ({ target }: FlyToHandlerProps) => {
-  const map = useMap();
-  const prevTargetRef = useRef<{ x: number; y: number } | null>(null);
-
-  useEffect(() => {
-    if (!target) return;
-    // Avoid re-flying to the same target
-    if (
-      prevTargetRef.current &&
-      prevTargetRef.current.x === target.x &&
-      prevTargetRef.current.y === target.y
-    ) {
-      return;
-    }
-    prevTargetRef.current = target;
-
-    const latLng = convertPercentToLatLng(target.x, target.y);
-    map.flyTo(latLng as L.LatLngTuple, 4, { duration: 1.2 });
-  }, [target, map]);
-
-  return null;
-};
-
 const MapCanvas = ({
   properties,
-  activeFilters,
   selectedId,
   onSelectProperty,
   focusTarget,
@@ -76,17 +45,18 @@ const MapCanvas = ({
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-  const filteredProperties = useMemo(
-    () => properties.filter((p) => activeFilters.includes(p.type)),
-    [properties, activeFilters],
-  );
+  // Wait, filtering is done at Redux level now in matBangSlice, 
+  // but if we pass filteredProperties from Redux, we don't need to filter here again.
+  // Actually, we'll keep it simple: index.tsx passes down filtered properties directly, 
+  // so we can just use `properties` instead of `filteredProperties`.
+  const filteredProperties = properties;
 
   // Sort: hot first, then alphabetical by code
   const sortedProperties = useMemo(() => {
     const sorted = [...filteredProperties];
     sorted.sort((a, b) => {
       if (a.isHot !== b.isHot) return a.isHot ? -1 : 1;
-      return a.code.localeCompare(b.code);
+      return (a.unitCode || '').localeCompare(b.unitCode || '');
     });
     return sorted;
   }, [filteredProperties]);
@@ -115,7 +85,7 @@ const MapCanvas = ({
     setRawPage((prev) => Math.min(totalPages - 1, prev + 1));
   }, [totalPages]);
 
-  const selectedProperty = properties.find((p) => p.id === selectedId) ?? null;
+  const selectedProperty = properties.find((p) => String(p.id || p.unitCode) === selectedId) ?? null;
 
   const handleMarkerClick = useCallback(
     (id: string | null) => {
@@ -132,12 +102,38 @@ const MapCanvas = ({
     onSelectProperty(null);
   }, [onSelectProperty]);
 
-  // Define bounds for Map (Scale factor is 16 because max zoom is 4)
-  const SCALE_FACTOR = 16;
-  const bounds: L.LatLngBoundsExpression = [
-    [-IMAGE_HEIGHT / SCALE_FACTOR, 0], // Bottom-Left (but lat is negative)
-    [0, IMAGE_WIDTH / SCALE_FACTOR],   // Top-Right (origin is at top-left [0,0])
-  ];
+  // Select mapData from Redux to configure bounds and tile layer
+  const mapData = useAppSelector((state) => state.propertyMap.mapData);
+
+  const { width, height, maxZoom } = useMemo(() => {
+    if (!mapData) {
+      return { width: IMAGE_WIDTH, height: IMAGE_HEIGHT, maxZoom: 4 };
+    }
+    const w = mapData.width || Math.round((mapData.pageWidth || 0) * ((mapData.dpi || 72) / 72));
+    const h = mapData.height || Math.round((mapData.pageHeight || 0) * ((mapData.dpi || 72) / 72));
+    const z = mapData.totalTiles || Math.ceil(Math.log2(Math.max(w, h || 1)));
+    return { width: w, height: h, maxZoom: z };
+  }, [mapData]);
+
+  const bounds = useMemo(() => {
+    const scaleFactor = Math.pow(2, maxZoom);
+    return [
+      [-height / scaleFactor, 0],
+      [0, width / scaleFactor],
+    ] as L.LatLngBoundsExpression;
+  }, [width, height, maxZoom]);
+
+  const tileUrlTemplate = useMemo(() => {
+    if (!mapData || !mapData.dziKey) return '/tiles/{z}/{y}/{x}.png';
+    const baseUrl = mapData.dziKey.replace(/\.dzi$/, '');
+    const format = mapData.tileFormat || 'jpg';
+    return `${baseUrl}_files/{z}/{x}_{y}.${format}`;
+  }, [mapData]);
+
+  const center = useMemo(() => {
+    const scaleFactor = Math.pow(2, maxZoom);
+    return [-height / (2 * scaleFactor), width / (2 * scaleFactor)] as L.LatLngTuple;
+  }, [width, height, maxZoom]);
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
@@ -187,17 +183,20 @@ const MapCanvas = ({
         />
 
         <StyledMapContainer
+          key={`${projectId}-${width}-${height}`}
           crs={L.CRS.Simple}
           bounds={bounds}
           maxBounds={bounds}
-          minZoom={0}
-          maxZoom={4}
+          minZoom={Math.max(0, maxZoom - 7)}
+          maxZoom={maxZoom}
+          zoom={Math.max(0, maxZoom - 5)}
+          center={center}
           zoomControl={true}
           attributionControl={false}
           scrollWheelZoom={true}
         >
           <TileLayer
-            url="/tiles/{z}/{y}/{x}.png"
+            url={tileUrlTemplate}
             noWrap={true}
             bounds={bounds}
             updateWhenZooming={false}
@@ -209,15 +208,32 @@ const MapCanvas = ({
             properties={paginatedProperties}
             selectedId={selectedId}
             onSelectProperty={handleMarkerClick}
+            mapWidth={width}
+            mapHeight={height}
+            mapMaxZoom={maxZoom}
           />
 
           {/* FlyTo handler for search-triggered focus */}
-          <FlyToHandler target={focusTarget} />
+          <FlyToHandler target={focusTarget} maxZoom={maxZoom} mapData={mapData} />
 
           {/* Render Popup inside Leaflet if not on Mobile */}
           {!isMobile && selectedProperty && (
             <Popup
-              position={convertPercentToLatLng(selectedProperty.position.x, selectedProperty.position.y)}
+              position={
+                mapData
+                  ? convertPdfCoorsToLatLng(
+                      selectedProperty.x || 0,
+                      selectedProperty.y || 0,
+                      selectedProperty.pageWidth,
+                      selectedProperty.pageHeight,
+                      width,
+                      height,
+                      mapData.pageWidth,
+                      mapData.pageHeight,
+                      maxZoom
+                    )
+                  : convertPercentToLatLng(selectedProperty.x || 0, selectedProperty.y || 0)
+              }
               className="custom-leaflet-popup"
               autoPanPadding={[50, 50]}
               closeButton={false}
@@ -230,61 +246,15 @@ const MapCanvas = ({
         </StyledMapContainer>
 
         {/* Pagination Overlay */}
-        {totalPages > 1 && (
-          <Stack
-            direction="row"
-            spacing={1}
-            sx={{
-              position: 'absolute',
-              bottom: 16,
-              right: 16,
-              zIndex: 500,
-              alignItems: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              backdropFilter: 'blur(8px)',
-              borderRadius: `${BORDER_RADIUS.MEDIUM}px`,
-              border: `1px solid ${PALETTE.BORDER}`,
-              boxShadow: `0px 2px 8px ${PALETTE.SHADOW_LIGHT}`,
-              px: 1,
-              py: 0.5,
-            }}
-          >
-            <IconButton
-              size="small"
-              onClick={handlePrevPage}
-              disabled={currentPage === 0}
-              sx={{
-                color: PALETTE.PRIMARY,
-                '&.Mui-disabled': { color: PALETTE.TEXT_HINT },
-              }}
-            >
-              <ChevronLeft size={18} />
-            </IconButton>
-            <Typography
-              variant="caption"
-              sx={{
-                fontWeight: 600,
-                color: PALETTE.TEXT_PRIMARY,
-                minWidth: 70,
-                textAlign: 'center',
-                userSelect: 'none',
-              }}
-            >
-              {rangeStart}–{rangeEnd} / {total}
-            </Typography>
-            <IconButton
-              size="small"
-              onClick={handleNextPage}
-              disabled={currentPage >= totalPages - 1}
-              sx={{
-                color: PALETTE.PRIMARY,
-                '&.Mui-disabled': { color: PALETTE.TEXT_HINT },
-              }}
-            >
-              <ChevronRight size={18} />
-            </IconButton>
-          </Stack>
-        )}
+        <MapPagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          rangeStart={rangeStart}
+          rangeEnd={rangeEnd}
+          total={total}
+          onPrevPage={handlePrevPage}
+          onNextPage={handleNextPage}
+        />
 
         {/* Mobile Drawer Popup */}
         {isMobile && selectedProperty && (
@@ -307,7 +277,7 @@ const MapCanvas = ({
             }}
           >
             <Box sx={{ width: '100%', maxWidth: 400, mx: 'auto' }}>
-              <PropertyPopup property={selectedProperty} projectId={projectId} />
+              <PropertyPopup property={selectedProperty} projectId={projectId} hideArrow={true} />
             </Box>
           </Drawer>
         )}

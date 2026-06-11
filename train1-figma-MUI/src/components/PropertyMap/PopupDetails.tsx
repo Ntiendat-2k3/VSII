@@ -1,13 +1,12 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Maximize, Building } from 'lucide-react';
-import type { PropertyType } from '../../types/property';
-import { PROPERTY_TYPE_LABELS } from '../../types/property';
 import { PALETTE } from '../../theme';
+import { UNIT_TYPE_LABELS } from '../../features/property-map/types';
 
 interface PopupDetailsProps {
-  area: number;
-  type: PropertyType;
+  area?: number;
+  type?: string;
 }
 
 const PopupDetails = ({ area, type }: PopupDetailsProps) => {
@@ -28,7 +27,7 @@ const PopupDetails = ({ area, type }: PopupDetailsProps) => {
             color: PALETTE.TEXT_PRIMARY,
           }}
         >
-          {area}m²
+          {area ?? '—'}m²
         </Typography>
       </Stack>
       <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
@@ -40,7 +39,7 @@ const PopupDetails = ({ area, type }: PopupDetailsProps) => {
             color: PALETTE.TEXT_SECONDARY,
           }}
         >
-          {PROPERTY_TYPE_LABELS[type]}
+          {type ? (UNIT_TYPE_LABELS[type] || type) : 'Chưa cập nhật'}
         </Typography>
       </Stack>
     </Stack>

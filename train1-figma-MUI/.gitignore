@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 .ai
 .agents
+.env
+.env.production

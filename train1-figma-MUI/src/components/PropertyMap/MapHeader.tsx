@@ -12,7 +12,7 @@ import { mapService } from '../../services/mapService';
 const DEBOUNCE_MS = 300;
 
 interface MapHeaderProps {
-  projectId: string;
+  projectId: number;
   onSelectUnit: (unitCode: string) => void;
 }
 

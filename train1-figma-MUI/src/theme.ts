@@ -3,6 +3,7 @@ import { createTheme } from '@mui/material/styles';
 const PALETTE = {
   PRIMARY: '#2A52BE',
   PRIMARY_LIGHT: 'rgba(42, 82, 190, 0.2)',
+  PRIMARY_LIGHT_BG: '#E8EFFF',
   SECONDARY: '#00B4D8',
   ERROR: '#FF383C',
   ERROR_LIGHT: 'rgba(255, 56, 60, 0.2)',

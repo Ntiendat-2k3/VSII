@@ -18,10 +18,11 @@ const PopupHeader = ({ code, isHot }: PopupHeaderProps) => {
       sx={{
         justifyContent: 'center',
         alignItems: 'center',
-        p: '6px 8px',
-        backgroundColor: isHotTheme ? PALETTE.ERROR : PALETTE.SURFACE_LIGHT,
+        p: isHotTheme ? '8px 12px' : '6px 8px',
+        backgroundColor: isHotTheme ? 'transparent' : PALETTE.PRIMARY_LIGHT_BG,
         border: isHotTheme ? 'none' : `1px solid ${PALETTE.PRIMARY}`,
-        borderRadius: `${BORDER_RADIUS.SMALL}px`,
+        borderRadius: isHotTheme ? 0 : `${BORDER_RADIUS.SMALL}px`,
+        width: isHotTheme ? '100%' : 'auto',
       }}
     >
       {isHotTheme && <Flame size={16} color={PALETTE.SURFACE_LIGHT} />}

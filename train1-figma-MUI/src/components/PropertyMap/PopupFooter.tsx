@@ -4,20 +4,20 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
-import type { PropertyUnit, InquiryStatusCode } from '../../types/mapApi';
-import { INQUIRY_STATUS_LABELS } from '../../types/mapApi';
+import type { UnitStatusCode, InquiryStatusCode } from '../../features/property-map/types';
 import { PALETTE, GRADIENT, BORDER_RADIUS } from '../../theme';
-import { formatVndToBillion } from '../../utils/mapUtils';
-import { mapService } from '../../services/mapService';
+import { formatPrice } from '../../utils/formatters';
+import { unitInquiryService } from '../../services/unitInquiryService';
 import { showToast } from '../../utils/toast';
+import { UNIT_STATUS, INQUIRY_STATUS_LABELS } from '../../constants/map';
 
 interface PopupFooterProps {
-  statusCode: PropertyUnit['statusCode'];
-  listedPrice: number;
+  statusCode: UnitStatusCode;
+  listedPrice?: number;
   loanPrice?: number;
   inquiryStatusCode?: InquiryStatusCode | null;
   unitCode: string;
-  projectId: string;
+  projectId: number;
 }
 
 const PopupFooter = ({
@@ -36,7 +36,7 @@ const PopupFooter = ({
   const handleRequestInfo = useCallback(async () => {
     setIsSubmitting(true);
     try {
-      const response = await mapService.createInquiry(projectId, unitCode);
+      const response = await unitInquiryService.create(projectId, unitCode);
       if (response.success) {
         setInquiryStatus(response.status);
         showToast.success('Yêu cầu đã được gửi thành công!');
@@ -48,8 +48,7 @@ const PopupFooter = ({
     }
   }, [projectId, unitCode]);
 
-  /* ── Trạng thái: Còn hàng (AVAILABLE) ── */
-  if (statusCode === 'AVAILABLE') {
+  if (statusCode === UNIT_STATUS.AVAILABLE) {
     return (
       <Stack spacing={1}>
         <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
@@ -69,7 +68,7 @@ const PopupFooter = ({
               color: PALETTE.PRIMARY,
             }}
           >
-            {formatVndToBillion(listedPrice)}
+            {listedPrice != null ? formatPrice(listedPrice) : 'Liên hệ'}
           </Typography>
         </Stack>
         {loanPrice != null && (
@@ -90,7 +89,7 @@ const PopupFooter = ({
                 color: PALETTE.PRIMARY,
               }}
             >
-              {formatVndToBillion(loanPrice)}
+              {formatPrice(loanPrice)}
             </Typography>
           </Stack>
         )}
@@ -98,8 +97,7 @@ const PopupFooter = ({
     );
   }
 
-  /* ── Trạng thái: Đã bán (SOLD) ── */
-  if (statusCode === 'SOLD') {
+  if (statusCode === UNIT_STATUS.SOLD) {
     return (
       <Chip
         label="Đã bán"
@@ -115,9 +113,6 @@ const PopupFooter = ({
     );
   }
 
-  /* ── Trạng thái: Quỹ ẩn (statusCode === null) ── */
-
-  // Nếu đã gửi yêu cầu rồi → hiển thị trạng thái inquiry
   if (inquiryStatus) {
     return (
       <Typography
@@ -135,7 +130,6 @@ const PopupFooter = ({
     );
   }
 
-  // Chưa gửi yêu cầu → hiển thị nút "Xin thông tin"
   return (
     <Stack spacing={1}>
       <Typography

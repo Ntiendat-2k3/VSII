@@ -1,131 +1,152 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { MOCK_PROPERTIES } from '../data/mockData';
+import apiClient from './apiClient';
 import type {
-  PropertyUnit,
-  SearchUnitResponse,
-  TileConfig,
-  InquiryResponse,
-  InquiryStatusCode,
-} from '../types/mapApi';
+  MapGetRequest,
+  MapGetResponse,
+  MapSearchRequest,
+  MapGetCodesRequest,
+  UnitItem,
+} from '../features/property-map/types';
+import { MAP_TYPE, UNIT_STATUS, BACKEND_UNIT_TYPE } from '../constants/map';
+import { API_ENDPOINTS } from './endpoints';
 
-/* ===== Helpers ===== */
-
-const DELAY_MS = 500;
-const delay = (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms));
-
-/**
- * Chuyển đổi Property (mock) sang PropertyUnit (chuẩn API).
- * Khi có API thật, hàm này sẽ bị xóa.
- */
-const toPropertyUnit = (p: (typeof MOCK_PROPERTIES)[number]): PropertyUnit => {
-  const statusMap: Record<string, PropertyUnit['statusCode']> = {
-    available: 'AVAILABLE',
-    sold: 'SOLD',
-  };
-
-  return {
-    id: p.id,
-    code: p.code,
-    isHot: p.isHot,
-    type: p.type,
-    area: p.area,
-    listedPrice: p.listedPrice * 1_000_000_000,
-    loanPrice: p.loanPrice * 1_000_000_000,
-    statusCode: statusMap[p.status] ?? null,
-    inquiryStatusCode: p.status === 'contacting' ? 'PENDING' : null,
-    position: { x: p.position.x, y: p.position.y },
-  };
+/* ===== MOCK DATA FALLBACK ===== */
+const MOCK_MAP_CONFIG: MapGetResponse = {
+  id: 1,
+  dziKey: 'mock-dzi-key',
+  tilesKey: 'mock-tiles-key',
+  desktopZoomDefault: 1,
+  desktopZoomMax: 3,
 };
 
-/* ==========================================================================
- * mapService — Mock API Service Layer
- *
- * Khi backend cấp API thật, chỉ cần thay thế body của từng hàm
- * bằng axios.post / fetch tương ứng. KHÔNG cần sửa bất kỳ component nào.
- * ========================================================================== */
+const MOCK_UNITS: UnitItem[] = [
+  {
+    id: 101,
+    unitCode: 'SH-01',
+    isHot: true,
+    unitTypeCode: BACKEND_UNIT_TYPE.SHOPHOUSE,
+    areaLand: 120,
+    areaBuilding: 300,
+    basePrice: 15000000000,
+    statusCode: UNIT_STATUS.AVAILABLE,
+    x: 40,
+    y: 30,
+  },
+  {
+    id: 102,
+    unitCode: 'DL-15',
+    isHot: false,
+    unitTypeCode: BACKEND_UNIT_TYPE.DETACHED,
+    areaLand: 350,
+    areaBuilding: 450,
+    basePrice: 45000000000,
+    statusCode: UNIT_STATUS.SOLD,
+    x: 60,
+    y: 50,
+  },
+  {
+    id: 103,
+    unitCode: 'SL-88',
+    isHot: true,
+    unitTypeCode: BACKEND_UNIT_TYPE.SEMI_DETACHED,
+    areaLand: 200,
+    areaBuilding: 250,
+    basePrice: 22000000000,
+    statusCode: UNIT_STATUS.AVAILABLE,
+    x: 80,
+    y: 20,
+  },
+  {
+    id: 104,
+    unitCode: 'LK-12',
+    isHot: false,
+    unitTypeCode: BACKEND_UNIT_TYPE.TOWNHOUSE,
+    areaLand: 90,
+    areaBuilding: 200,
+    basePrice: 11000000000,
+    statusCode: UNIT_STATUS.AVAILABLE,
+    x: 30,
+    y: 70,
+  },
+];
 
 export const mapService = {
-  /**
-   * GET `/portal/map/get`
-   * Lấy thông tin tile bản đồ dự án.
-   */
-  getMapTiles: async (_projectId: string): Promise<TileConfig> => {
-    await delay(DELAY_MS);
-    return {
-      rotation: 270,
-      pageWidth: 2383.93994140625,
-      pageHeight: 3370.389892578125,
-      dpi: 600,
-      maxZoomLevel: '4',
-    };
-  },
+  /** GET `/portal/map/get` — Lấy thông tin tile bản đồ dự án. */
+  getMapData: async (projectId: number): Promise<MapGetResponse> => {
+    try {
+      const params: MapGetRequest = { mapType: MAP_TYPE.PROJECT, refId: projectId };
+      const response = await apiClient.get(API_ENDPOINTS.MAP_GET, { params });
+      
+      const mapData = response.data;
+      if (mapData && mapData.dziKey) {
+        try {
+          const xmlRes = await fetch(mapData.dziKey);
+          if (xmlRes.ok) {
+            const xmlText = await xmlRes.text();
+            const formatMatch = xmlText.match(/Format="([^"]+)"/);
+            const tileSizeMatch = xmlText.match(/TileSize="([^"]+)"/);
+            const overlapMatch = xmlText.match(/Overlap="([^"]+)"/);
+            const widthMatch = xmlText.match(/Width="([^"]+)"/);
+            const heightMatch = xmlText.match(/Height="([^"]+)"/);
 
-  /**
-   * POST `/portal/map/search`
-   * Lấy danh sách các căn trạng thái "Còn hàng" trên bản đồ.
-   */
-  searchProperties: async (_projectId: string): Promise<PropertyUnit[]> => {
-    await delay(DELAY_MS);
-    return MOCK_PROPERTIES.map(toPropertyUnit);
-  },
-
-  /**
-   * POST `/portal/map/get-codes`
-   * Auto-typing search — trả về danh sách mã căn gợi ý.
-   */
-  getUnitCodes: async (_projectId: string, keyword: string): Promise<string[]> => {
-    if (!keyword.trim()) return [];
-    await delay(200);
-    const normalized = keyword.trim().toLowerCase();
-    const result: string[] = [];
-    for (const p of MOCK_PROPERTIES) {
-      if (p.code.toLowerCase().includes(normalized)) {
-        result.push(p.code);
+            mapData.tileFormat = formatMatch ? formatMatch[1] : 'jpg';
+            mapData.tileSize = tileSizeMatch ? parseInt(tileSizeMatch[1], 10) : 256;
+            mapData.overlap = overlapMatch ? parseInt(overlapMatch[1], 10) : 1;
+            mapData.width = widthMatch ? parseInt(widthMatch[1], 10) : 0;
+            mapData.height = heightMatch ? parseInt(heightMatch[1], 10) : 0;
+          }
+        } catch {
+          // Silent catch in production
+        }
       }
+      
+      return mapData;
+    } catch {
+      return MOCK_MAP_CONFIG;
     }
-    return result;
   },
 
-  /**
-   * POST `/portal/map/search` (với keyword chính xác)
-   * Trả về tọa độ + chi tiết căn hộ khi chọn từ Autocomplete.
-   */
-  searchUnitDetails: async (
-    _projectId: string,
-    unitCode: string,
-  ): Promise<SearchUnitResponse | null> => {
-    await delay(DELAY_MS);
-    const match = MOCK_PROPERTIES.find(
-      (p) => p.code.toUpperCase() === unitCode.toUpperCase(),
-    );
-    if (!match) return null;
-
-    const unit = toPropertyUnit(match);
-
-    return {
-      statusCode: unit.statusCode,
-      inquiryStatusCode: unit.inquiryStatusCode,
-      rotation: 270,
-      pageWidth: 2383.93994140625,
-      pageHeight: 3370.389892578125,
-      x: match.position.x,
-      y: match.position.y,
-      dpi: 600,
-      xPixel: Math.round((match.position.x / 100) * 2383.94),
-      yPixel: Math.round((match.position.y / 100) * 3370.39),
-      unitDetails: unit,
-    };
+  /** POST `/portal/map/search` — Lấy danh sách các căn trên bản đồ. */
+  searchUnits: async (projectId: number, keyword?: string): Promise<UnitItem[]> => {
+    try {
+      const payload: MapSearchRequest = {
+        mapType: MAP_TYPE.PROJECT,
+        refId: projectId,
+        ...(keyword && { keyword }),
+      };
+      const response = await apiClient.post(API_ENDPOINTS.MAP_SEARCH, payload);
+      
+      const rawData = (response.data || []) as Array<Record<string, unknown>>;
+      return rawData.map((item) => ({
+        ...item,
+        id: (item.unitId ?? item.id) as number | undefined,
+        unitCode: (item.code ?? item.unitCode) as string,
+      })) as unknown as UnitItem[];
+    } catch {
+      return keyword 
+        ? MOCK_UNITS.filter(u => u.unitCode.toLowerCase().includes(keyword.toLowerCase()))
+        : MOCK_UNITS;
+    }
   },
 
-  /**
-   * POST `/portal/units-inquiry/create`
-   * Gửi yêu cầu xin thông tin căn.
-   */
-  createInquiry: async (
-    _projectId: string,
-    _unitCode: string,
-  ): Promise<InquiryResponse> => {
-    await delay(DELAY_MS);
-    return { success: true, status: 'PENDING' as InquiryStatusCode };
+  /** GET `/portal/map/get-codes` — Trả về danh sách mã căn gợi ý. */
+  getUnitCodes: async (projectId: number, keyword: string): Promise<string[]> => {
+    if (!keyword.trim()) return [];
+
+    try {
+      const params: MapGetCodesRequest = {
+        mapType: MAP_TYPE.PROJECT,
+        refId: projectId,
+        keyword: keyword.trim(),
+      };
+      const response = await apiClient.get(API_ENDPOINTS.MAP_GET_CODES, { params });
+      return response.data || [];
+    } catch {
+      return MOCK_UNITS.reduce<string[]>((codes, u) => {
+        if (u.unitCode.toLowerCase().includes(keyword.toLowerCase())) {
+          codes.push(u.unitCode);
+        }
+        return codes;
+      }, []);
+    }
   },
 };

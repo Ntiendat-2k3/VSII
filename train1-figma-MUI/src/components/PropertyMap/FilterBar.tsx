@@ -3,25 +3,25 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import AppCheckbox from '../ui/AppCheckbox';
 import { Flame } from 'lucide-react';
-import type { PropertyType } from '../../types/property';
-import { PROPERTY_TYPE_LABELS } from '../../types/property';
+import { FilterType, UNIT_TYPE_LABELS } from '../../features/property-map/types';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { setFilters } from '../../store/slices/propertyMapSlice';
 import { PALETTE, BORDER_RADIUS } from '../../theme';
 
-const ALL_TYPES: PropertyType[] = [
-  'don-lap',
-  'song-lap',
-  'tu-lap',
-  'lien-ke',
-  'shophouse',
+const NORMAL_FILTERS: FilterType[] = [
+  FilterType.DON_LAP,
+  FilterType.SONG_LAP,
+  FilterType.TU_LAP,
+  FilterType.LIEN_KE,
+  FilterType.SHOPHOUSE,
 ];
 
 interface FilterChipProps {
-  type: PropertyType;
+  type: FilterType;
   isActive: boolean;
-  onClick: (type: PropertyType) => void;
+  onClick: (type: FilterType) => void;
 }
 
-// 1. Optimized sub-component with React.memo to avoid recreating functions in rendering
 const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
   const handleClick = useCallback(() => {
     onClick(type);
@@ -47,9 +47,7 @@ const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
         },
       }}
     >
-      <AppCheckbox
-        checked={isActive}
-      />
+      <AppCheckbox checked={isActive} />
       <Typography
         variant="caption"
         sx={{
@@ -57,7 +55,7 @@ const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
           color: isActive ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
         }}
       >
-        {PROPERTY_TYPE_LABELS[type]}
+        {UNIT_TYPE_LABELS[type] || type}
       </Typography>
     </Stack>
   );
@@ -65,19 +63,22 @@ const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
 
 FilterChip.displayName = 'FilterChip';
 
-interface FilterBarProps {
-  activeFilters: PropertyType[];
-  showHotOnly: boolean;
-  onToggleFilter: (type: PropertyType) => void;
-  onToggleHot: () => void;
-}
+const FilterBar = () => {
+  const dispatch = useAppDispatch();
+  const activeFilters = useAppSelector((state) => state.propertyMap.filterTypes);
 
-const FilterBar = ({
-  activeFilters,
-  showHotOnly,
-  onToggleFilter,
-  onToggleHot,
-}: FilterBarProps) => {
+  const handleToggleFilter = useCallback(
+    (type: FilterType) => {
+      const newFilters = activeFilters.includes(type)
+        ? activeFilters.filter((t) => t !== type)
+        : [...activeFilters, type];
+      dispatch(setFilters(newFilters));
+    },
+    [activeFilters, dispatch],
+  );
+
+  const isHotActive = activeFilters.includes(FilterType.HOT);
+
   return (
     <Stack
       direction="row"
@@ -90,16 +91,15 @@ const FilterBar = ({
         pb: { xs: 1, md: 0 },
       }}
     >
-      {/* HOT filter chip */}
       <Stack
         direction="row"
         spacing={1}
-        onClick={onToggleHot}
+        onClick={() => handleToggleFilter(FilterType.HOT)}
         sx={{
           px: '16px',
           py: '8px',
           borderRadius: `${BORDER_RADIUS.PILL}px`,
-          backgroundColor: showHotOnly ? PALETTE.ERROR : PALETTE.BACKGROUND_PAPER,
+          backgroundColor: isHotActive ? PALETTE.ERROR : PALETTE.BACKGROUND_PAPER,
           cursor: 'pointer',
           flexShrink: 0,
           transition: 'all 0.2s ease',
@@ -110,30 +110,27 @@ const FilterBar = ({
           },
         }}
       >
-        <AppCheckbox
-          checked={showHotOnly}
-        />
+        <AppCheckbox checked={isHotActive} />
         <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
           <Typography
             variant="caption"
             sx={{
               fontWeight: 500,
-              color: showHotOnly ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
+              color: isHotActive ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
             }}
           >
             Căn HOT
           </Typography>
-          <Flame size={16} color={showHotOnly ? PALETTE.SURFACE_LIGHT : PALETTE.ERROR} />
+          <Flame size={16} color={isHotActive ? PALETTE.SURFACE_LIGHT : PALETTE.ERROR} />
         </Stack>
       </Stack>
 
-      {/* Type filter chips */}
-      {ALL_TYPES.map((type) => (
+      {NORMAL_FILTERS.map((type) => (
         <FilterChip
           key={type}
           type={type}
           isActive={activeFilters.includes(type)}
-          onClick={onToggleFilter}
+          onClick={handleToggleFilter}
         />
       ))}
     </Stack>
