@@ -1,8 +1,37 @@
+import type { ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Phone, Mail, MapPin } from 'lucide-react';
 import { PALETTE } from '../../theme';
+
+/* ── Static Data ── */
+
+interface ContactItem {
+  id: string;
+  icon: ReactNode;
+  text: string;
+  alignTop?: boolean;
+}
+
+const CONTACT_ITEMS: ContactItem[] = [
+  { id: 'phone', icon: <Phone size={16} color={PALETTE.BACKGROUND_DEFAULT} />, text: '0972 72 9999' },
+  { id: 'email', icon: <Mail size={16} color={PALETTE.BACKGROUND_DEFAULT} />, text: 'Contact@gmail.com' },
+  {
+    id: 'address',
+    icon: <MapPin size={16} color={PALETTE.BACKGROUND_DEFAULT} />,
+    text: 'SB24-36, Sao Biển 24, KĐT Vinhomes Ocean Park, Xã Gia Lâm, TP Hà Nội, Việt Nam',
+    alignTop: true,
+  },
+];
+
+const contactTextSx = {
+  fontWeight: 500,
+  fontSize: '0.8125rem',
+  color: PALETTE.BACKGROUND_DEFAULT,
+} as const;
+
+/* ── Component ── */
 
 const FooterCompanyInfo = () => {
   return (
@@ -40,55 +69,34 @@ const FooterCompanyInfo = () => {
       </Stack>
 
       <Stack spacing={1.5} sx={{ alignItems: 'flex-start' }}>
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-          <Phone size={16} color={PALETTE.BACKGROUND_DEFAULT} />
-          <Typography
+        {CONTACT_ITEMS.map((item) => (
+          <Stack
+            key={item.id}
+            direction="row"
+            spacing={1}
             sx={{
-              fontWeight: 500,
-              fontSize: '0.8125rem',
-              lineHeight: '26px',
-              color: PALETTE.BACKGROUND_DEFAULT,
+              alignItems: item.alignTop ? 'flex-start' : 'center',
+              ...(item.alignTop && { pt: 0.5 }),
             }}
           >
-            0972 72 9999
-          </Typography>
-        </Stack>
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
-          <Mail size={16} color={PALETTE.BACKGROUND_DEFAULT} />
-          <Typography
-            sx={{
-              fontWeight: 500,
-              fontSize: '0.8125rem',
-              lineHeight: '26px',
-              color: PALETTE.BACKGROUND_DEFAULT,
-            }}
-          >
-            Contact@gmail.com
-          </Typography>
-        </Stack>
-        <Stack
-          direction="row"
-          spacing={1}
-          sx={{ pt: 0.5, alignItems: 'flex-start' }}
-        >
-          <Stack sx={{ mt: 0.5 }}>
-            <MapPin size={16} color={PALETTE.BACKGROUND_DEFAULT} />
+            <Stack sx={item.alignTop ? { mt: 0.5 } : undefined}>
+              {item.icon}
+            </Stack>
+            <Typography
+              sx={{
+                ...contactTextSx,
+                lineHeight: item.alignTop ? '21px' : '26px',
+                ...(item.alignTop && { textAlign: 'left' }),
+              }}
+            >
+              {item.text}
+            </Typography>
           </Stack>
-          <Typography
-            sx={{
-              fontWeight: 500,
-              fontSize: '0.8125rem',
-              lineHeight: '21px',
-              color: PALETTE.BACKGROUND_DEFAULT,
-              textAlign: 'left',
-            }}
-          >
-            SB24-36, Sao Biển 24, KĐT Vinhomes Ocean Park, Xã Gia Lâm, TP Hà Nội, Việt Nam
-          </Typography>
-        </Stack>
+        ))}
       </Stack>
     </Stack>
   );
 };
 
 export default FooterCompanyInfo;
+

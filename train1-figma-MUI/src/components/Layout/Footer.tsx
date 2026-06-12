@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import type { ReactNode } from 'react';
 import { m } from 'framer-motion';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import YouTubeIcon from '@mui/icons-material/YouTube';
@@ -10,6 +11,43 @@ import FooterCompanyInfo from './FooterCompanyInfo';
 import { PALETTE, GRADIENT } from '../../theme';
 
 const MotionStack = m(Stack);
+
+/* ── Static Data ── */
+
+const MENU_ITEMS = ['Giới thiệu', 'Dự án', 'Liên hệ'] as const;
+
+interface SocialLink {
+  id: string;
+  icon: ReactNode;
+}
+
+const SOCIAL_LINKS: SocialLink[] = [
+  { id: 'fb', icon: <FacebookIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
+  { id: 'yt', icon: <YouTubeIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
+  { id: 'ig', icon: <InstagramIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
+  { id: 'tw', icon: <TwitterIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
+];
+
+const GOOGLE_MAPS_EMBED_URL =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.811559902302!2d105.93818311540199!3d20.985929986021655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a1a1f5928f09%3A0x633d2fc1a11db9d9!2zVmluaG9tZXMgT2NlYW4gUGFyayBHaWEgTMOibQ!5e0!3m2!1svi!2s!4v1689000000000!5m2!1svi!2s';
+
+/* ── Sub-components ── */
+
+const sectionTitleSx = {
+  fontWeight: 600,
+  fontSize: '1.125rem',
+  color: PALETTE.SURFACE_LIGHT,
+} as const;
+
+const socialIconSx = {
+  width: 36,
+  height: 36,
+  borderRadius: '50%',
+  backgroundColor: PALETTE.WHITE_ALPHA_10,
+  cursor: 'pointer',
+  alignItems: 'center',
+  justifyContent: 'center',
+} as const;
 
 const Footer = () => {
   return (
@@ -54,17 +92,11 @@ const Footer = () => {
             >
               {/* Menu */}
               <Stack spacing={2} sx={{ alignItems: 'flex-start' }}>
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: '1.125rem',
-                    color: PALETTE.SURFACE_LIGHT,
-                  }}
-                >
+                <Typography sx={sectionTitleSx}>
                   Danh mục
                 </Typography>
                 <Stack spacing={1} sx={{ alignItems: 'flex-start' }}>
-                  {['Giới thiệu', 'Dự án', 'Liên hệ'].map((item) => (
+                  {MENU_ITEMS.map((item) => (
                     <Typography
                       key={item}
                       sx={{
@@ -83,13 +115,7 @@ const Footer = () => {
 
               {/* Social */}
               <Stack spacing={2} sx={{ alignItems: 'flex-start' }}>
-                <Typography
-                  sx={{
-                    fontWeight: 600,
-                    fontSize: '1.125rem',
-                    color: PALETTE.SURFACE_LIGHT,
-                  }}
-                >
+                <Typography sx={sectionTitleSx}>
                   Kết nối
                 </Typography>
                 <Stack
@@ -97,23 +123,10 @@ const Footer = () => {
                   spacing={2}
                   sx={{ justifyContent: 'flex-start' }}
                 >
-                  {[
-                    { id: 'fb', icon: <FacebookIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
-                    { id: 'yt', icon: <YouTubeIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
-                    { id: 'ig', icon: <InstagramIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> },
-                    { id: 'tw', icon: <TwitterIcon sx={{ fontSize: 18, color: PALETTE.WHITE }} /> }
-                  ].map((item) => (
+                  {SOCIAL_LINKS.map((item) => (
                     <MotionStack
                       key={item.id}
-                      sx={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '50%',
-                        backgroundColor: PALETTE.WHITE_ALPHA_10,
-                        cursor: 'pointer',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                      }}
+                      sx={socialIconSx}
                       whileHover={{ backgroundColor: PALETTE.WHITE_ALPHA_30, y: -3 }}
                       whileTap={{ scale: 0.9 }}
                     >
@@ -128,7 +141,7 @@ const Footer = () => {
             <Box sx={{ width: { xs: '100%', md: 300 }, height: 200, borderRadius: 2, overflow: 'hidden' }}>
               <Box
                 component="iframe"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.811559902302!2d105.93818311540199!3d20.985929986021655!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a1a1f5928f09%3A0x633d2fc1a11db9d9!2zVmluaG9tZXMgT2NlYW4gUGFyayBHaWEgTMOibQ!5e0!3m2!1svi!2s!4v1689000000000!5m2!1svi!2s"
+                src={GOOGLE_MAPS_EMBED_URL}
                 width="100%"
                 height="100%"
                 sx={{ border: 0 }}

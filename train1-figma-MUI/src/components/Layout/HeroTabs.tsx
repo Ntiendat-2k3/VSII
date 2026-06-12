@@ -46,7 +46,7 @@ const HeroTabs = () => {
             py: { xs: 1.5, md: 2 },
             borderRadius: '32px',
             backgroundColor: tab.active
-              ? 'rgba(42, 82, 190, 0.2)'
+              ? PALETTE.PRIMARY_LIGHT
               : 'transparent',
             cursor: 'pointer',
             whiteSpace: 'nowrap',

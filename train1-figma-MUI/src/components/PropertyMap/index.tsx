@@ -85,7 +85,18 @@ const PropertyMap = () => {
       }
 
       if (exactUnit.x != null && exactUnit.y != null) {
-        dispatch(setFocusUnit({ x: exactUnit.x, y: exactUnit.y, zoomLevel: 3 }));
+        dispatch(
+          setFocusUnit({ 
+            x: exactUnit.x || 0, 
+            y: exactUnit.y || 0, 
+            xPixel: exactUnit.xPixel,
+            yPixel: exactUnit.yPixel,
+            zoomLevel: 3,
+            rotation: exactUnit.rotation,
+            pageWidth: exactUnit.pageWidth,
+            pageHeight: exactUnit.pageHeight
+          })
+        );
       }
 
       setSelectedId(String(exactUnit.id || exactUnit.unitCode));

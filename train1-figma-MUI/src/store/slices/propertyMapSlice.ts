@@ -13,7 +13,7 @@ interface PropertyMapState {
   filterTypes: FilterType[];
   searchKeyword: string;
   zoom: number;
-  focusCoords: { x: number; y: number } | null;
+  focusCoords: { x: number; y: number; xPixel?: number; yPixel?: number; rotation?: number; pageWidth?: number; pageHeight?: number } | null;
   isLoadingMap: boolean;
   isLoadingUnits: boolean;
   error: string | null;
@@ -116,10 +116,21 @@ const propertyMapSlice = createSlice({
     setSearchKeyword: (state, action: PayloadAction<string>) => {
       state.searchKeyword = action.payload;
     },
-    setFocusUnit: (state, action: PayloadAction<{ x: number; y: number; zoomLevel: number } | null>) => {
+    setFocusUnit: (
+      state,
+      action: PayloadAction<{ x: number; y: number; xPixel?: number; yPixel?: number; zoomLevel?: number; rotation?: number; pageWidth?: number; pageHeight?: number } | null>,
+    ) => {
       if (action.payload) {
-        state.focusCoords = { x: action.payload.x, y: action.payload.y };
-        state.zoom = action.payload.zoomLevel;
+        state.focusCoords = {
+          x: action.payload.x,
+          y: action.payload.y,
+          xPixel: action.payload.xPixel,
+          yPixel: action.payload.yPixel,
+          rotation: action.payload.rotation,
+          pageWidth: action.payload.pageWidth,
+          pageHeight: action.payload.pageHeight,
+        };
+        state.zoom = action.payload.zoomLevel ?? state.zoom;
       } else {
         state.focusCoords = null;
       }

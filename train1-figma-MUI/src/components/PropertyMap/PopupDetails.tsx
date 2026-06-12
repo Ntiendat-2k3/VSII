@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Maximize, Building } from 'lucide-react';
 import { PALETTE } from '../../theme';
-import { UNIT_TYPE_LABELS } from '../../features/property-map/types';
+import { UNIT_TYPE_LABELS } from '../../constants/map';
 
 interface PopupDetailsProps {
   area?: number;

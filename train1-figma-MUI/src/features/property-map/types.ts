@@ -35,6 +35,8 @@ export interface MapGetResponse {
   rotation?: number;
   totalTiles?: number;
   tileFormat?: string;
+  tileSize?: number;
+  overlap?: number;
   width?: number;
   height?: number;
 }

@@ -13,9 +13,8 @@ interface CanvasMarkerLayerProps {
   mapWidth: number;
   mapHeight: number;
   mapMaxZoom: number;
+  mapScale: number;
 }
-
-
 
 interface BBox {
   id: string;
@@ -32,29 +31,24 @@ const CanvasMarkerLayer = ({
   mapWidth,
   mapHeight,
   mapMaxZoom,
+  mapScale,
 }: CanvasMarkerLayerProps) => {
   const map = useMap();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const bboxesRef = useRef<BBox[]>([]);
   const hoveredIdRef = useRef<string | null>(null);
-  
+
   const mapData = useAppSelector((state) => state.propertyMap.mapData);
 
-
-  // Keep refs for callbacks so we don't need to re-bind map events when props change
-  const propsRef = useRef({ properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom });
+  const propsRef = useRef({ properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom, mapScale });
   useEffect(() => {
-    propsRef.current = { properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom };
-  }, [properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom]);
+    propsRef.current = { properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom, mapScale };
+  }, [properties, selectedId, onSelectProperty, mapData, mapWidth, mapHeight, mapMaxZoom, mapScale]);
 
   useEffect(() => {
     const canvas = L.DomUtil.create('canvas', 'leaflet-zoom-animated') as HTMLCanvasElement;
-    
-    // Position it such that it doesn't block DOM events, 
-    // but wait, if it's pointerEvents = none, how do we catch clicks?
-    // We catch clicks and mousemove on the map container instead!
     canvas.style.pointerEvents = 'none';
-    canvas.style.zIndex = '400'; // above tiles
+    canvas.style.zIndex = '400'; // Đặt lớp Canvas nằm trên đè lên TileLayer hình ảnh mặt bằng
 
     const pane = map.getPane('overlayPane');
     if (!pane) return;
@@ -63,14 +57,11 @@ const CanvasMarkerLayer = ({
 
     const redraw = () => {
       const size = map.getSize();
-      
-      // We position the canvas exactly at the current top-left of the overlay pane's view
       const topLeft = map.containerPointToLayerPoint([0, 0]);
       L.DomUtil.setPosition(canvas, topLeft);
 
       const dpr = window.devicePixelRatio || 1;
-      
-      // Only resize canvas if needed
+
       if (canvas.width !== size.x * dpr || canvas.height !== size.y * dpr) {
         canvas.width = size.x * dpr;
         canvas.height = size.y * dpr;
@@ -85,13 +76,9 @@ const CanvasMarkerLayer = ({
       ctx.save();
       ctx.scale(dpr, dpr);
 
-      const { properties: currentProps, selectedId: currentSelected, mapData: currentMapData, mapWidth: currentMapWidth, mapHeight: currentMapHeight, mapMaxZoom: currentMaxZoom } = propsRef.current;
+      const { properties: currentProps, selectedId: currentSelected, mapData: currentMapData } = propsRef.current;
       const bboxes: BBox[] = [];
 
-      // Render markers
-      // To optimize, we could filter by bounds, but CRS.Simple maps are usually small enough
-      
-      // Draw unselected first, then selected on top
       const unselected = currentProps.filter(p => String(p.id || p.unitCode) !== currentSelected);
       const selected = currentProps.find(p => String(p.id || p.unitCode) === currentSelected);
 
@@ -99,33 +86,36 @@ const CanvasMarkerLayer = ({
         const propertyId = String(property.id || property.unitCode);
         const latLng = currentMapData
           ? convertPdfCoorsToLatLng(
-              property.x || 0,
-              property.y || 0,
-              property.pageWidth,
-              property.pageHeight,
-              currentMapWidth,
-              currentMapHeight,
-              currentMapData.pageWidth,
-              currentMapData.pageHeight,
-              currentMaxZoom
-            )
-          : convertPercentToLatLng(property.x || 0, property.y || 0);
-        
-        // Coordinate relative to map container
+            property.x || 0,
+            property.y || 0,
+            currentMapData.dpi,
+            property.xPixel,
+            property.yPixel,
+            propsRef.current.mapScale
+          )
+          : convertPercentToLatLng(property.x || 0, property.y || 0, propsRef.current.mapWidth, propsRef.current.mapHeight, propsRef.current.mapScale);
+
+        // Quy đổi tọa độ LatLng sang tọa độ Pixel thực tế trên Frame hiển thị của Container Web
         const layerPoint = map.latLngToLayerPoint(latLng as L.LatLngTuple);
         const x = layerPoint.x - topLeft.x;
         const y = layerPoint.y - topLeft.y;
 
+        if (import.meta.env.DEV && property.unitCode === 'VK1-18') {
+          console.log(`[DEBUG VK1-18] x=${property.x}, y=${property.y}, xPixel=${property.xPixel}, yPixel=${property.yPixel}, px=${x}, py=${y}`);
+        }
+
         const isHovered = propertyId === hoveredIdRef.current;
-        // The renderer handles drawing the entire complex card
+
+        // Vẽ khối card căn hộ (Cần đảm bảo hàm drawPropertyMarker vẽ lấy trục (x,y) làm gốc chân/tâm của căn hộ)
         const height = drawPropertyMarker(ctx, property, x, y, isSelected || isHovered);
-        
+
+        // Lưu trữ vùng bấm (Bounding Box) phục vụ cho Hit Testing (Click/Hover chuột)
         bboxes.push({
-            id: propertyId,
-            left: x - MARKER_WIDTH / 2,
-            top: y - height,
-            right: x + MARKER_WIDTH / 2,
-            bottom: y
+          id: propertyId,
+          left: x - MARKER_WIDTH / 2,
+          top: y - height,
+          right: x + MARKER_WIDTH / 2,
+          bottom: y
         });
       };
 
@@ -138,7 +128,6 @@ const CanvasMarkerLayer = ({
       ctx.restore();
     };
 
-    // Frame request id for requestAnimationFrame
     let rAF: number;
     const requestRedraw = () => {
       cancelAnimationFrame(rAF);
@@ -148,43 +137,42 @@ const CanvasMarkerLayer = ({
     map.on('viewreset move resize zoom', requestRedraw);
     requestRedraw();
 
-    // Hit testing logic
+    // Xử lý sự kiện Hover chuột di chuyển trên bản đồ phẳng
     const handleMouseMove = (e: L.LeafletMouseEvent) => {
-        const { x, y } = e.containerPoint;
-        let foundId: string | null = null;
-        // Search backwards to match topmost drawn marker (selected usually on top, or last drawn)
-        for (let i = bboxesRef.current.length - 1; i >= 0; i--) {
-            const bbox = bboxesRef.current[i];
-            if (x >= bbox.left && x <= bbox.right && y >= bbox.top && y <= bbox.bottom) {
-                foundId = bbox.id;
-                break;
-            }
+      const { x, y } = e.containerPoint;
+      let foundId: string | null = null;
+      for (let i = bboxesRef.current.length - 1; i >= 0; i--) {
+        const bbox = bboxesRef.current[i];
+        if (x >= bbox.left && x <= bbox.right && y >= bbox.top && y <= bbox.bottom) {
+          foundId = bbox.id;
+          break;
         }
-        
-        if (hoveredIdRef.current !== foundId) {
-            hoveredIdRef.current = foundId;
-            map.getContainer().style.cursor = foundId ? 'pointer' : '';
-            requestRedraw();
-        }
+      }
+
+      if (hoveredIdRef.current !== foundId) {
+        hoveredIdRef.current = foundId;
+        map.getContainer().style.cursor = foundId ? 'pointer' : '';
+        requestRedraw();
+      }
     };
 
+    // Xử lý sự kiện Click chuột chọn căn trên bản đồ phẳng
     const handleClick = (e: L.LeafletMouseEvent) => {
-        const { x, y } = e.containerPoint;
-        let foundId: string | null = null;
-        for (let i = bboxesRef.current.length - 1; i >= 0; i--) {
-            const bbox = bboxesRef.current[i];
-            if (x >= bbox.left && x <= bbox.right && y >= bbox.top && y <= bbox.bottom) {
-                foundId = bbox.id;
-                break;
-            }
+      const { x, y } = e.containerPoint;
+      let foundId: string | null = null;
+      for (let i = bboxesRef.current.length - 1; i >= 0; i--) {
+        const bbox = bboxesRef.current[i];
+        if (x >= bbox.left && x <= bbox.right && y >= bbox.top && y <= bbox.bottom) {
+          foundId = bbox.id;
+          break;
         }
-        
-        if (foundId) {
-            // we click on a marker
-            const { selectedId, onSelectProperty } = propsRef.current;
-            onSelectProperty(foundId === selectedId ? null : foundId);
-            L.DomEvent.stopPropagation(e);
-        }
+      }
+
+      if (foundId) {
+        const { selectedId, onSelectProperty } = propsRef.current;
+        onSelectProperty(foundId === selectedId ? null : foundId);
+        L.DomEvent.stopPropagation(e);
+      }
     };
 
     map.on('mousemove', handleMouseMove);
@@ -201,13 +189,11 @@ const CanvasMarkerLayer = ({
     };
   }, [map]);
 
-  // Redraw when properties or selection changes
   useEffect(() => {
-    // Dispatch a custom or simply trigger move to redraw
     map.fire('move');
   }, [properties, selectedId, map]);
 
-  return null; // This component renders nothing via React DOM
+  return null;
 };
 
 export default CanvasMarkerLayer;

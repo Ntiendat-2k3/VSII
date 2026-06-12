@@ -5,18 +5,28 @@ import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../../utils/map
 import type { MapGetResponse } from '../../features/property-map/types';
 
 interface FlyToHandlerProps {
-  target: { x: number; y: number } | null;
+  target: {
+    x: number;
+    y: number;
+    xPixel?: number;
+    yPixel?: number;
+    rotation?: number;
+    pageWidth?: number;
+    pageHeight?: number;
+  } | null;
   maxZoom: number;
   mapData: MapGetResponse | null;
+  mapScale?: number;
 }
 
-const FlyToHandler = ({ target, maxZoom, mapData }: FlyToHandlerProps) => {
+const FlyToHandler = ({ target, maxZoom, mapData, mapScale = 1 }: FlyToHandlerProps) => {
   const map = useMap();
   const prevTargetRef = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     if (!target) return;
-    // Avoid re-flying to the same target
+
+    // Tránh việc lặp lại hiệu ứng flyTo khi dữ liệu target không đổi
     if (
       prevTargetRef.current &&
       prevTargetRef.current.x === target.x &&
@@ -24,21 +34,23 @@ const FlyToHandler = ({ target, maxZoom, mapData }: FlyToHandlerProps) => {
     ) {
       return;
     }
-    prevTargetRef.current = target;
+    prevTargetRef.current = { x: target.x, y: target.y };
 
-    // Convert coordinates using the correct helper
-    // We recalculate map dimensions here or just pass mapData and let the helper handle it?
-    // Wait, FlyToHandler doesn't receive width/height. It just receives mapData.
-    // Let's recalculate the map dimensions exactly as MapCanvas does.
-    const w = mapData ? mapData.width || Math.round((mapData.pageWidth || 0) * ((mapData.dpi || 72) / 72)) || 2784 : 2784;
-    const h = mapData ? mapData.height || Math.round((mapData.pageHeight || 0) * ((mapData.dpi || 72) / 72)) || 1546 : 1546;
-
+    // Thực hiện chuyển đổi tọa độ điểm Focus
     const latLng = mapData
-      ? convertPdfCoorsToLatLng(target.x, target.y, undefined, undefined, w, h, mapData.pageWidth, mapData.pageHeight, maxZoom)
-      : convertPercentToLatLng(target.x, target.y);
+      ? convertPdfCoorsToLatLng(
+        target.x,
+        target.y,
+        mapData.dpi,
+        target.xPixel,
+        target.yPixel,
+        mapScale
+      )
+      : convertPercentToLatLng(target.x, target.y, undefined, undefined, mapScale);
 
+    // Đi thẳng đến mức maxZoom (mức nét nhất hiển thị rõ từng căn hộ)
     map.flyTo(latLng as L.LatLngTuple, maxZoom, { duration: 1.2 });
-  }, [target, map, maxZoom, mapData]);
+  }, [target, map, maxZoom, mapData, mapScale]);
 
   return null;
 };

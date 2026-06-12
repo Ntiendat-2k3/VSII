@@ -116,15 +116,33 @@ export const mapService = {
       const response = await apiClient.post(API_ENDPOINTS.MAP_SEARCH, payload);
       
       const rawData = (response.data || []) as Array<Record<string, unknown>>;
-      return rawData.map((item) => ({
+      const result = rawData.map((item) => ({
         ...item,
         id: (item.unitId ?? item.id) as number | undefined,
         unitCode: (item.code ?? item.unitCode) as string,
       })) as unknown as UnitItem[];
+      if (import.meta.env.DEV) {
+        console.log('Data trả về của tất cả các căn (API):', result.map(u => ({
+          unitCode: u.unitCode,
+          rotation: u.rotation,
+          pageWidth: u.pageWidth,
+          pageHeight: u.pageHeight,
+          x: u.x,
+          y: u.y,
+          dpi: u.dpi,
+          xPixel: u.xPixel,
+          yPixel: u.yPixel
+        })));
+      }
+      return result;
     } catch {
-      return keyword 
+      const result = keyword 
         ? MOCK_UNITS.filter(u => u.unitCode.toLowerCase().includes(keyword.toLowerCase()))
         : MOCK_UNITS;
+      if (import.meta.env.DEV) {
+        console.log('Data trả về của tất cả các căn (Mock):', result);
+      }
+      return result;
     }
   },
 

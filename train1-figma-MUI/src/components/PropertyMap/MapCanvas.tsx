@@ -5,10 +5,11 @@ import Drawer from '@mui/material/Drawer';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme, styled } from '@mui/material/styles';
 import GlobalStyles from '@mui/material/GlobalStyles';
-import { MapContainer, TileLayer, Popup } from 'react-leaflet';
+import { MapContainer, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
+import DziTileLayer from './DziTileLayer';
 import CanvasMarkerLayer from './CanvasMarkerLayer';
 import PropertyPopup from './PropertyPopup';
 import FlyToHandler from './FlyToHandler';
@@ -44,14 +45,8 @@ const MapCanvas = ({
 }: MapCanvasProps) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-  // Wait, filtering is done at Redux level now in matBangSlice, 
-  // but if we pass filteredProperties from Redux, we don't need to filter here again.
-  // Actually, we'll keep it simple: index.tsx passes down filtered properties directly, 
-  // so we can just use `properties` instead of `filteredProperties`.
   const filteredProperties = properties;
 
-  // Sort: hot first, then alphabetical by code
   const sortedProperties = useMemo(() => {
     const sorted = [...filteredProperties];
     sorted.sort((a, b) => {
@@ -61,10 +56,8 @@ const MapCanvas = ({
     return sorted;
   }, [filteredProperties]);
 
-  // Pagination
   const [rawPage, setRawPage] = useState(0);
   const totalPages = Math.max(1, Math.ceil(sortedProperties.length / ITEMS_PER_PAGE));
-  // Clamp page to valid range whenever data changes
   const currentPage = Math.min(rawPage, totalPages - 1);
 
   const paginatedProperties = useMemo(() => {
@@ -72,7 +65,6 @@ const MapCanvas = ({
     return sortedProperties.slice(start, start + ITEMS_PER_PAGE);
   }, [sortedProperties, currentPage]);
 
-  // Pagination info for display
   const rangeStart = sortedProperties.length === 0 ? 0 : currentPage * ITEMS_PER_PAGE + 1;
   const rangeEnd = Math.min((currentPage + 1) * ITEMS_PER_PAGE, sortedProperties.length);
   const total = sortedProperties.length;
@@ -85,14 +77,14 @@ const MapCanvas = ({
     setRawPage((prev) => Math.min(totalPages - 1, prev + 1));
   }, [totalPages]);
 
-  const selectedProperty = properties.find((p) => String(p.id || p.unitCode) === selectedId) ?? null;
-
-  const handleMarkerClick = useCallback(
-    (id: string | null) => {
-      onSelectProperty(id);
-    },
-    [onSelectProperty],
+  const selectedProperty = useMemo(() => 
+    properties.find((p) => String(p.id || p.unitCode) === selectedId) ?? null,
+    [properties, selectedId]
   );
+
+  const handleMarkerClick = useCallback((id: string | null) => {
+    onSelectProperty(id);
+  }, [onSelectProperty]);
 
   const handleClickAway = useCallback(() => {
     onSelectProperty(null);
@@ -102,38 +94,89 @@ const MapCanvas = ({
     onSelectProperty(null);
   }, [onSelectProperty]);
 
-  // Select mapData from Redux to configure bounds and tile layer
   const mapData = useAppSelector((state) => state.propertyMap.mapData);
 
-  const { width, height, maxZoom } = useMemo(() => {
+  /**
+   * Tính toán kích thước ảnh gốc (pixel) và DZI maxLevel.
+   * DZI maxLevel = ceil(log2(max(width, height))).
+   */
+  const { imgWidth, imgHeight, dziMaxLevel, tileSize } = useMemo(() => {
     if (!mapData) {
-      return { width: IMAGE_WIDTH, height: IMAGE_HEIGHT, maxZoom: 4 };
+      return { imgWidth: IMAGE_WIDTH, imgHeight: IMAGE_HEIGHT, dziMaxLevel: 4, tileSize: 256 };
     }
-    const w = mapData.width || Math.round((mapData.pageWidth || 0) * ((mapData.dpi || 72) / 72));
-    const h = mapData.height || Math.round((mapData.pageHeight || 0) * ((mapData.dpi || 72) / 72));
-    const z = mapData.totalTiles || Math.ceil(Math.log2(Math.max(w, h || 1)));
-    return { width: w, height: h, maxZoom: z };
+
+    // DZI tiles được sinh từ ảnh gốc → kích thước = pageWidth × dpiScale, pageHeight × dpiScale
+    // Rotation là metadata hiển thị, KHÔNG ảnh hưởng đến kích thước DZI tiles
+    const dpiScale = (mapData.dpi || 72) / 72;
+
+    const fallbackW = Math.round((mapData.pageWidth || 0) * dpiScale);
+    const fallbackH = Math.round((mapData.pageHeight || 0) * dpiScale);
+
+    const w = mapData.width || fallbackW || IMAGE_WIDTH;
+    const h = mapData.height || fallbackH || IMAGE_HEIGHT;
+    const ts = mapData.tileSize || 256;
+    const maxLvl = mapData.totalTiles ?? Math.ceil(Math.log2(Math.max(w, h, 1)));
+
+    return { imgWidth: w, imgHeight: h, dziMaxLevel: maxLvl, tileSize: ts };
   }, [mapData]);
 
+  /**
+   * Approach: Leaflet zoom = DZI level trực tiếp.
+   *
+   * CRS.Simple ở zoom z: 1 map unit = 2^z pixels trên màn hình.
+   * TileLayer ở zoom z: mỗi tile 256px cover 256/2^z map units.
+   *
+   * DZI ở level L: ảnh = imgWidth/2^(maxLevel-L) × imgHeight/2^(maxLevel-L) pixels,
+   * chia thành tiles 256×256.
+   * Tile (col, row) cover pixel [col*256..(col+1)*256] × [row*256..(row+1)*256].
+   *
+   * Để Leaflet zoom L map đúng tile DZI level L:
+   * - Bounds cần scaled sao cho ở zoom = maxLevel, 1 tile = 256 map units (đúng 256px ảnh gốc).
+   * - → Bounds = imgPixels / 2^maxLevel * (2^maxLevel / 256) ... 
+   *
+   * Cách đơn giản nhất: Bounds = [0, imgWidth/tileSize] × [0, imgHeight/tileSize]
+   * tức mỗi map unit = 1 tile width/height.
+   * Ở zoom z, mỗi tile = tileSize px = 1/(2^z) map units... không đúng.
+   *
+   * Cách chính xác: set bounds = [0..W] × [0..H] pixel gốc,
+   * rồi override getTileUrl để convert (x, y, z) → DZI (col, row, level).
+   */
   const bounds = useMemo(() => {
-    const scaleFactor = Math.pow(2, maxZoom);
     return [
-      [-height / scaleFactor, 0],
-      [0, width / scaleFactor],
+      [-imgHeight, 0],
+      [0, imgWidth],
     ] as L.LatLngBoundsExpression;
-  }, [width, height, maxZoom]);
+  }, [imgWidth, imgHeight]);
 
   const tileUrlTemplate = useMemo(() => {
-    if (!mapData || !mapData.dziKey) return '/tiles/{z}/{y}/{x}.png';
+    if (!mapData || !mapData.dziKey) return '';
     const baseUrl = mapData.dziKey.replace(/\.dzi$/, '');
     const format = mapData.tileFormat || 'jpg';
     return `${baseUrl}_files/{z}/{x}_{y}.${format}`;
   }, [mapData]);
 
+  /**
+   * Zoom config cho CRS.Simple với bounds pixel gốc:
+   * - Zoom 0: 1 map unit = 1 screen pixel → ảnh 70216px = 70216 screen px (quá to)
+   * - Cần zoom âm để thu nhỏ: zoom = -log2(maxDim/viewportPx)
+   * - fitZoom = zoom ban đầu vừa viewport
+   * - maxZoom = 0 (full resolution 1:1)
+   *
+   * Leaflet TileLayer sẽ request tile {z} = leafletZoom + zoomOffset.
+   * zoomOffset = dziMaxLevel để: DZI level = leafletZoom + dziMaxLevel.
+   * VD: leafletZoom = -7 → DZI level = 10 ✓
+   */
+  const minZoom = useMemo(() => {
+    const targetViewport = 700;
+    const maxDim = Math.max(imgWidth, imgHeight);
+    return -Math.ceil(Math.log2(maxDim / targetViewport));
+  }, [imgWidth, imgHeight]);
+
+  const fitZoom = minZoom;
+
   const center = useMemo(() => {
-    const scaleFactor = Math.pow(2, maxZoom);
-    return [-height / (2 * scaleFactor), width / (2 * scaleFactor)] as L.LatLngTuple;
-  }, [width, height, maxZoom]);
+    return [-imgHeight / 2, imgWidth / 2] as L.LatLngTuple;
+  }, [imgWidth, imgHeight]);
 
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
@@ -148,7 +191,6 @@ const MapCanvas = ({
           backgroundColor: PALETTE.GREY_LIGHT,
           position: 'relative',
           touchAction: 'none',
-          // Ensure Leaflet map takes full height and width
           '& .leaflet-container': {
             width: '100%',
             height: '100%',
@@ -164,88 +206,73 @@ const MapCanvas = ({
               boxShadow: 'none',
               padding: 0,
             },
-            '.custom-leaflet-popup .leaflet-popup-content': {
-              margin: 0,
-            },
-            '.custom-leaflet-popup .leaflet-popup-content p': {
-              margin: 0,
-            },
-            '.custom-leaflet-popup .leaflet-popup-tip-container': {
-              display: 'none', // We render our own arrow inside PropertyPopup
-            },
-            '.custom-leaflet-popup a.leaflet-popup-close-button': {
-              display: 'none', // Hide default close button
-            },
-            '.leaflet-container': {
-              touchAction: 'none !important',
-            },
+            '.custom-leaflet-popup .leaflet-popup-content': { margin: 0 },
+            '.custom-leaflet-popup .leaflet-popup-content p': { margin: 0 },
+            '.custom-leaflet-popup .leaflet-popup-tip-container': { display: 'none' },
+            '.custom-leaflet-popup a.leaflet-popup-close-button': { display: 'none' },
+            '.leaflet-container': { touchAction: 'none !important' },
           }}
         />
 
         <StyledMapContainer
-          key={`${projectId}-${width}-${height}`}
+          key={`${projectId}-${imgWidth}-${imgHeight}`}
           crs={L.CRS.Simple}
           bounds={bounds}
           maxBounds={bounds}
-          minZoom={Math.max(0, maxZoom - 7)}
-          maxZoom={maxZoom}
-          zoom={Math.max(0, maxZoom - 5)}
+          minZoom={minZoom}
+          maxZoom={0}
+          zoom={fitZoom}
           center={center}
           zoomControl={true}
           attributionControl={false}
           scrollWheelZoom={true}
         >
-          <TileLayer
-            url={tileUrlTemplate}
-            noWrap={true}
-            bounds={bounds}
-            updateWhenZooming={false}
-            updateWhenIdle={true}
-            keepBuffer={2}
-          />
+          {tileUrlTemplate && (
+            <DziTileLayer
+              urlTemplate={tileUrlTemplate}
+              dziMaxLevel={dziMaxLevel}
+              tileSize={tileSize}
+              bounds={bounds}
+            />
+          )}
 
           <CanvasMarkerLayer
             properties={paginatedProperties}
             selectedId={selectedId}
             onSelectProperty={handleMarkerClick}
-            mapWidth={width}
-            mapHeight={height}
-            mapMaxZoom={maxZoom}
+            mapWidth={imgWidth}
+            mapHeight={imgHeight}
+            mapMaxZoom={dziMaxLevel}
+            mapScale={1}
           />
 
-          {/* FlyTo handler for search-triggered focus */}
-          <FlyToHandler target={focusTarget} maxZoom={maxZoom} mapData={mapData} />
+          <FlyToHandler target={focusTarget} maxZoom={0} mapData={mapData} mapScale={1} />
 
-          {/* Render Popup inside Leaflet if not on Mobile */}
           {!isMobile && selectedProperty && (
             <Popup
               position={
                 mapData
                   ? convertPdfCoorsToLatLng(
-                      selectedProperty.x || 0,
-                      selectedProperty.y || 0,
-                      selectedProperty.pageWidth,
-                      selectedProperty.pageHeight,
-                      width,
-                      height,
-                      mapData.pageWidth,
-                      mapData.pageHeight,
-                      maxZoom
-                    )
-                  : convertPercentToLatLng(selectedProperty.x || 0, selectedProperty.y || 0)
+                    selectedProperty.x || 0,
+                    selectedProperty.y || 0,
+                    mapData.dpi,
+                    selectedProperty.xPixel,
+                    selectedProperty.yPixel,
+                    1
+                  )
+                  : convertPercentToLatLng(selectedProperty.x || 0, selectedProperty.y || 0, imgWidth, imgHeight)
               }
               className="custom-leaflet-popup"
               autoPanPadding={[50, 50]}
               closeButton={false}
               closeOnClick={false}
-              offset={[0, -25]} // Offset so it doesn't overlap the marker
+              offset={[0, -25]}
             >
               <PropertyPopup property={selectedProperty} projectId={projectId} />
             </Popup>
           )}
         </StyledMapContainer>
 
-        {/* Pagination Overlay */}
         <MapPagination
           currentPage={currentPage}
           totalPages={totalPages}
@@ -256,7 +283,6 @@ const MapCanvas = ({
           onNextPage={handleNextPage}
         />
 
-        {/* Mobile Drawer Popup */}
         {isMobile && selectedProperty && (
           <Drawer
             anchor="bottom"

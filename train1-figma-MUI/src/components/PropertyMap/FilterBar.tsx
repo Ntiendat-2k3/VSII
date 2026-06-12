@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import AppCheckbox from '../ui/AppCheckbox';
 import { Flame } from 'lucide-react';
-import { FilterType, UNIT_TYPE_LABELS } from '../../features/property-map/types';
+import { FilterType, UNIT_TYPE_LABELS } from '../../constants/map';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { setFilters } from '../../store/slices/propertyMapSlice';
 import { PALETTE, BORDER_RADIUS } from '../../theme';
