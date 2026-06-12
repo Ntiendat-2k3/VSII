@@ -1,12 +1,6 @@
 import type { MapType, UnitStatus, InquiryStatus } from '../../constants/map';
-import {
-  FilterType,
-  INQUIRY_STATUS_LABELS,
-  UNIT_TYPE_LABELS,
-} from '../../constants/map';
 
 export type { MapType };
-export { INQUIRY_STATUS_LABELS, UNIT_TYPE_LABELS, FilterType };
 
 /* ===== Unit Types ===== */
 
