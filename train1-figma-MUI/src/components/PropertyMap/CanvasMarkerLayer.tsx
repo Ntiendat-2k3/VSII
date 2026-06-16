@@ -152,6 +152,14 @@ const CanvasMarkerLayer = ({
       if (hoveredIdRef.current !== foundId) {
         hoveredIdRef.current = foundId;
         map.getContainer().style.cursor = foundId ? 'pointer' : '';
+        
+        if (foundId) {
+          const { selectedId, onSelectProperty } = propsRef.current;
+          if (foundId !== selectedId) {
+            onSelectProperty(foundId);
+          }
+        }
+        
         requestRedraw();
       }
     };

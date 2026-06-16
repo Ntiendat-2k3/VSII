@@ -1,8 +1,9 @@
 import type { UnitItem } from '../features/property-map/types';
 import { PALETTE } from '../theme';
+import { formatShortPrice } from './formatters';
 
 // Fixed dimensions for the marker card
-export const MARKER_WIDTH = 90;
+export const MARKER_WIDTH = 130;
 export const MARKER_ARROW_HEIGHT = 6;
 export const MARKER_ARROW_WIDTH = 12;
 export const MARKER_BORDER_RADIUS = 6;
@@ -264,17 +265,22 @@ function renderMarkerToContext(
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
   
+  // Create label: Code - Price (e.g. VU6-34 - 15,1T)
+  const priceStr = formatShortPrice(property.basePrice);
+  const label = priceStr ? `${code} - ${priceStr}` : code;
+
   if (style.isHotStyle) {
     ctx.save();
     // Move slightly left and up to align flame with text
-    ctx.translate(MARKER_WIDTH / 2 - 24, contentHeight / 2 - 10 + 2);
+    const flameX = MARKER_WIDTH / 2 - (ctx.measureText(label).width / 2) - 14;
+    ctx.translate(flameX, contentHeight / 2 - 10 + 2);
     ctx.scale(0.7, 0.7);
     ctx.fillStyle = style.text;
     ctx.fill(PATHS.flame);
     ctx.restore();
-    ctx.fillText(code, MARKER_WIDTH / 2 + 8, contentHeight / 2 + 1);
+    ctx.fillText(label, MARKER_WIDTH / 2 + 8, contentHeight / 2 + 1);
   } else {
-    ctx.fillText(code, MARKER_WIDTH / 2, contentHeight / 2 + 1);
+    ctx.fillText(label, MARKER_WIDTH / 2, contentHeight / 2 + 1);
   }
 
   ctx.restore();

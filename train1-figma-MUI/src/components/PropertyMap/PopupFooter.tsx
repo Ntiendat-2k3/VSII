@@ -71,28 +71,26 @@ const PopupFooter = ({
             {listedPrice != null ? formatPrice(listedPrice) : 'Liên hệ'}
           </Typography>
         </Stack>
-        {loanPrice != null && (
-          <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: '0.8125rem',
-                color: PALETTE.TEXT_SECONDARY,
-              }}
-            >
-              Giá vay:
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 700,
-                fontSize: '0.8125rem',
-                color: PALETTE.PRIMARY,
-              }}
-            >
-              {formatPrice(loanPrice)}
-            </Typography>
-          </Stack>
-        )}
+        <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <Typography
+            sx={{
+              fontWeight: 500,
+              fontSize: '0.8125rem',
+              color: PALETTE.TEXT_SECONDARY,
+            }}
+          >
+            Giá vay:
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: 700,
+              fontSize: '0.8125rem',
+              color: PALETTE.PRIMARY,
+            }}
+          >
+            {loanPrice != null ? formatPrice(loanPrice) : 'Đang cập nhật'}
+          </Typography>
+        </Stack>
       </Stack>
     );
   }

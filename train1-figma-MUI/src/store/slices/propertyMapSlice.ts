@@ -12,6 +12,7 @@ interface PropertyMapState {
   filteredUnits: UnitItem[];
   filterTypes: FilterType[];
   searchKeyword: string;
+  searchedUnit: UnitItem | null;
   zoom: number;
   focusCoords: { x: number; y: number; xPixel?: number; yPixel?: number; rotation?: number; pageWidth?: number; pageHeight?: number } | null;
   isLoadingMap: boolean;
@@ -34,6 +35,7 @@ const initialState: PropertyMapState = {
   filteredUnits: [],
   filterTypes: [...ALL_FILTERS],
   searchKeyword: '',
+  searchedUnit: null,
   zoom: 1,
   focusCoords: null,
   isLoadingMap: false,
@@ -116,6 +118,12 @@ const propertyMapSlice = createSlice({
     setSearchKeyword: (state, action: PayloadAction<string>) => {
       state.searchKeyword = action.payload;
     },
+    forceShowUnit: (state, action: PayloadAction<UnitItem>) => {
+      state.searchedUnit = action.payload;
+    },
+    clearSearchedUnit: (state) => {
+      state.searchedUnit = null;
+    },
     setFocusUnit: (
       state,
       action: PayloadAction<{ x: number; y: number; xPixel?: number; yPixel?: number; zoomLevel?: number; rotation?: number; pageWidth?: number; pageHeight?: number } | null>,
@@ -137,6 +145,7 @@ const propertyMapSlice = createSlice({
     },
     resetMap: (state) => {
       state.searchKeyword = '';
+      state.searchedUnit = null;
       state.focusCoords = null;
       state.filteredUnits = applyFilters(state.units, state.filterTypes);
     },
@@ -171,5 +180,5 @@ const propertyMapSlice = createSlice({
   },
 });
 
-export const { setFilters, setSearchKeyword, setFocusUnit, resetMap } = propertyMapSlice.actions;
+export const { setFilters, setSearchKeyword, forceShowUnit, clearSearchedUnit, setFocusUnit, resetMap } = propertyMapSlice.actions;
 export default propertyMapSlice.reducer;

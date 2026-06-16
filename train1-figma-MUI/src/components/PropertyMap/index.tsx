@@ -11,7 +11,7 @@ import { apiClient } from '../../services/apiClient';
 import { showToast } from '../../utils/toast';
 import { PALETTE } from '../../theme';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { fetchUnits, fetchMapData, setFocusUnit } from '../../store/slices/propertyMapSlice';
+import { fetchUnits, fetchMapData, setFocusUnit, forceShowUnit, clearSearchedUnit } from '../../store/slices/propertyMapSlice';
 import { API_ENDPOINTS } from '../../services/endpoints';
 import { CONFIG } from '../../constants/config';
 
@@ -72,7 +72,10 @@ const PropertyMap = () => {
 
   const handleSelectProperty = useCallback((id: string | null) => {
     setSelectedId(id);
-  }, []);
+    if (!id) {
+      dispatch(clearSearchedUnit());
+    }
+  }, [dispatch]);
 
   const handleSelectUnit = useCallback(async (unitCode: string) => {
     try {
@@ -99,11 +102,18 @@ const PropertyMap = () => {
         );
       }
 
+      if (exactUnit.statusCode === 'AVAILABLE') {
+        const isCurrentlyFiltered = !filteredUnits.find(u => String(u.unitCode) === unitCode);
+        if (isCurrentlyFiltered) {
+          dispatch(forceShowUnit(exactUnit));
+        }
+      }
+
       setSelectedId(String(exactUnit.id || exactUnit.unitCode));
     } catch {
       showToast.error('Lỗi khi tìm kiếm căn. Vui lòng thử lại.');
     }
-  }, [dispatch]);
+  }, [dispatch, filteredUnits]);
 
   return (
     <Stack spacing={{ xs: 2, md: 3 }} sx={{ width: '100%' }}>

@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Drawer from '@mui/material/Drawer';
@@ -10,17 +10,13 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import DziTileLayer from './DziTileLayer';
-import CanvasMarkerLayer from './CanvasMarkerLayer';
+import LodMarkerBridge from './LodMarkerBridge';
 import PropertyPopup from './PropertyPopup';
 import FlyToHandler from './FlyToHandler';
-import MapPagination from './MapPagination';
 import type { UnitItem } from '../../features/property-map/types';
 import { PALETTE } from '../../theme';
 import { convertPercentToLatLng, convertPdfCoorsToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../../utils/mapUtils';
 import { useAppSelector } from '../../store';
-import { CONFIG } from '../../constants/config';
-
-const ITEMS_PER_PAGE = CONFIG.PAGE_SIZE;
 
 interface MapCanvasProps {
   properties: UnitItem[];
@@ -55,27 +51,6 @@ const MapCanvas = ({
     });
     return sorted;
   }, [filteredProperties]);
-
-  const [rawPage, setRawPage] = useState(0);
-  const totalPages = Math.max(1, Math.ceil(sortedProperties.length / ITEMS_PER_PAGE));
-  const currentPage = Math.min(rawPage, totalPages - 1);
-
-  const paginatedProperties = useMemo(() => {
-    const start = currentPage * ITEMS_PER_PAGE;
-    return sortedProperties.slice(start, start + ITEMS_PER_PAGE);
-  }, [sortedProperties, currentPage]);
-
-  const rangeStart = sortedProperties.length === 0 ? 0 : currentPage * ITEMS_PER_PAGE + 1;
-  const rangeEnd = Math.min((currentPage + 1) * ITEMS_PER_PAGE, sortedProperties.length);
-  const total = sortedProperties.length;
-
-  const handlePrevPage = useCallback(() => {
-    setRawPage((prev) => Math.max(0, prev - 1));
-  }, []);
-
-  const handleNextPage = useCallback(() => {
-    setRawPage((prev) => Math.min(totalPages - 1, prev + 1));
-  }, [totalPages]);
 
   const selectedProperty = useMemo(() => 
     properties.find((p) => String(p.id || p.unitCode) === selectedId) ?? null,
@@ -236,8 +211,8 @@ const MapCanvas = ({
             />
           )}
 
-          <CanvasMarkerLayer
-            properties={paginatedProperties}
+          <LodMarkerBridge
+            allProperties={sortedProperties}
             selectedId={selectedId}
             onSelectProperty={handleMarkerClick}
             mapWidth={imgWidth}
@@ -273,15 +248,6 @@ const MapCanvas = ({
           )}
         </StyledMapContainer>
 
-        <MapPagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          rangeStart={rangeStart}
-          rangeEnd={rangeEnd}
-          total={total}
-          onPrevPage={handlePrevPage}
-          onNextPage={handleNextPage}
-        />
 
         {isMobile && selectedProperty && (
           <Drawer
