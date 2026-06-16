@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../../utils/mapUtils';
-import type { MapGetResponse } from '../../features/property-map/types';
+import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../../../../utils/mapUtils';
+import type { MapGetResponse } from '../../types';
 
 interface FlyToHandlerProps {
   target: {

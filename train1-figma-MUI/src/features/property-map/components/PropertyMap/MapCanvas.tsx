@@ -13,10 +13,10 @@ import DziTileLayer from './DziTileLayer';
 import LodMarkerBridge from './LodMarkerBridge';
 import PropertyPopup from './PropertyPopup';
 import FlyToHandler from './FlyToHandler';
-import type { UnitItem } from '../../features/property-map/types';
-import { PALETTE } from '../../theme';
-import { convertPercentToLatLng, convertPdfCoorsToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../../utils/mapUtils';
-import { useAppSelector } from '../../store';
+import type { UnitItem } from '../../types';
+import { PALETTE } from '../../../../theme';
+import { convertPercentToLatLng, convertPdfCoorsToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../../../../utils/mapUtils';
+import { useAppSelector } from '../../../../store';
 
 interface MapCanvasProps {
   properties: UnitItem[];

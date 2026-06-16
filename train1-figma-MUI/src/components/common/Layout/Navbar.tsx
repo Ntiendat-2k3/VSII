@@ -6,7 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import { m } from 'framer-motion';
 import NavbarDrawer from './NavbarDrawer';
-import { PALETTE, SHADOW } from '../../theme';
+import { PALETTE, SHADOW } from '../../../theme';
 
 const MotionTypography = m(Typography);
 const MotionBox = m(Box);

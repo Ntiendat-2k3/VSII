@@ -8,7 +8,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FooterCompanyInfo from './FooterCompanyInfo';
-import { PALETTE, GRADIENT } from '../../theme';
+import { PALETTE, GRADIENT } from '../../../theme';
 
 const MotionStack = m(Stack);
 

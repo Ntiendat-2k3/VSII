@@ -4,8 +4,8 @@ import { m, AnimatePresence } from 'framer-motion';
 import PopupHeader from './PopupHeader';
 import PopupDetails from './PopupDetails';
 import PopupFooter from './PopupFooter';
-import type { UnitItem } from '../../features/property-map/types';
-import { PALETTE, BORDER_RADIUS, SHADOW } from '../../theme';
+import type { UnitItem } from '../../types';
+import { PALETTE, BORDER_RADIUS, SHADOW } from '../../../../theme';
 
 const MotionBox = m(Box);
 

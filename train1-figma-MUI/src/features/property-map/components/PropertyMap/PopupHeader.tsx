@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { Flame } from 'lucide-react';
-import { PALETTE, BORDER_RADIUS } from '../../theme';
+import { PALETTE, BORDER_RADIUS } from '../../../../theme';
 
 interface PopupHeaderProps {
   code: string;

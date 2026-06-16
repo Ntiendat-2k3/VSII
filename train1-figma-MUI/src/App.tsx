@@ -4,11 +4,14 @@ import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { MotionConfig, LazyMotion, domAnimation } from "framer-motion";
 import { Toaster } from "sonner";
+import { Suspense, lazy } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 import theme from "./theme";
-import Navbar from "./components/Layout/Navbar";
-import HeroSection from "./components/Layout/HeroSection";
-import PropertyMap from "./components/PropertyMap";
-import Footer from "./components/Layout/Footer";
+import Navbar from "./components/common/Layout/Navbar";
+import HeroSection from "./components/common/Layout/HeroSection";
+import Footer from "./components/common/Layout/Footer";
+
+const PropertyMap = lazy(() => import("./features/property-map/components/PropertyMap"));
 import ErrorBoundary from "./components/ErrorBoundary";
 
 const App = () => {
@@ -50,7 +53,9 @@ const App = () => {
             }}
           >
             <ErrorBoundary>
-              <PropertyMap />
+              <Suspense fallback={<Box sx={{ display: 'flex', justifyContent: 'center', p: 4 }}><CircularProgress /></Box>}>
+                <PropertyMap />
+              </Suspense>
             </ErrorBoundary>
           </Box>
         </Box>

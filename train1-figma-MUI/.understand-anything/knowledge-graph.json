@@ -17,8 +17,8 @@
       "React Hook Form"
     ],
     "description": "Vinhomes Ocean Park 3 Real Estate Property Map Application built with React, MUI v9, Redux Toolkit, and React Hook Form.",
-    "analyzedAt": "2026-06-10T19:32:28.416Z",
-    "gitCommitHash": "0f50b5f932f10ba486604aac2332fe7d53e1898a"
+    "analyzedAt": "2026-06-16T19:46:51.329Z",
+    "gitCommitHash": "07c1852b52e6dceb1f660b5ccf472cb6bb9338d4"
   },
   "nodes": [
     {
@@ -82,10 +82,10 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:src/components/Layout/Footer.tsx",
+      "id": "file:src/components/common/Layout/Footer.tsx",
       "type": "file",
       "name": "Footer.tsx",
-      "filePath": "src/components/Layout/Footer.tsx",
+      "filePath": "src/components/common/Layout/Footer.tsx",
       "summary": "Footer component displaying company information, address, and social links.",
       "tags": [
         "component",
@@ -96,10 +96,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/Layout/Footer.tsx:Footer",
+      "id": "function:src/components/common/Layout/Footer.tsx:Footer",
       "type": "function",
       "name": "Footer",
-      "filePath": "src/components/Layout/Footer.tsx",
+      "filePath": "src/components/common/Layout/Footer.tsx",
       "lineRange": [
         14,
         165
@@ -112,10 +112,10 @@
       "complexity": "complex"
     },
     {
-      "id": "file:src/components/Layout/FooterCompanyInfo.tsx",
+      "id": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
       "type": "file",
       "name": "FooterCompanyInfo.tsx",
-      "filePath": "src/components/Layout/FooterCompanyInfo.tsx",
+      "filePath": "src/components/common/Layout/FooterCompanyInfo.tsx",
       "summary": "Subcomponent of Footer that displays detailed company history and contact information.",
       "tags": [
         "component",
@@ -126,10 +126,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
+      "id": "function:src/components/common/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
       "type": "function",
       "name": "FooterCompanyInfo",
-      "filePath": "src/components/Layout/FooterCompanyInfo.tsx",
+      "filePath": "src/components/common/Layout/FooterCompanyInfo.tsx",
       "lineRange": [
         7,
         92
@@ -141,10 +141,10 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:src/components/Layout/HeroSection.tsx",
+      "id": "file:src/components/common/Layout/HeroSection.tsx",
       "type": "file",
       "name": "HeroSection.tsx",
-      "filePath": "src/components/Layout/HeroSection.tsx",
+      "filePath": "src/components/common/Layout/HeroSection.tsx",
       "summary": "Homepage banner section showcasing key real estate projects with modern layout.",
       "tags": [
         "component",
@@ -155,10 +155,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/Layout/HeroSection.tsx:HeroSection",
+      "id": "function:src/components/common/Layout/HeroSection.tsx:HeroSection",
       "type": "function",
       "name": "HeroSection",
-      "filePath": "src/components/Layout/HeroSection.tsx",
+      "filePath": "src/components/common/Layout/HeroSection.tsx",
       "lineRange": [
         27,
         189
@@ -170,10 +170,10 @@
       "complexity": "complex"
     },
     {
-      "id": "file:src/components/Layout/HeroTabs.tsx",
+      "id": "file:src/components/common/Layout/HeroTabs.tsx",
       "type": "file",
       "name": "HeroTabs.tsx",
-      "filePath": "src/components/Layout/HeroTabs.tsx",
+      "filePath": "src/components/common/Layout/HeroTabs.tsx",
       "summary": "Component displaying navigation or filtering tabs inside the Hero section.",
       "tags": [
         "component",
@@ -184,10 +184,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/Layout/HeroTabs.tsx:HeroTabs",
+      "id": "function:src/components/common/Layout/HeroTabs.tsx:HeroTabs",
       "type": "function",
       "name": "HeroTabs",
-      "filePath": "src/components/Layout/HeroTabs.tsx",
+      "filePath": "src/components/common/Layout/HeroTabs.tsx",
       "lineRange": [
         20,
         73
@@ -199,10 +199,10 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:src/components/Layout/Navbar.tsx",
+      "id": "file:src/components/common/Layout/Navbar.tsx",
       "type": "file",
       "name": "Navbar.tsx",
-      "filePath": "src/components/Layout/Navbar.tsx",
+      "filePath": "src/components/common/Layout/Navbar.tsx",
       "summary": "Header navigation bar with links, branding, and responsive layout.",
       "tags": [
         "component",
@@ -213,10 +213,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/Layout/Navbar.tsx:Navbar",
+      "id": "function:src/components/common/Layout/Navbar.tsx:Navbar",
       "type": "function",
       "name": "Navbar",
-      "filePath": "src/components/Layout/Navbar.tsx",
+      "filePath": "src/components/common/Layout/Navbar.tsx",
       "lineRange": [
         16,
         167
@@ -230,10 +230,10 @@
       "complexity": "complex"
     },
     {
-      "id": "file:src/components/Layout/NavbarDrawer.tsx",
+      "id": "file:src/components/common/Layout/NavbarDrawer.tsx",
       "type": "file",
       "name": "NavbarDrawer.tsx",
-      "filePath": "src/components/Layout/NavbarDrawer.tsx",
+      "filePath": "src/components/common/Layout/NavbarDrawer.tsx",
       "summary": "Sidebar drawer component for mobile navigation.",
       "tags": [
         "component",
@@ -244,10 +244,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/Layout/NavbarDrawer.tsx:NavbarDrawer",
+      "id": "function:src/components/common/Layout/NavbarDrawer.tsx:NavbarDrawer",
       "type": "function",
       "name": "NavbarDrawer",
-      "filePath": "src/components/Layout/NavbarDrawer.tsx",
+      "filePath": "src/components/common/Layout/NavbarDrawer.tsx",
       "lineRange": [
         18,
         84
@@ -259,10 +259,10 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
       "type": "file",
       "name": "PopupDetails.tsx",
-      "filePath": "src/components/PropertyMap/PopupDetails.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupDetails.tsx",
       "summary": "Details pane in property popup displaying unit price, area, layout, and photos.",
       "tags": [
         "component",
@@ -273,10 +273,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/PopupDetails.tsx:PopupDetails",
+      "id": "function:src/features/property-map/components/PropertyMap/PopupDetails.tsx:PopupDetails",
       "type": "function",
       "name": "PopupDetails",
-      "filePath": "src/components/PropertyMap/PopupDetails.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupDetails.tsx",
       "lineRange": [
         12,
         47
@@ -288,10 +288,10 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:src/components/PropertyMap/PopupHeader.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
       "type": "file",
       "name": "PopupHeader.tsx",
-      "filePath": "src/components/PropertyMap/PopupHeader.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupHeader.tsx",
       "summary": "Header section of the property popup showing title, status, and code.",
       "tags": [
         "component",
@@ -302,10 +302,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/PopupHeader.tsx:PopupHeader",
+      "id": "function:src/features/property-map/components/PropertyMap/PopupHeader.tsx:PopupHeader",
       "type": "function",
       "name": "PopupHeader",
-      "filePath": "src/components/PropertyMap/PopupHeader.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupHeader.tsx",
       "lineRange": [
         11,
         39
@@ -317,10 +317,10 @@
       "complexity": "simple"
     },
     {
-      "id": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
       "type": "file",
       "name": "PropertyPopup.tsx",
-      "filePath": "src/components/PropertyMap/PropertyPopup.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
       "summary": "Container component organizing the popup details, header, and footer.",
       "tags": [
         "component",
@@ -331,10 +331,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
+      "id": "function:src/features/property-map/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
       "type": "function",
       "name": "PropertyPopup",
-      "filePath": "src/components/PropertyMap/PropertyPopup.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
       "lineRange": [
         17,
         94
@@ -402,10 +402,10 @@
       "languageNotes": "TypeScript utility, service, or configuration module."
     },
     {
-      "id": "file:src/components/PropertyMap/FilterBar.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "type": "file",
       "name": "FilterBar.tsx",
-      "filePath": "src/components/PropertyMap/FilterBar.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "summary": "UI panel for filtering properties on the map by status, type, and search keyword.",
       "tags": [
         "component",
@@ -416,10 +416,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "id": "function:src/features/property-map/components/PropertyMap/FilterBar.tsx:FilterBar",
       "type": "function",
       "name": "FilterBar",
-      "filePath": "src/components/PropertyMap/FilterBar.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "lineRange": [
         66,
         138
@@ -431,10 +431,10 @@
       "complexity": "moderate"
     },
     {
-      "id": "file:src/components/PropertyMap/MapHeader.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "type": "file",
       "name": "MapHeader.tsx",
-      "filePath": "src/components/PropertyMap/MapHeader.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "summary": "Header of the property map search page containing the search bar and stats.",
       "tags": [
         "component",
@@ -445,10 +445,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/MapHeader.tsx:MapHeader",
+      "id": "function:src/features/property-map/components/PropertyMap/MapHeader.tsx:MapHeader",
       "type": "function",
       "name": "MapHeader",
-      "filePath": "src/components/PropertyMap/MapHeader.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "lineRange": [
         19,
         156
@@ -460,10 +460,10 @@
       "complexity": "complex"
     },
     {
-      "id": "file:src/components/PropertyMap/index.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "type": "file",
       "name": "index.tsx",
-      "filePath": "src/components/PropertyMap/index.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/index.tsx",
       "summary": "Parent component for the property map page, coordinating map state, search, and login overlays.",
       "tags": [
         "component",
@@ -474,10 +474,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/index.tsx:PropertyMap",
+      "id": "function:src/features/property-map/components/PropertyMap/index.tsx:PropertyMap",
       "type": "function",
       "name": "PropertyMap",
-      "filePath": "src/components/PropertyMap/index.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/index.tsx",
       "lineRange": [
         18,
         158
@@ -663,10 +663,10 @@
       "complexity": "simple"
     },
     {
-      "id": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "type": "file",
       "name": "CanvasMarkerLayer.tsx",
-      "filePath": "src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "summary": "Leaflet custom layer that renders thousands of markers efficiently using HTML5 Canvas.",
       "tags": [
         "component",
@@ -677,10 +677,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "id": "function:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
       "type": "function",
       "name": "CanvasMarkerLayer",
-      "filePath": "src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "lineRange": [
         24,
         189
@@ -692,10 +692,10 @@
       "complexity": "complex"
     },
     {
-      "id": "file:src/components/PropertyMap/FlyToHandler.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
       "type": "file",
       "name": "FlyToHandler.tsx",
-      "filePath": "src/components/PropertyMap/FlyToHandler.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
       "summary": "Custom Leaflet map behavior to smoothly pan/zoom to a selected property using useMap.",
       "tags": [
         "component",
@@ -706,10 +706,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
+      "id": "function:src/features/property-map/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
       "type": "function",
       "name": "FlyToHandler",
-      "filePath": "src/components/PropertyMap/FlyToHandler.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
       "lineRange": [
         10,
         31
@@ -721,10 +721,10 @@
       "complexity": "simple"
     },
     {
-      "id": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "type": "file",
       "name": "MapCanvas.tsx",
-      "filePath": "src/components/PropertyMap/MapCanvas.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "summary": "Core Leaflet map wrapper that integrates layers, markers, zoom controls, and pagination.",
       "tags": [
         "component",
@@ -735,10 +735,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "id": "function:src/features/property-map/components/PropertyMap/MapCanvas.tsx:MapCanvas",
       "type": "function",
       "name": "MapCanvas",
-      "filePath": "src/components/PropertyMap/MapCanvas.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "lineRange": [
         36,
         239
@@ -748,35 +748,6 @@
         "function"
       ],
       "complexity": "complex"
-    },
-    {
-      "id": "file:src/components/PropertyMap/MapPagination.tsx",
-      "type": "file",
-      "name": "MapPagination.tsx",
-      "filePath": "src/components/PropertyMap/MapPagination.tsx",
-      "summary": "Pagination component to navigate through filtered list of properties.",
-      "tags": [
-        "component",
-        "map",
-        "pagination"
-      ],
-      "complexity": "moderate",
-      "languageNotes": "React Component in TypeScript using MUI components and styling."
-    },
-    {
-      "id": "function:src/components/PropertyMap/MapPagination.tsx:MapPagination",
-      "type": "function",
-      "name": "MapPagination",
-      "filePath": "src/components/PropertyMap/MapPagination.tsx",
-      "lineRange": [
-        17,
-        83
-      ],
-      "summary": "Function MapPagination in MapPagination.tsx.",
-      "tags": [
-        "function"
-      ],
-      "complexity": "moderate"
     },
     {
       "id": "file:src/features/property-map/types.ts",
@@ -882,10 +853,10 @@
       "complexity": "simple"
     },
     {
-      "id": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "id": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "type": "file",
       "name": "PopupFooter.tsx",
-      "filePath": "src/components/PropertyMap/PopupFooter.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "summary": "Footer section of the property popup with buttons to send inquiries and call agents.",
       "tags": [
         "component",
@@ -896,10 +867,10 @@
       "languageNotes": "React Component in TypeScript using MUI components and styling."
     },
     {
-      "id": "function:src/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "id": "function:src/features/property-map/components/PropertyMap/PopupFooter.tsx:PopupFooter",
       "type": "function",
       "name": "PopupFooter",
-      "filePath": "src/components/PropertyMap/PopupFooter.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "lineRange": [
         23,
         173
@@ -1310,28 +1281,28 @@
     },
     {
       "source": "file:src/App.tsx",
-      "target": "file:src/components/Layout/Footer.tsx",
+      "target": "file:src/components/common/Layout/Footer.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
       "source": "file:src/App.tsx",
-      "target": "file:src/components/Layout/HeroSection.tsx",
+      "target": "file:src/components/common/Layout/HeroSection.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
       "source": "file:src/App.tsx",
-      "target": "file:src/components/Layout/Navbar.tsx",
+      "target": "file:src/components/common/Layout/Navbar.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
       "source": "file:src/App.tsx",
-      "target": "file:src/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
@@ -1358,182 +1329,182 @@
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/Footer.tsx",
-      "target": "function:src/components/Layout/Footer.tsx:Footer",
+      "source": "file:src/components/common/Layout/Footer.tsx",
+      "target": "function:src/components/common/Layout/Footer.tsx:Footer",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/Layout/Footer.tsx",
-      "target": "file:src/components/Layout/FooterCompanyInfo.tsx",
+      "source": "file:src/components/common/Layout/Footer.tsx",
+      "target": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/Footer.tsx",
+      "source": "file:src/components/common/Layout/Footer.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/FooterCompanyInfo.tsx",
-      "target": "function:src/components/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
+      "source": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+      "target": "function:src/components/common/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/Layout/FooterCompanyInfo.tsx",
+      "source": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/HeroSection.tsx",
-      "target": "function:src/components/Layout/HeroSection.tsx:HeroSection",
+      "source": "file:src/components/common/Layout/HeroSection.tsx",
+      "target": "function:src/components/common/Layout/HeroSection.tsx:HeroSection",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/Layout/HeroSection.tsx",
-      "target": "file:src/components/Layout/HeroTabs.tsx",
+      "source": "file:src/components/common/Layout/HeroSection.tsx",
+      "target": "file:src/components/common/Layout/HeroTabs.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/HeroSection.tsx",
+      "source": "file:src/components/common/Layout/HeroSection.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/HeroTabs.tsx",
-      "target": "function:src/components/Layout/HeroTabs.tsx:HeroTabs",
+      "source": "file:src/components/common/Layout/HeroTabs.tsx",
+      "target": "function:src/components/common/Layout/HeroTabs.tsx:HeroTabs",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/Layout/HeroTabs.tsx",
+      "source": "file:src/components/common/Layout/HeroTabs.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/Navbar.tsx",
-      "target": "function:src/components/Layout/Navbar.tsx:Navbar",
+      "source": "file:src/components/common/Layout/Navbar.tsx",
+      "target": "function:src/components/common/Layout/Navbar.tsx:Navbar",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/Layout/Navbar.tsx",
-      "target": "file:src/components/Layout/NavbarDrawer.tsx",
+      "source": "file:src/components/common/Layout/Navbar.tsx",
+      "target": "file:src/components/common/Layout/NavbarDrawer.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/Navbar.tsx",
+      "source": "file:src/components/common/Layout/Navbar.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/Layout/NavbarDrawer.tsx",
-      "target": "function:src/components/Layout/NavbarDrawer.tsx:NavbarDrawer",
+      "source": "file:src/components/common/Layout/NavbarDrawer.tsx",
+      "target": "function:src/components/common/Layout/NavbarDrawer.tsx:NavbarDrawer",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/Layout/NavbarDrawer.tsx",
+      "source": "file:src/components/common/Layout/NavbarDrawer.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupDetails.tsx",
-      "target": "function:src/components/PropertyMap/PopupDetails.tsx:PopupDetails",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PopupDetails.tsx:PopupDetails",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
       "target": "file:src/features/property-map/types.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupHeader.tsx",
-      "target": "function:src/components/PropertyMap/PopupHeader.tsx:PopupHeader",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PopupHeader.tsx:PopupHeader",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/PopupHeader.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
-      "target": "function:src/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
-      "target": "file:src/components/PropertyMap/PopupDetails.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
-      "target": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
-      "target": "file:src/components/PropertyMap/PopupHeader.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
       "target": "file:src/features/property-map/types.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PropertyPopup.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
@@ -1568,49 +1539,49 @@
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/FilterBar.tsx",
-      "target": "function:src/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/FilterBar.tsx:FilterBar",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/FilterBar.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "target": "file:src/components/ui/AppCheckbox.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/FilterBar.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "target": "file:src/features/property-map/types.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/FilterBar.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "target": "file:src/store/index.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/FilterBar.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "target": "file:src/store/slices/propertyMapSlice.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/FilterBar.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "function:src/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "source": "function:src/features/property-map/components/PropertyMap/FilterBar.tsx:FilterBar",
       "target": "function:src/store/index.ts:useAppDispatch",
       "type": "calls",
       "direction": "forward",
@@ -1618,112 +1589,112 @@
       "description": "Calls useAppDispatch at line 67"
     },
     {
-      "source": "file:src/components/PropertyMap/MapHeader.tsx",
-      "target": "function:src/components/PropertyMap/MapHeader.tsx:MapHeader",
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/MapHeader.tsx:MapHeader",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/MapHeader.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "target": "file:src/components/ui/AppTextField.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapHeader.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "target": "file:src/services/mapService.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapHeader.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
-      "target": "function:src/components/PropertyMap/index.tsx:PropertyMap",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/index.tsx:PropertyMap",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
-      "target": "file:src/components/PropertyMap/FilterBar.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
-      "target": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
-      "target": "file:src/components/PropertyMap/MapHeader.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/features/property-map/components/LoginForm.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/services/apiClient.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/services/mapService.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/store/index.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/store/slices/propertyMapSlice.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/index.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
       "target": "file:src/utils/toast.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "function:src/components/PropertyMap/index.tsx:PropertyMap",
+      "source": "function:src/features/property-map/components/PropertyMap/index.tsx:PropertyMap",
       "target": "function:src/store/index.ts:useAppDispatch",
       "type": "calls",
       "direction": "forward",
@@ -1836,35 +1807,35 @@
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
-      "target": "function:src/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "target": "file:src/features/property-map/types.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "target": "file:src/utils/canvasMarkerRenderer.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "target": "file:src/utils/mapUtils.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
       "type": "calls",
       "direction": "forward",
@@ -1872,7 +1843,7 @@
       "description": "Calls convertPercentToLatLng at line 90"
     },
     {
-      "source": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "target": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
       "type": "calls",
       "direction": "forward",
@@ -1880,7 +1851,7 @@
       "description": "Calls drawPropertyMarker at line 99"
     },
     {
-      "source": "function:src/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "source": "function:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
       "target": "function:src/utils/canvasMarkerRenderer.ts:clearMarkerCache",
       "type": "calls",
       "direction": "forward",
@@ -1888,21 +1859,21 @@
       "description": "Calls clearMarkerCache at line 178"
     },
     {
-      "source": "file:src/components/PropertyMap/FlyToHandler.tsx",
-      "target": "function:src/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
+      "source": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/FlyToHandler.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
       "target": "file:src/utils/mapUtils.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "function:src/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
+      "source": "function:src/features/property-map/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
       "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
       "type": "calls",
       "direction": "forward",
@@ -1910,82 +1881,61 @@
       "description": "Calls convertPercentToLatLng at line 26"
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
-      "target": "function:src/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/MapCanvas.tsx:MapCanvas",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
-      "target": "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
-      "target": "file:src/components/PropertyMap/FlyToHandler.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
-      "target": "file:src/components/PropertyMap/MapPagination.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
-      "target": "file:src/components/PropertyMap/PropertyPopup.tsx",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
-    },
-    {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "target": "file:src/features/property-map/types.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/MapCanvas.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
       "target": "file:src/utils/mapUtils.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "function:src/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "source": "function:src/features/property-map/components/PropertyMap/MapCanvas.tsx:MapCanvas",
       "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
       "type": "calls",
       "direction": "forward",
       "weight": 0.8,
       "description": "Calls convertPercentToLatLng at line 188"
-    },
-    {
-      "source": "file:src/components/PropertyMap/MapPagination.tsx",
-      "target": "function:src/components/PropertyMap/MapPagination.tsx:MapPagination",
-      "type": "contains",
-      "direction": "forward",
-      "weight": 1
-    },
-    {
-      "source": "file:src/components/PropertyMap/MapPagination.tsx",
-      "target": "file:src/theme.ts",
-      "type": "imports",
-      "direction": "forward",
-      "weight": 0.7
     },
     {
       "source": "file:src/utils/canvasMarkerRenderer.ts",
@@ -2051,49 +2001,49 @@
       "weight": 0.8
     },
     {
-      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
-      "target": "function:src/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PopupFooter.tsx:PopupFooter",
       "type": "contains",
       "direction": "forward",
       "weight": 1
     },
     {
-      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "target": "file:src/features/property-map/types.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "target": "file:src/services/unitInquiryService.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "target": "file:src/theme.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "target": "file:src/utils/formatters.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "file:src/components/PropertyMap/PopupFooter.tsx",
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
       "target": "file:src/utils/toast.ts",
       "type": "imports",
       "direction": "forward",
       "weight": 0.7
     },
     {
-      "source": "function:src/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "source": "function:src/features/property-map/components/PropertyMap/PopupFooter.tsx:PopupFooter",
       "target": "function:src/utils/formatters.ts:formatPrice",
       "type": "calls",
       "direction": "forward",
@@ -2277,12 +2227,12 @@
       "nodeIds": [
         "file:src/App.tsx",
         "file:src/components/ErrorBoundary.tsx",
-        "file:src/components/Layout/Footer.tsx",
-        "file:src/components/Layout/FooterCompanyInfo.tsx",
-        "file:src/components/Layout/HeroSection.tsx",
-        "file:src/components/Layout/HeroTabs.tsx",
-        "file:src/components/Layout/Navbar.tsx",
-        "file:src/components/Layout/NavbarDrawer.tsx",
+        "file:src/components/common/Layout/Footer.tsx",
+        "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+        "file:src/components/common/Layout/HeroSection.tsx",
+        "file:src/components/common/Layout/HeroTabs.tsx",
+        "file:src/components/common/Layout/Navbar.tsx",
+        "file:src/components/common/Layout/NavbarDrawer.tsx",
         "file:src/components/ui/AppCheckbox.tsx",
         "file:src/main.tsx",
         "file:src/components/form/FormTextField.tsx",
@@ -2294,22 +2244,21 @@
       "name": "Tính Năng Bản Đồ (Property Map Feature)",
       "description": "Lớp logic bản đồ Leaflet, bộ lọc FilterBar, Canvas Marker Layer vẽ marker, các Popup thông tin chi tiết và service tương tác dữ liệu.",
       "nodeIds": [
-        "file:src/components/PropertyMap/PopupDetails.tsx",
-        "file:src/components/PropertyMap/PopupHeader.tsx",
-        "file:src/components/PropertyMap/PropertyPopup.tsx",
-        "file:src/components/PropertyMap/FilterBar.tsx",
-        "file:src/components/PropertyMap/MapHeader.tsx",
-        "file:src/components/PropertyMap/index.tsx",
+        "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+        "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+        "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+        "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+        "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+        "file:src/features/property-map/components/PropertyMap/index.tsx",
         "file:src/features/property-map/components/LoginForm.tsx",
         "file:src/services/mapService.ts",
-        "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
-        "file:src/components/PropertyMap/FlyToHandler.tsx",
-        "file:src/components/PropertyMap/MapCanvas.tsx",
-        "file:src/components/PropertyMap/MapPagination.tsx",
+        "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+        "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+        "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
         "file:src/features/property-map/types.ts",
         "file:src/utils/canvasMarkerRenderer.ts",
         "file:src/utils/mapUtils.ts",
-        "file:src/components/PropertyMap/PopupFooter.tsx",
+        "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
         "file:src/services/unitInquiryService.ts",
         "file:src/utils/toast.ts"
       ]
@@ -2385,8 +2334,8 @@
       "title": "3. Thanh điều hướng & Footer chung",
       "description": "Khám phá các thành phần bố cục chung như Navbar (NavbarDrawer) và Footer (FooterCompanyInfo) giúp xây dựng giao diện thống nhất, chuyên nghiệp.",
       "nodeIds": [
-        "file:src/components/Layout/Navbar.tsx",
-        "file:src/components/Layout/Footer.tsx"
+        "file:src/components/common/Layout/Navbar.tsx",
+        "file:src/components/common/Layout/Footer.tsx"
       ]
     },
     {
@@ -2394,8 +2343,8 @@
       "title": "4. Giao diện Hero & Tìm kiếm",
       "description": "Điểm nhấn đầu tiên khi truy cập trang web với HeroSection giới thiệu dự án và bộ HeroTabs cho phép người dùng chọn danh mục mua/bán/thuê nhanh chóng.",
       "nodeIds": [
-        "file:src/components/Layout/HeroSection.tsx",
-        "file:src/components/Layout/HeroTabs.tsx"
+        "file:src/components/common/Layout/HeroSection.tsx",
+        "file:src/components/common/Layout/HeroTabs.tsx"
       ]
     },
     {
@@ -2403,8 +2352,8 @@
       "title": "5. Trung tâm Bản đồ Leaflet & Dữ liệu",
       "description": "Xem cách tính năng bản đồ cốt lõi được lắp ráp trong PropertyMap/index.tsx và hiển thị trên MapCanvas (React-Leaflet) sử dụng CRS.Simple, kết hợp dữ liệu giả lập từ mockData.ts.",
       "nodeIds": [
-        "file:src/components/PropertyMap/index.tsx",
-        "file:src/components/PropertyMap/MapCanvas.tsx"
+        "file:src/features/property-map/components/PropertyMap/index.tsx",
+        "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx"
       ]
     },
     {
@@ -2412,7 +2361,7 @@
       "title": "6. Vẽ Marker trên HTML5 Canvas hiệu năng cao",
       "description": "Nghiên cứu cách CanvasMarkerLayer vẽ hàng loạt marker cực kỳ mượt mà trực tiếp lên Canvas thay vì render từng HTML element, sử dụng bộ renderer chuyên nghiệp canvasMarkerRenderer.ts.",
       "nodeIds": [
-        "file:src/components/PropertyMap/CanvasMarkerLayer.tsx",
+        "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
         "file:src/utils/canvasMarkerRenderer.ts"
       ]
     },

@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../../utils/mapUtils';
-import type { UnitItem } from '../../features/property-map/types';
-import { drawPropertyMarker, MARKER_WIDTH, clearMarkerCache } from '../../utils/canvasMarkerRenderer';
-import { useAppSelector } from '../../store';
+import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../../../../utils/mapUtils';
+import type { UnitItem } from '../../types';
+import { drawPropertyMarker, MARKER_WIDTH, clearMarkerCache } from '../../../../utils/canvasMarkerRenderer';
+import { useAppSelector } from '../../../../store';
 
 interface CanvasMarkerLayerProps {
   properties: UnitItem[];

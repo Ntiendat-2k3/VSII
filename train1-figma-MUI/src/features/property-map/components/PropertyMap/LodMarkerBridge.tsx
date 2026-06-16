@@ -1,8 +1,8 @@
 import { useMap } from 'react-leaflet';
-import { useLodMarkers } from '../../hooks/useLodMarkers';
+import { useLodMarkers } from '../../../../hooks/useLodMarkers';
 import CanvasMarkerLayer from './CanvasMarkerLayer';
-import type { UnitItem } from '../../features/property-map/types';
-import { useAppSelector } from '../../store';
+import type { UnitItem } from '../../types';
+import { useAppSelector } from '../../../../store';
 
 interface LodMarkerBridgeProps {
   allProperties: UnitItem[];

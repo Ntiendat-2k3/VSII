@@ -2,12 +2,12 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Autocomplete from '@mui/material/Autocomplete';
-import AppTextField from '../ui/AppTextField';
+import AppTextField from '../../../../components/ui/AppTextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Search } from 'lucide-react';
-import { PALETTE } from '../../theme';
-import { mapService } from '../../services/mapService';
+import { PALETTE } from '../../../../theme';
+import { mapService } from '../../../../services/mapService';
 
 const DEBOUNCE_MS = 300;
 

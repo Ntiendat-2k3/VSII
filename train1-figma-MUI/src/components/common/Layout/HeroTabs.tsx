@@ -3,7 +3,7 @@ import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { m } from 'framer-motion';
 import { Home, MapPin, Compass, Map, Building2, ClipboardList, Globe } from 'lucide-react';
-import { PALETTE, GRADIENT } from '../../theme';
+import { PALETTE, GRADIENT } from '../../../theme';
 
 const MotionStack = m(Stack);
 

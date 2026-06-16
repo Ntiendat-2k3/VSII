@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Drawer from '@mui/material/Drawer';
 import { m } from 'framer-motion';
-import { PALETTE } from '../../theme';
+import { PALETTE } from '../../../theme';
 
 const MotionBox = m(Box);
 

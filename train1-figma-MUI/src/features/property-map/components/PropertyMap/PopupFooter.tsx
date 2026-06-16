@@ -4,12 +4,12 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Chip from '@mui/material/Chip';
 import CircularProgress from '@mui/material/CircularProgress';
-import type { UnitStatusCode, InquiryStatusCode } from '../../features/property-map/types';
-import { PALETTE, GRADIENT, BORDER_RADIUS } from '../../theme';
-import { formatPrice } from '../../utils/formatters';
-import { unitInquiryService } from '../../services/unitInquiryService';
-import { showToast } from '../../utils/toast';
-import { UNIT_STATUS, INQUIRY_STATUS_LABELS } from '../../constants/map';
+import type { UnitStatusCode, InquiryStatusCode } from '../../types';
+import { PALETTE, GRADIENT, BORDER_RADIUS } from '../../../../theme';
+import { formatPrice } from '../../../../utils/formatters';
+import { unitInquiryService } from '../../../../services/unitInquiryService';
+import { showToast } from '../../../../utils/toast';
+import { UNIT_STATUS, INQUIRY_STATUS_LABELS } from '../../../../constants/map';
 
 interface PopupFooterProps {
   statusCode: UnitStatusCode;

@@ -5,15 +5,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 import MapHeader from './MapHeader';
 import FilterBar from './FilterBar';
 import MapCanvas from './MapCanvas';
-import LoginForm, { type LoginFormData } from '../../features/property-map/components/LoginForm';
-import { mapService } from '../../services/mapService';
-import { apiClient } from '../../services/apiClient';
-import { showToast } from '../../utils/toast';
-import { PALETTE } from '../../theme';
-import { useAppDispatch, useAppSelector } from '../../store';
-import { fetchUnits, fetchMapData, setFocusUnit, forceShowUnit, clearSearchedUnit } from '../../store/slices/propertyMapSlice';
-import { API_ENDPOINTS } from '../../services/endpoints';
-import { CONFIG } from '../../constants/config';
+import LoginForm, { type LoginFormData } from '../LoginForm';
+import { mapService } from '../../../../services/mapService';
+import { apiClient } from '../../../../services/apiClient';
+import { showToast } from '../../../../utils/toast';
+import { PALETTE } from '../../../../theme';
+import { useAppDispatch, useAppSelector } from '../../../../store';
+import { fetchUnits, fetchMapData, setFocusUnit, forceShowUnit, clearSearchedUnit } from '../../../../store/slices/propertyMapSlice';
+import { API_ENDPOINTS } from '../../../../services/endpoints';
+import { CONFIG } from '../../../../constants/config';
 
 const PROJECT_ID = CONFIG.DEFAULT_PROJECT_ID; // Real Project ID 7 from UAT has map data and 7 units
 
@@ -25,7 +25,9 @@ const PropertyMap = () => {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   /* ── Redux State ── */
-  const { filteredUnits, isLoadingUnits, focusCoords } = useAppSelector((state) => state.propertyMap);
+  const filteredUnits = useAppSelector((state) => state.propertyMap.filteredUnits);
+  const isLoadingUnits = useAppSelector((state) => state.propertyMap.isLoadingUnits);
+  const focusCoords = useAppSelector((state) => state.propertyMap.focusCoords);
 
   /* ── UI State ── */
   const [selectedId, setSelectedId] = useState<string | null>(null);

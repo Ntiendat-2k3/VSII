@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import { m } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import HeroTabs from './HeroTabs';
-import { PALETTE, GRADIENT } from '../../theme';
+import { PALETTE, GRADIENT } from '../../../theme';
 
 const MotionStack = m(Stack);
 const MotionBox = m(Box);

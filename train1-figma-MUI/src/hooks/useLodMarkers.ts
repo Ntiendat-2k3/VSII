@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import type { Map as LeafletMap } from 'leaflet';
 import L from 'leaflet';
 import type { UnitItem, MapGetResponse } from '../features/property-map/types';
@@ -12,7 +12,6 @@ export const useLodMarkers = (
   mapScale: number = 1
 ): UnitItem[] => {
   const [visibleUnits, setVisibleUnits] = useState<UnitItem[]>([]);
-  const timeoutRef = useRef<number | null>(null);
 
   // Pre-calculate cheap threshold (top 30% cheapest among available units)
   const cheapPriceThreshold = useMemo(() => {
@@ -25,6 +24,7 @@ export const useLodMarkers = (
 
   useEffect(() => {
     if (!map) return;
+    let timeoutId: number | null = null;
 
     const calculateLod = () => {
       const zoom = map.getZoom();
@@ -93,10 +93,10 @@ export const useLodMarkers = (
     };
 
     const handleMapChange = () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
-      timeoutRef.current = window.setTimeout(calculateLod, 150);
+      timeoutId = window.setTimeout(calculateLod, 150);
     };
 
     map.on('zoomend moveend resize', handleMapChange);
@@ -104,8 +104,8 @@ export const useLodMarkers = (
     calculateLod();
 
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+      if (timeoutId) {
+        clearTimeout(timeoutId);
       }
       map.off('zoomend moveend resize', handleMapChange);
     };
