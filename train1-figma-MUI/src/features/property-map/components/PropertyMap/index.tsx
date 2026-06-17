@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -26,11 +26,21 @@ const PropertyMap = () => {
 
   /* ── Redux State ── */
   const filteredUnits = useAppSelector((state) => state.propertyMap.filteredUnits);
+  const searchedUnit = useAppSelector((state) => state.propertyMap.searchedUnit);
   const isLoadingUnits = useAppSelector((state) => state.propertyMap.isLoadingUnits);
   const focusCoords = useAppSelector((state) => state.propertyMap.focusCoords);
 
   /* ── UI State ── */
   const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const propertiesForMap = useMemo(() => {
+    if (!searchedUnit) return filteredUnits;
+    const exists = filteredUnits.some(
+      (u) => String(u.id || u.unitCode).toUpperCase() === String(searchedUnit.id || searchedUnit.unitCode).toUpperCase()
+    );
+    if (exists) return filteredUnits;
+    return [...filteredUnits, searchedUnit];
+  }, [filteredUnits, searchedUnit]);
 
   /* ── Fetch data khi đăng nhập ── */
   useEffect(() => {
@@ -104,11 +114,13 @@ const PropertyMap = () => {
         );
       }
 
-      if (exactUnit.statusCode === 'AVAILABLE') {
-        const isCurrentlyFiltered = !filteredUnits.find(u => String(u.unitCode) === unitCode);
-        if (isCurrentlyFiltered) {
-          dispatch(forceShowUnit(exactUnit));
-        }
+      const isCurrentlyFiltered = !filteredUnits.some(
+        (u) => String(u.unitCode).toUpperCase() === unitCode.toUpperCase()
+      );
+      if (isCurrentlyFiltered) {
+        dispatch(forceShowUnit(exactUnit));
+      } else {
+        dispatch(clearSearchedUnit());
       }
 
       setSelectedId(String(exactUnit.id || exactUnit.unitCode));
@@ -173,7 +185,7 @@ const PropertyMap = () => {
         )}
 
         <MapCanvas
-          properties={filteredUnits}
+          properties={propertiesForMap}
           selectedId={selectedId}
           onSelectProperty={handleSelectProperty}
           focusTarget={focusCoords}

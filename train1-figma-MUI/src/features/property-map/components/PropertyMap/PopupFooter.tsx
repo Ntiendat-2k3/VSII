@@ -139,7 +139,7 @@ const PopupFooter = ({
           textAlign: 'center',
         }}
       >
-        Quỹ ẩn
+        Quỹ hàng ẩn
       </Typography>
       <Button
         fullWidth

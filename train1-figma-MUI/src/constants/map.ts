@@ -56,3 +56,16 @@ export const UNIT_TYPE_LABELS: Record<string, string> = {
   SHOPHOUSE: 'Shophouse',
 } as const;
 
+export const UNIT_TYPE_ICONS: Record<string, string> = {
+  DON_LAP: '/icon_type/donlap.png',
+  DETACHED: '/icon_type/donlap.png',
+  SONG_LAP: '/icon_type/songlap.png',
+  SEMI_DETACHED: '/icon_type/songlap.png',
+  TU_LAP: '/icon_type/tulap.png',
+  QUADRANGLE: '/icon_type/tulap.png',
+  LIEN_KE: '/icon_type/lienke.png',
+  TOWNHOUSE: '/icon_type/lienke.png',
+  SHOPHOUSE: '/icon_type/shophouse.png',
+} as const;
+
+

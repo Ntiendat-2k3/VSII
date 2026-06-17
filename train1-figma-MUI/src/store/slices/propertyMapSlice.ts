@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { mapService } from '../../services/mapService';
 import type { UnitItem, MapGetResponse } from '../../features/property-map/types';
-import { BACKEND_UNIT_TYPE, FilterType } from '../../constants/map';
+import { BACKEND_UNIT_TYPE, FilterType, UNIT_STATUS } from '../../constants/map';
 
 /* ===== State ===== */
 
@@ -74,7 +74,10 @@ export const fetchUnits = createAsyncThunk(
 function applyFilters(units: UnitItem[], activeFilters: FilterType[]): UnitItem[] {
   if (activeFilters.length === 0) return [];
 
-  return units.filter((unit) => {
+  // Mặc định chỉ hiển thị các căn ở trạng thái "Còn hàng" (AVAILABLE) trên bản đồ
+  const availableUnits = units.filter((unit) => unit.statusCode === UNIT_STATUS.AVAILABLE);
+
+  return availableUnits.filter((unit) => {
     // 1. Hot filter
     if (unit.isHot && activeFilters.includes(FilterType.HOT)) {
       return true;

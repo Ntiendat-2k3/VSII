@@ -79,6 +79,93 @@ graph TD
 
 ---
 
+## 1.5. Đặc Tả Chi Tiết Phân Lớp Kiến Trúc & Các Giao Diện Màn Hình (Layering & Screen Architecture Spec)
+
+Hệ thống được thiết kế và phát triển tuân thủ nghiêm ngặt mô hình phân lớp Atomic Design phối hợp với React Hook Form và Redux Toolkit, đảm bảo mã nguồn có khả năng tái sử dụng cao và tối ưu hóa hiệu năng render.
+
+### A. Sơ đồ logic phân lớp kiến trúc (Atomic Design Layering Logic)
+
+Cấu trúc thư mục và trách nhiệm của từng lớp thành phần được phân chia rõ ràng như sau:
+
+```mermaid
+graph TD
+    subgraph Atoms["Atoms & Form Atoms (UI Gốc)"]
+        A1["AppCheckbox.tsx<br/>AppTextField.tsx<br/>(src/components/ui/)"]
+        A2["FormTextField.tsx<br/>(src/components/form/)"]
+    end
+    subgraph Molecules["Molecules (UI Ghép)"]
+        M1["Navbar.tsx<br/>Footer.tsx<br/>HeroSection.tsx<br/>(src/components/common/Layout/)"]
+    end
+    subgraph FeatureLayer["Feature & Organisms (Tính Năng Độc Lập)"]
+        F1["LoginForm.tsx<br/>(src/features/property-map/components/LoginForm.tsx)"]
+        F2["PropertyMap (Feature Root)<br/>(src/features/property-map/components/PropertyMap/)"]
+        F3["MapCanvas.tsx<br/>MapHeader.tsx<br/>FilterBar.tsx<br/>PropertyPopup.tsx<br/>(Components con của PropertyMap)"]
+    end
+    A1 --> A2
+    A2 --> F1
+    F1 --> F2
+    F3 --> F2
+    M1 --> F2
+```
+
+1. **Atoms (UI Gốc)**: Chứa các thành phần UI cơ bản nhất không mang logic nghiệp vụ (e.g. `AppCheckbox.tsx`, `AppTextField.tsx`).
+2. **Form Atoms (Form UI gốc)**: Wrapper bọc `<Controller>` của React Hook Form (RHF) để tự quản lý trạng thái error và fieldState, khởi tạo validation Yup thông qua resolver (e.g. `FormTextField.tsx`).
+3. **Molecules (UI Ghép)**: Các thành phần UI có độ phức tạp trung bình, dùng chung trên toàn hệ thống (e.g. cụm Layout chân trang và đầu trang tại `src/components/common/Layout/`).
+4. **Features & Organisms (Cụm Tính Năng)**: Trái tim của phân hệ bản đồ, gom các component có liên quan chặt chẽ về mặt nghiệp vụ vào thư mục `src/features/property-map/`.
+   - `LoginForm.tsx` đóng vai trò là một Organism xử lý Form đăng nhập phức tạp.
+   - `PropertyMap` điều phối luồng dữ liệu (React Hook Form, Redux state, map settings) và quản lý các component con như `MapCanvas`, `MapHeader`, `FilterBar`.
+
+---
+
+### B. Logic Luồng Hoạt Động & Giao Diện Màn Hình (Screen Flow & Layout Logic)
+
+Kiến trúc màn hình của phân hệ bản đồ được phân làm hai trạng thái chính kiểm soát bởi quyền đăng nhập của người dùng:
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Người dùng
+    participant App as App.tsx (React Router / Suspense)
+    participant MapFeature as PropertyMap (Feature)
+    participant AuthState as Redux / API
+    participant Leaflet as Leaflet / Canvas Layer
+
+    User->>App: Truy cập Trang Bản Đồ Quỹ Căn
+    App->>MapFeature: Lazy-load & Render PropertyMap
+    MapFeature->>AuthState: Kiểm tra trạng thái isLoggedIn
+    alt Chưa Đăng Nhập (Unauthorized Stage)
+        MapFeature->>Leaflet: Vô hiệu hoá tương tác Bản đồ (Drag/Zoom disabled)
+        MapFeature->>User: Hiển thị Bản đồ bị làm mờ (backdrop-filter) + Giao diện Form Đăng Nhập
+        User->>MapFeature: Nhập Form Đăng Nhập (RHF + Yup Validation)
+        MapFeature->>AuthState: Gửi yêu cầu đăng nhập qua API
+        AuthState-->>MapFeature: Trả về trạng thái isLoggedIn = true
+    end
+    AuthState->>MapFeature: Kích hoạt màn hình tương tác đầy đủ
+    MapFeature->>Leaflet: Bật tương tác kéo/thu phóng + Gọi API tải Tiles và Quỹ Căn
+    MapFeature->>User: Hiển thị Bản đồ Quỹ Căn & Bộ Lọc (FilterBar)
+    User->>MapFeature: Hover/Click nhãn căn hộ trên Canvas
+    MapFeature->>User: Mở Popup chi tiết căn hộ (Framer Motion Elastic Animation)
+```
+
+1. **Giao diện Màn hình Chưa Đăng Nhập (Unauthorized Stage)**:
+   - **Giao diện**: Bản đồ sơ đồ bên dưới bị che phủ bởi lớp kính mờ tuyệt đối (`backdrop-filter: blur(12px)`). Form đăng nhập `LoginForm.tsx` xuất hiện nổi ở vị trí trung tâm.
+   - **Logic khóa bản đồ**: Bản đồ Leaflet được thiết lập chế độ khóa tương tác (`dragging: false`, `zoomControl: false`, `scrollWheelZoom: false`) để ngăn chặn việc người dùng kéo hoặc thu phóng xem lén sơ đồ qua kẽ hở CSS.
+   - **Logic Validation**: Form đăng nhập sử dụng validation bằng `yup` trên RHF, thông báo lỗi bằng thư viện `sonner` khi xảy ra sự cố API kết nối.
+
+2. **Giao diện Màn hình Đã Đăng Nhập (Interactive Stage)**:
+   - **Tải và Hiển Thị**: Khi người dùng đăng nhập thành công, lớp phủ mờ biến mất, bản đồ Leaflet mở khóa toàn bộ tương tác. Gọi API `/portal/map/search` để tải danh sách quỹ căn.
+   - **Logic Tương tác Canvas**: Các Marker nhãn được vẽ bằng Canvas phẳng. Khi người dùng click vào nhãn:
+     - Component `FlyToHandler` tự động trượt tâm bản đồ mượt mà về tọa độ của nhãn được chọn.
+     - Hiển thị Popup chi tiết `PropertyPopup.tsx` với hiệu ứng nẩy lò xo của Framer Motion.
+   - **Logic Lọc động (FilterBar)**: Người dùng có thể bật/tắt các loại hình căn hộ (HOT, Song lập, Đơn lập, Tứ lập, Liền kề, Shophouse). Component lọc Client-side tự động loại bỏ các marker không khớp khỏi Canvas và cập nhật lại bộ đệm Offscreen Canvas tức thì.
+   - **Trạng thái Quỹ ẩn và Đã bán**: Popup tự động thay đổi giao diện (Footer đỏ tràn viền kèm ngọn lửa cho căn HOT, nhãn Đã bán đỏ nổi bật ẩn giá, hoặc hiện nút "Xin thông tin" đối với quỹ ẩn).
+
+3. **Thiết Kế Thích Ứng Thiết Bị (Mobile Responsive Logic)**:
+   - **Trên Desktop**: Popup hiển thị dạng hộp nổi nằm đè lên Marker với chân SVG cong mượt mà.
+   - **Trên Mobile**: Popup tự động chuyển đổi thành Drawer kéo từ cạnh đáy màn hình lên, ẩn mũi tên SVG trỏ xuống, căn chỉnh chiều rộng linh hoạt tránh tràn viền.
+
+---
+
 ## 2. Ma Trận Đáp Ứng Yêu Cầu Nghiệp Vụ (Requirements Traceability)
 
 Dưới đây là bảng đối chiếu giữa các yêu cầu chi tiết trong ticket **[SCRUM-106]** và giải pháp kỹ thuật đã áp dụng để giải quyết:

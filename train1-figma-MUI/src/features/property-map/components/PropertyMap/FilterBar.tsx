@@ -1,9 +1,9 @@
 import { useCallback, memo } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import AppCheckbox from '../../../../components/ui/AppCheckbox';
-import { Flame } from 'lucide-react';
-import { FilterType, UNIT_TYPE_LABELS } from '../../../../constants/map';
+import { FilterType, UNIT_TYPE_LABELS, UNIT_TYPE_ICONS } from '../../../../constants/map';
 import { useAppDispatch, useAppSelector } from '../../../../store';
 import { setFilters } from '../../../../store/slices/propertyMapSlice';
 import { PALETTE, BORDER_RADIUS } from '../../../../theme';
@@ -48,6 +48,20 @@ const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
       }}
     >
       <AppCheckbox checked={isActive} />
+      {type && (
+        <Box
+          component="img"
+          src={UNIT_TYPE_ICONS[type]}
+          alt={UNIT_TYPE_LABELS[type]}
+          sx={{
+            width: 18,
+            height: 18,
+            objectFit: 'contain',
+            filter: isActive ? 'brightness(0) invert(1)' : 'none',
+            transition: 'filter 0.2s ease',
+          }}
+        />
+      )}
       <Typography
         variant="caption"
         sx={{
@@ -111,18 +125,27 @@ const FilterBar = () => {
         }}
       >
         <AppCheckbox checked={isHotActive} />
-        <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
-          <Typography
-            variant="caption"
-            sx={{
-              fontWeight: 500,
-              color: isHotActive ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
-            }}
-          >
-            Căn HOT
-          </Typography>
-          <Flame size={16} color={isHotActive ? PALETTE.SURFACE_LIGHT : PALETTE.ERROR} />
-        </Stack>
+        <Box
+          component="img"
+          src="/icon_type/hot.png"
+          alt="Căn HOT"
+          sx={{
+            width: 18,
+            height: 18,
+            objectFit: 'contain',
+            filter: isHotActive ? 'brightness(0) invert(1)' : 'none',
+            transition: 'filter 0.2s ease',
+          }}
+        />
+        <Typography
+          variant="caption"
+          sx={{
+            fontWeight: 500,
+            color: isHotActive ? PALETTE.SURFACE_LIGHT : PALETTE.TEXT_SECONDARY,
+          }}
+        >
+          Căn HOT
+        </Typography>
       </Stack>
 
       {NORMAL_FILTERS.map((type) => (

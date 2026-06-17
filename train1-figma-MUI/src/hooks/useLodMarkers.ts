@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
 import type { Map as LeafletMap } from 'leaflet';
-import L from 'leaflet';
+import KDBush from 'kdbush';
 import type { UnitItem, MapGetResponse } from '../features/property-map/types';
 import { CONFIG } from '../constants/config';
 import { convertPdfCoorsToLatLng, convertPercentToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../utils/mapUtils';
@@ -22,81 +22,107 @@ export const useLodMarkers = (
     return prices[Math.min(index, prices.length - 1)];
   }, [allUnits]);
 
+  // Pre-calculate LatLng to avoid doing it 100k times on every move
+  const precalculatedUnits = useMemo(() => {
+    const dpiScale = (mapData?.dpi || 72) / 72;
+    const imgWidth = mapData?.width || (mapData?.pageWidth ? Math.round(mapData.pageWidth * dpiScale) : IMAGE_WIDTH);
+    const imgHeight = mapData?.height || (mapData?.pageHeight ? Math.round(mapData.pageHeight * dpiScale) : IMAGE_HEIGHT);
+
+    return allUnits.map(property => {
+      const latLng = mapData
+        ? convertPdfCoorsToLatLng(
+          property.x || 0,
+          property.y || 0,
+          mapData.dpi,
+          property.xPixel,
+          property.yPixel,
+          mapScale
+        )
+        : convertPercentToLatLng(property.x || 0, property.y || 0, imgWidth, imgHeight, mapScale);
+
+      const tuple = latLng as [number, number]; // [lat, lng]
+      return {
+        unit: property,
+        lat: tuple[0],
+        lng: tuple[1]
+      };
+    });
+  }, [allUnits, mapData, mapScale]);
+
+  // Khởi tạo Spatial Index (Cây không gian KD-Tree siêu tốc)
+  const spatialIndex = useMemo(() => {
+    if (!precalculatedUnits.length) return null;
+    const index = new KDBush(precalculatedUnits.length);
+    for (const u of precalculatedUnits) {
+      // Trục X là Lng, trục Y là Lat
+      index.add(u.lng, u.lat);
+    }
+    index.finish();
+    return index;
+  }, [precalculatedUnits]);
+
   useEffect(() => {
-    if (!map) return;
+    if (!map || !spatialIndex) return;
     let timeoutId: number | null = null;
 
     const calculateLod = () => {
       const zoom = map.getZoom();
       const bounds = map.getBounds();
-      
+
       const minZoom = map.getMinZoom();
       const maxZoom = map.getMaxZoom();
       const range = maxZoom - minZoom;
-      
-      const lod1Threshold = minZoom + range * 0.3; // Below this, only HOT
-      const lod2Threshold = minZoom + range * 0.65; // Below this, HOT + Cheap
-      
+
+      const lod1Threshold = minZoom + range * 0.3;
+      const lod2Threshold = minZoom + range * 0.65;
+
       const isLod1 = zoom <= lod1Threshold;
       const isLod2 = zoom > lod1Threshold && zoom <= lod2Threshold;
-      // const isLod3 = zoom > lod2Threshold;
 
-      // Filter by viewport first
+      // Fast viewport filter (O(N) but pure number comparison, takes <1ms for 100k)
       const padLat = (bounds.getNorth() - bounds.getSouth()) * 0.1;
       const padLng = (bounds.getEast() - bounds.getWest()) * 0.1;
-      const paddedBounds = new L.LatLngBounds(
-        [bounds.getSouth() - padLat, bounds.getWest() - padLng],
-        [bounds.getNorth() + padLat, bounds.getEast() + padLng]
-      );
+      const minLat = bounds.getSouth() - padLat;
+      const maxLat = bounds.getNorth() + padLat;
+      const minLng = bounds.getWest() - padLng;
+      const maxLng = bounds.getEast() + padLng;
 
-      const dpiScale = (mapData?.dpi || 72) / 72;
-      const imgWidth = mapData?.width || (mapData?.pageWidth ? Math.round(mapData.pageWidth * dpiScale) : IMAGE_WIDTH);
-      const imgHeight = mapData?.height || (mapData?.pageHeight ? Math.round(mapData.pageHeight * dpiScale) : IMAGE_HEIGHT);
+      // Truy vấn không gian O(log N) siêu tốc bằng KDBush
+      const idsInViewport = spatialIndex.range(minLng, minLat, maxLng, maxLat);
+      const viewportUnits = idsInViewport.map(id => precalculatedUnits[id]);
 
-      const viewportUnits = allUnits.filter(property => {
-        const latLng = mapData
-          ? convertPdfCoorsToLatLng(
-            property.x || 0,
-            property.y || 0,
-            mapData.dpi,
-            property.xPixel,
-            property.yPixel,
-            mapScale
-          )
-          : convertPercentToLatLng(property.x || 0, property.y || 0, imgWidth, imgHeight, mapScale);
-        
-        return paddedBounds.contains(latLng as L.LatLngTuple);
-      });
-
-      // Filter by LOD
+      // LOD Filter
       let lodFiltered = viewportUnits;
       if (isLod1) {
-        lodFiltered = viewportUnits.filter(u => u.isHot);
+        lodFiltered = viewportUnits.filter(u => u.unit.isHot);
       } else if (isLod2) {
-        lodFiltered = viewportUnits.filter(u => u.isHot || (u.basePrice != null && u.basePrice <= cheapPriceThreshold));
+        lodFiltered = viewportUnits.filter(u => u.unit.isHot || (u.unit.basePrice != null && u.unit.basePrice <= cheapPriceThreshold));
       }
 
-      // Cap at MAX_MARKERS_VIEWPORT
-      if (lodFiltered.length > CONFIG.MAX_MARKERS_VIEWPORT) {
-        // Sort priority: Hot first -> Cheap first -> Alphabetical
-        lodFiltered.sort((a, b) => {
-          if (a.isHot !== b.isHot) return a.isHot ? -1 : 1;
+      let finalUnits = lodFiltered.map(u => u.unit);
+
+      // Cap at MAX_MARKERS_VIEWPORT to strictly prevent DOM/Canvas lag
+      if (finalUnits.length > CONFIG.MAX_MARKERS_VIEWPORT) {
+        finalUnits.sort((a, b) => {
+          const aHot = !!a.isHot;
+          const bHot = !!b.isHot;
+          if (aHot !== bHot) return aHot ? -1 : 1;
           const priceA = a.basePrice ?? Infinity;
           const priceB = b.basePrice ?? Infinity;
           if (priceA !== priceB) return priceA - priceB;
           return (a.unitCode || '').localeCompare(b.unitCode || '');
         });
-        lodFiltered = lodFiltered.slice(0, CONFIG.MAX_MARKERS_VIEWPORT);
+        finalUnits = finalUnits.slice(0, CONFIG.MAX_MARKERS_VIEWPORT);
       }
 
-      setVisibleUnits(lodFiltered);
+      setVisibleUnits(finalUnits);
     };
 
     const handleMapChange = () => {
       if (timeoutId) {
         clearTimeout(timeoutId);
       }
-      timeoutId = window.setTimeout(calculateLod, 150);
+      timeoutId = window.setTimeout(calculateLod, 300); // Increased debounce to 300ms
     };
 
     map.on('zoomend moveend resize', handleMapChange);
@@ -109,7 +135,7 @@ export const useLodMarkers = (
       }
       map.off('zoomend moveend resize', handleMapChange);
     };
-  }, [allUnits, map, mapData, mapScale, cheapPriceThreshold]);
+  }, [precalculatedUnits, spatialIndex, map, cheapPriceThreshold]);
 
   return visibleUnits;
 };

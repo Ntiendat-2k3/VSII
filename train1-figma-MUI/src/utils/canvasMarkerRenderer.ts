@@ -39,6 +39,50 @@ function drawRoundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: n
 
 const markerCache = new Map<string, { canvas: HTMLCanvasElement; height: number }>();
 
+const iconImages = new Map<string, HTMLImageElement>();
+
+const UNIT_TYPE_ICON_PATHS: Record<string, string> = {
+  DON_LAP: '/icon_type/donlap.png',
+  DETACHED: '/icon_type/donlap.png',
+  SONG_LAP: '/icon_type/songlap.png',
+  SEMI_DETACHED: '/icon_type/songlap.png',
+  TU_LAP: '/icon_type/tulap.png',
+  QUADRANGLE: '/icon_type/tulap.png',
+  LIEN_KE: '/icon_type/lienke.png',
+  TOWNHOUSE: '/icon_type/lienke.png',
+  SHOPHOUSE: '/icon_type/shophouse.png',
+  HOT: '/icon_type/hot.png',
+};
+
+export function getIconImage(type: string): HTMLImageElement | null {
+  if (typeof window === 'undefined') return null;
+  const path = UNIT_TYPE_ICON_PATHS[type];
+  if (!path) return null;
+
+  if (iconImages.has(type)) {
+    const img = iconImages.get(type)!;
+    return img.complete ? img : null;
+  }
+
+  const img = new Image();
+  img.src = path;
+  img.onload = () => {
+    markerCache.clear();
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('unit-icons-loaded'));
+    }
+  };
+  iconImages.set(type, img);
+  return null;
+}
+
+// Proactively preload on module load in browser
+if (typeof window !== 'undefined') {
+  Object.keys(UNIT_TYPE_ICON_PATHS).forEach((type) => {
+    getIconImage(type);
+  });
+}
+
 /**
  * Cung cấp API clear cache cho những trường hợp cần giải phóng bộ nhớ (ví dụ: unmount Map)
  */
@@ -269,18 +313,50 @@ function renderMarkerToContext(
   const priceStr = formatShortPrice(property.basePrice);
   const label = priceStr ? `${code} - ${priceStr}` : code;
 
-  if (style.isHotStyle) {
+  const unitType = property.unitTypeCode || '';
+  const iconImg = !style.isHotStyle ? getIconImage(unitType) : null;
+
+  if (iconImg) {
     ctx.save();
-    // Move slightly left and up to align flame with text
-    const flameX = MARKER_WIDTH / 2 - (ctx.measureText(label).width / 2) - 14;
-    ctx.translate(flameX, contentHeight / 2 - 10 + 2);
-    ctx.scale(0.7, 0.7);
-    ctx.fillStyle = style.text;
-    ctx.fill(PATHS.flame);
+    const iconSize = 14;
+    const spacing = 5;
+    const labelWidth = ctx.measureText(label).width;
+    const totalWidth = iconSize + spacing + labelWidth;
+    
+    // Center the combination of icon and text
+    const startX = (MARKER_WIDTH - totalWidth) / 2;
+    
+    // Draw icon image
+    ctx.drawImage(
+      iconImg,
+      startX,
+      (contentHeight - iconSize) / 2,
+      iconSize,
+      iconSize
+    );
+    
+    // Draw text
+    ctx.textAlign = 'left';
+    ctx.fillText(
+      label,
+      startX + iconSize + spacing,
+      contentHeight / 2 + 1
+    );
     ctx.restore();
-    ctx.fillText(label, MARKER_WIDTH / 2 + 8, contentHeight / 2 + 1);
   } else {
-    ctx.fillText(label, MARKER_WIDTH / 2, contentHeight / 2 + 1);
+    if (style.isHotStyle) {
+      ctx.save();
+      // Move slightly left and up to align flame with text
+      const flameX = MARKER_WIDTH / 2 - (ctx.measureText(label).width / 2) - 14;
+      ctx.translate(flameX, contentHeight / 2 - 10 + 2);
+      ctx.scale(0.7, 0.7);
+      ctx.fillStyle = style.text;
+      ctx.fill(PATHS.flame);
+      ctx.restore();
+      ctx.fillText(label, MARKER_WIDTH / 2 + 8, contentHeight / 2 + 1);
+    } else {
+      ctx.fillText(label, MARKER_WIDTH / 2, contentHeight / 2 + 1);
+    }
   }
 
   ctx.restore();

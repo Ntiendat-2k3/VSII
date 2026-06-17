@@ -106,7 +106,7 @@ const CanvasMarkerLayer = ({
 
         const isHovered = propertyId === hoveredIdRef.current;
 
-        // Vẽ khối card căn hộ (Cần đảm bảo hàm drawPropertyMarker vẽ lấy trục (x,y) làm gốc chân/tâm của căn hộ)
+        // Vẽ khối card căn hộ
         const height = drawPropertyMarker(ctx, property, x, y, isSelected || isHovered);
 
         // Lưu trữ vùng bấm (Bounding Box) phục vụ cho Hit Testing (Click/Hover chuột)
@@ -153,13 +153,6 @@ const CanvasMarkerLayer = ({
         hoveredIdRef.current = foundId;
         map.getContainer().style.cursor = foundId ? 'pointer' : '';
         
-        if (foundId) {
-          const { selectedId, onSelectProperty } = propsRef.current;
-          if (foundId !== selectedId) {
-            onSelectProperty(foundId);
-          }
-        }
-        
         requestRedraw();
       }
     };
@@ -168,6 +161,7 @@ const CanvasMarkerLayer = ({
     const handleClick = (e: L.LeafletMouseEvent) => {
       const { x, y } = e.containerPoint;
       let foundId: string | null = null;
+      
       for (let i = bboxesRef.current.length - 1; i >= 0; i--) {
         const bbox = bboxesRef.current[i];
         if (x >= bbox.left && x <= bbox.right && y >= bbox.top && y <= bbox.bottom) {
@@ -176,21 +170,31 @@ const CanvasMarkerLayer = ({
         }
       }
 
+      const { selectedId, onSelectProperty } = propsRef.current;
       if (foundId) {
-        const { selectedId, onSelectProperty } = propsRef.current;
         onSelectProperty(foundId === selectedId ? null : foundId);
         L.DomEvent.stopPropagation(e);
+      } else {
+        if (selectedId !== null) {
+          onSelectProperty(null);
+        }
       }
+    };
+
+    const handleIconsLoaded = () => {
+      requestRedraw();
     };
 
     map.on('mousemove', handleMouseMove);
     map.on('click', handleClick);
+    window.addEventListener('unit-icons-loaded', handleIconsLoaded);
 
     return () => {
       cancelAnimationFrame(rAF);
       map.off('viewreset move resize zoom', requestRedraw);
       map.off('mousemove', handleMouseMove);
       map.off('click', handleClick);
+      window.removeEventListener('unit-icons-loaded', handleIconsLoaded);
       pane.removeChild(canvas);
       map.getContainer().style.cursor = '';
       clearMarkerCache();
