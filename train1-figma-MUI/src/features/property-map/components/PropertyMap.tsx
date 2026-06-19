@@ -6,7 +6,7 @@ import MapHeader from './MapHeader';
 import FilterBar from './FilterBar';
 import MapCanvas from './MapCanvas';
 import LoginForm, { type LoginFormData } from '@/features/auth/components/LoginForm';
-import { propertyMapMutationApi } from '../api/propertyMapMutation';
+import { propertyMapMutationApi } from '../requests/propertyMapMutation';
 import { axiosClient } from '@/api/axiosClient';
 import { showToast } from '@/utils/toast';
 import { PALETTE } from '@/theme';

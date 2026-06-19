@@ -7,7 +7,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Search } from 'lucide-react';
 import { PALETTE } from '@/theme';
-import { propertyMapQueryApi } from '../api/propertyMapQuery';
+import { propertyMapQueryApi } from '../requests/propertyMapQuery';
 
 const DEBOUNCE_MS = 300;
 
