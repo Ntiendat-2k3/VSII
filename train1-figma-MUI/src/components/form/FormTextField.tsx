@@ -1,11 +1,12 @@
 import { Controller } from 'react-hook-form';
 import type { Control, FieldPath, FieldValues } from 'react-hook-form';
-import AppTextField, { type AppTextFieldProps } from '../ui/AppTextField';
+import TextField, { type TextFieldProps } from '@mui/material/TextField';
+import { PALETTE } from '../../theme';
 
 export type FormTextFieldProps<
   TFieldValues extends FieldValues = FieldValues,
   TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
-> = Omit<AppTextFieldProps, 'name'> & {
+> = Omit<TextFieldProps, 'name'> & {
   name: TName;
   control: Control<TFieldValues>;
 };
@@ -17,6 +18,7 @@ const FormTextField = <
   name,
   control,
   helperText,
+  sx,
   ...props
 }: FormTextFieldProps<TFieldValues, TName>) => {
   return (
@@ -24,13 +26,18 @@ const FormTextField = <
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <AppTextField
-          {...({
-            ...field,
-            ...props,
-            error: !!fieldState.error,
-            helperText: fieldState.error ? fieldState.error.message : helperText,
-          } as AppTextFieldProps)}
+        <TextField
+          {...field}
+          {...props}
+          error={!!fieldState.error}
+          helperText={fieldState.error ? fieldState.error.message : helperText}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              backgroundColor: PALETTE.BACKGROUND_DEFAULT,
+              height: 46,
+            },
+            ...sx,
+          }}
         />
       )}
     />

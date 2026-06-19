@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import type { TypedUseSelectorHook } from 'react-redux';
-import propertyMapReducer from './slices/propertyMapSlice';
+import propertyMapReducer from './slices/property-map/propertyMapSlice';
 
 export const store = configureStore({
   reducer: {
