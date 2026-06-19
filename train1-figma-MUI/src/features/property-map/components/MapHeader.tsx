@@ -6,8 +6,8 @@ import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Search } from 'lucide-react';
-import { PALETTE } from '../../../theme';
-import { propertyMapQueryApi } from '../services/propertyMapQueryApi';
+import { PALETTE } from '@/theme';
+import { propertyMapQueryApi } from '../api/propertyMapQuery';
 
 const DEBOUNCE_MS = 300;
 

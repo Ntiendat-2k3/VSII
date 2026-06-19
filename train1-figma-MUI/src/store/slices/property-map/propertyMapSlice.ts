@@ -1,11 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { propertyMapQueryApi } from '../../../features/property-map/services/propertyMapQueryApi';
-import { propertyMapMutationApi } from '../../../features/property-map/services/propertyMapMutationApi';
-import { masterDataQueryApi } from '../../../features/property-map/services/masterDataQueryApi';
-import type { UnitItem } from '../../../features/property-map/types/PropertyMapModel';
-import type { MapGetResponse } from '../../../features/property-map/types/PropertyMapDto';
-import { BACKEND_UNIT_TYPE, FilterType, UNIT_STATUS } from '../../../features/property-map/constants/propertyMapStatus';
+import { propertyMapQueryApi } from '@/features/property-map/api/propertyMapQuery';
+import { propertyMapMutationApi } from '@/features/property-map/api/propertyMapMutation';
+import { masterDataQueryApi } from '@/features/property-map/api/masterDataQuery';
+import type { UnitItem } from '@/features/property-map/types/PropertyMapModel';
+import type { MapGetResponse } from '@/features/property-map/types/PropertyMapDto';
+import { BACKEND_UNIT_TYPE, FilterType, UNIT_STATUS } from '@/features/property-map/constants/propertyMapStatus';
 
 /* ===== State ===== */
 

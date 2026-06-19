@@ -2,11 +2,11 @@ import { useCallback, memo } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import AppCheckbox from '../../../components/ui/AppCheckbox';
+import AppCheckbox from '@/components/ui/AppCheckbox';
 import { FilterType, UNIT_TYPE_ICONS } from '../constants/propertyMapStatus';
-import { useAppDispatch, useAppSelector } from '../../../store';
-import { setFilters } from '../../../store/slices/property-map/propertyMapSlice';
-import { PALETTE, BORDER_RADIUS } from '../../../theme';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { setFilters } from '@/store/slices/property-map/propertyMapSlice';
+import { PALETTE, BORDER_RADIUS } from '@/theme';
 
 const NORMAL_FILTERS: FilterType[] = [
   FilterType.DON_LAP,

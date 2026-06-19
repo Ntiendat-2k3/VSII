@@ -4,7 +4,7 @@ import L from 'leaflet';
 import { convertPercentToLatLng, convertPdfCoorsToLatLng } from '../utils/mapUtils';
 import type { UnitItem } from '../types/PropertyMapModel';
 import { drawPropertyMarker, MARKER_WIDTH, clearMarkerCache } from '../utils/canvasMarkerRenderer';
-import { useAppSelector } from '../../../store';
+import { useAppSelector } from '@/store';
 
 interface CanvasMarkerLayerProps {
   properties: UnitItem[];

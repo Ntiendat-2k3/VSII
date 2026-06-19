@@ -6,13 +6,13 @@ import { MotionConfig, LazyMotion, domAnimation } from "framer-motion";
 import { Toaster } from "sonner";
 import { Suspense, lazy } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
-import theme from "./theme";
-import Navbar from "./components/common/Layout/Navbar";
-import HeroSection from "./components/common/HeroSection";
-import Footer from "./components/common/Layout/Footer";
+import theme from "@/theme";
+import Navbar from "@/components/common/Layout/Navbar";
+import HeroSection from "@/components/common/HeroSection";
+import Footer from "@/components/common/Layout/Footer";
 
-const PropertyMap = lazy(() => import("./features/property-map/components/PropertyMap"));
-import ErrorBoundary from "./components/ErrorBoundary";
+const PropertyMap = lazy(() => import("@/features/property-map/components/PropertyMap"));
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const App = () => {
   return (

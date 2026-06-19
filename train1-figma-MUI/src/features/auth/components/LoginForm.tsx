@@ -7,8 +7,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Lock } from 'lucide-react';
-import FormTextField from '../../../components/form/FormTextField';
-import { PALETTE, GRADIENT, SHADOW, BORDER_RADIUS } from '../../../theme';
+import FormTextField from '@/components/form/FormTextField';
+import { PALETTE, GRADIENT, SHADOW, BORDER_RADIUS } from '@/theme';
 
 const loginSchema = yup.object({
   username: yup.string().required('Vui lòng nhập tên đăng nhập'),

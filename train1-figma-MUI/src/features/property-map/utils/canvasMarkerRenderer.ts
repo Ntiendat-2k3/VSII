@@ -1,6 +1,6 @@
 import type { UnitItem } from '../types/PropertyMapModel';
-import { PALETTE } from '../../../theme';
-import { formatShortPrice } from '../../../utils/format/formatPrice';
+import { PALETTE } from '@/theme';
+import { formatShortPrice } from '@/utils/format/formatPrice';
 import { UNIT_TYPE_ICONS } from '../constants/propertyMapStatus';
 
 // Fixed dimensions for the marker card

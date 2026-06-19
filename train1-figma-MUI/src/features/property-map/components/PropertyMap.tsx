@@ -5,15 +5,15 @@ import CircularProgress from '@mui/material/CircularProgress';
 import MapHeader from './MapHeader';
 import FilterBar from './FilterBar';
 import MapCanvas from './MapCanvas';
-import LoginForm, { type LoginFormData } from '../../auth/components/LoginForm';
-import { propertyMapMutationApi } from '../services/propertyMapMutationApi';
-import { axiosClient } from '../../../api/axiosClient';
-import { showToast } from '../../../utils/toast';
-import { PALETTE } from '../../../theme';
-import { useAppDispatch, useAppSelector } from '../../../store';
-import { fetchUnits, fetchMapData, fetchMasterData, setFocusUnit, forceShowUnit, clearSearchedUnit } from '../../../store/slices/property-map/propertyMapSlice';
-import { AUTH_ENDPOINTS } from '../../../api/endpoints';
-import { CONFIG } from '../../../constants/config';
+import LoginForm, { type LoginFormData } from '@/features/auth/components/LoginForm';
+import { propertyMapMutationApi } from '../api/propertyMapMutation';
+import { axiosClient } from '@/api/axiosClient';
+import { showToast } from '@/utils/toast';
+import { PALETTE } from '@/theme';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { fetchUnits, fetchMapData, fetchMasterData, setFocusUnit, forceShowUnit, clearSearchedUnit } from '@/store/slices/property-map/propertyMapSlice';
+import { AUTH_ENDPOINTS } from '@/api/endpoints';
+import { CONFIG } from '@/constants/config';
 
 const PROJECT_ID = CONFIG.DEFAULT_PROJECT_ID; // Real Project ID 7 from UAT has map data and 7 units
 

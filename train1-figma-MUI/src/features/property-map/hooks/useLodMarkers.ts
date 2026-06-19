@@ -3,7 +3,7 @@ import type { Map as LeafletMap } from 'leaflet';
 import KDBush from 'kdbush';
 import type { UnitItem } from '../types/PropertyMapModel';
 import type { MapGetResponse } from '../types/PropertyMapDto';
-import { CONFIG } from '../../../constants/config';
+import { CONFIG } from '@/constants/config';
 import { convertPdfCoorsToLatLng, convertPercentToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../utils/mapUtils';
 
 export const useLodMarkers = (

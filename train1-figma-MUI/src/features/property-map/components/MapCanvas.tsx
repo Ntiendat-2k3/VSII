@@ -14,9 +14,9 @@ import LodMarkerBridge from './LodMarkerBridge';
 import PropertyMarker from './PropertyMarker';
 import FlyToHandler from './FlyToHandler';
 import type { UnitItem } from '../types/PropertyMapModel';
-import { PALETTE } from '../../../theme';
+import { PALETTE } from '@/theme';
 import { convertPercentToLatLng, convertPdfCoorsToLatLng, IMAGE_WIDTH, IMAGE_HEIGHT } from '../utils/mapUtils';
-import { useAppSelector } from '../../../store';
+import { useAppSelector } from '@/store';
 
 interface MapCanvasProps {
   properties: UnitItem[];

@@ -1,4 +1,4 @@
-import axiosClient from '../../../api/axiosClient';
+import axiosClient from '@/api/axiosClient';
 import type {
   MapGetRequest,
   MapGetResponse,
@@ -6,7 +6,7 @@ import type {
 } from '../types/PropertyMapDto';
 import type { UnitItem } from '../types/PropertyMapModel';
 import { MAP_TYPE, UNIT_STATUS, BACKEND_UNIT_TYPE } from '../constants/propertyMapStatus';
-import { PROPERTY_MAP_ENDPOINTS } from '../../../api/endpoints';
+import { PROPERTY_MAP_ENDPOINTS } from '@/api/endpoints';
 
 /* ===== MOCK DATA FALLBACK ===== */
 const MOCK_MAP_CONFIG: MapGetResponse = {

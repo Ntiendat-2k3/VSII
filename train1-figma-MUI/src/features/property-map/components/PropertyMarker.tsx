@@ -8,12 +8,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { m, AnimatePresence } from 'framer-motion';
 import { Flame, Maximize, Building } from 'lucide-react';
 import type { UnitItem, InquiryStatusCode } from '../types/PropertyMapModel';
-import { PALETTE, GRADIENT, BORDER_RADIUS, SHADOW } from '../../../theme';
-import { formatPrice } from '../../../utils/format/formatPrice';
-import { unitInquiryMutationApi } from '../services/unitInquiryMutationApi';
-import { showToast } from '../../../utils/toast';
+import { PALETTE, GRADIENT, BORDER_RADIUS, SHADOW } from '@/theme';
+import { formatPrice } from '@/utils/format/formatPrice';
+import { unitInquiryMutationApi } from '../api/unitInquiryMutation';
+import { showToast } from '@/utils/toast';
 import { UNIT_STATUS, UNIT_TYPE_ICONS } from '../constants/propertyMapStatus';
-import { useAppSelector } from '../../../store';
+import { useAppSelector } from '@/store';
 
 const MotionBox = m(Box);
 
