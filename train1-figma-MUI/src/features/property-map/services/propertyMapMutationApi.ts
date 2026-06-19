@@ -1,8 +1,8 @@
-import axiosClient from '../../../services/axiosClient';
+import axiosClient from '../../../api/axiosClient';
 import type { MapSearchRequest } from '../types/PropertyMapDto';
 import type { UnitItem } from '../types/PropertyMapModel';
 import { MAP_TYPE, UNIT_STATUS, BACKEND_UNIT_TYPE } from '../constants/propertyMapStatus';
-import { PROPERTY_MAP_ENDPOINTS } from '../../../services/endpoints';
+import { PROPERTY_MAP_ENDPOINTS } from '../../../api/endpoints';
 
 /* ===== MOCK DATA FALLBACK ===== */
 const MOCK_UNITS: UnitItem[] = [

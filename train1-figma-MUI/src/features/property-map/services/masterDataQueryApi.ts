@@ -1,5 +1,5 @@
-import axiosClient from '../../../services/axiosClient';
-import { PROPERTY_MAP_ENDPOINTS } from '../../../services/endpoints';
+import axiosClient from '../../../api/axiosClient';
+import { PROPERTY_MAP_ENDPOINTS } from '../../../api/endpoints';
 import type { MasterDataFilterRequest, MasterDataResponse } from '../types/PropertyMapDto';
 
 export const masterDataQueryApi = {

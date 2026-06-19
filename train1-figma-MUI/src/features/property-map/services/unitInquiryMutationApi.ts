@@ -1,6 +1,6 @@
-import axiosClient from '../../../services/axiosClient';
+import axiosClient from '../../../api/axiosClient';
 import type { UnitInquiryCreateRequest, InquiryCreateResponse } from '../types/PropertyMapDto';
-import { PROPERTY_MAP_ENDPOINTS } from '../../../services/endpoints';
+import { PROPERTY_MAP_ENDPOINTS } from '../../../api/endpoints';
 
 export const unitInquiryMutationApi = {
   /** POST `/portal/units-inquiry/create` — Gửi yêu cầu xin thông tin căn. */
