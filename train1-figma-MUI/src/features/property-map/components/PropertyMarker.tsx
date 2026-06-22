@@ -12,7 +12,7 @@ import { PALETTE, GRADIENT, BORDER_RADIUS, SHADOW } from '@/theme';
 import { formatPrice } from '@/utils/format/formatPrice';
 import { unitInquiryMutationApi } from '../requests/unitInquiryMutation';
 import { showToast } from '@/utils/toast';
-import { UNIT_STATUS, UNIT_TYPE_ICONS } from '../constants/propertyMapStatus';
+import { UNIT_STATUS, getUnitTypeIcon } from '../constants/propertyMapStatus';
 import { useAppSelector } from '@/store';
 
 const MotionBox = m(Box);
@@ -147,7 +147,7 @@ const PropertyMarker = ({ property, projectId, hideArrow = false }: PropertyMark
                 {type ? (
                   <Box
                     component="img"
-                    src={UNIT_TYPE_ICONS[type] || '/icon_type/donlap.png'}
+                    src={getUnitTypeIcon(type)}
                     alt={unitTypes[type] || type}
                     sx={{
                       width: 16,

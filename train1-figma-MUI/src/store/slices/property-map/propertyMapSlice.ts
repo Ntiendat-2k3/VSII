@@ -5,7 +5,8 @@ import { propertyMapMutationApi } from '@/features/property-map/requests/propert
 import { masterDataQueryApi } from '@/features/property-map/requests/masterDataQuery';
 import type { UnitItem } from '@/features/property-map/types/PropertyMapModel';
 import type { MapGetResponse } from '@/features/property-map/types/PropertyMapDto';
-import { BACKEND_UNIT_TYPE, FilterType, UNIT_STATUS } from '@/features/property-map/constants/propertyMapStatus';
+import type { FilterType } from '@/features/property-map/constants/propertyMapStatus';
+import { UNIT_STATUS } from '@/features/property-map/constants/propertyMapStatus';
 
 /* ===== State ===== */
 
@@ -28,20 +29,11 @@ interface PropertyMapState {
   };
 }
 
-const ALL_FILTERS: FilterType[] = [
-  FilterType.HOT,
-  FilterType.DON_LAP,
-  FilterType.SONG_LAP,
-  FilterType.TU_LAP,
-  FilterType.LIEN_KE,
-  FilterType.SHOPHOUSE,
-];
-
 const initialState: PropertyMapState = {
   mapData: null,
   units: [],
   filteredUnits: [],
-  filterTypes: [...ALL_FILTERS],
+  filterTypes: ['HOT'],
   searchKeyword: '',
   searchedUnit: null,
   zoom: 1,
@@ -104,7 +96,7 @@ function applyFilters(units: UnitItem[], activeFilters: FilterType[]): UnitItem[
 
   return availableUnits.filter((unit) => {
     // 1. Hot filter
-    if (unit.isHot && activeFilters.includes(FilterType.HOT)) {
+    if (unit.isHot && activeFilters.includes('HOT')) {
       return true;
     }
     
@@ -113,19 +105,8 @@ function applyFilters(units: UnitItem[], activeFilters: FilterType[]): UnitItem[
       return true;
     }
 
-    // 3. Map backend unitTypeCode to frontend FilterType
-    let typeKey: string = unit.unitTypeCode;
-    if (typeKey === BACKEND_UNIT_TYPE.TOWNHOUSE) {
-      typeKey = FilterType.LIEN_KE;
-    } else if (typeKey === BACKEND_UNIT_TYPE.SEMI_DETACHED) {
-      typeKey = FilterType.SONG_LAP;
-    } else if (typeKey === BACKEND_UNIT_TYPE.DETACHED) {
-      typeKey = FilterType.DON_LAP;
-    } else if (typeKey === BACKEND_UNIT_TYPE.QUADRANGLE || typeKey === BACKEND_UNIT_TYPE.TU_LAP) {
-      typeKey = FilterType.TU_LAP;
-    }
-
-    if (activeFilters.includes(typeKey as FilterType)) {
+    // 3. Match backend unitTypeCode directly against activeFilters!
+    if (activeFilters.includes(unit.unitTypeCode)) {
       return true;
     }
     
@@ -194,6 +175,18 @@ const propertyMapSlice = createSlice({
       .addCase(fetchUnits.fulfilled, (state, action) => {
         state.isLoadingUnits = false;
         state.units = action.payload;
+        
+        // Extract unique unit type codes from the loaded units
+        const uniqueUnitTypes = Array.from(
+          new Set(
+            action.payload
+              .map((u) => u.unitTypeCode)
+              .filter((code): code is string => !!code)
+          )
+        );
+        
+        // Default to all filters active (HOT + all unique unit types)
+        state.filterTypes = ['HOT', ...uniqueUnitTypes];
         state.filteredUnits = applyFilters(state.units, state.filterTypes);
       })
       .addCase(fetchUnits.rejected, (state, action) => {

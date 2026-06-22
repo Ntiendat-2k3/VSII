@@ -1,7 +1,7 @@
 import axiosClient from '@/api/axiosClient';
 import type { MapSearchRequest } from '../types/PropertyMapDto';
 import type { UnitItem } from '../types/PropertyMapModel';
-import { MAP_TYPE, UNIT_STATUS, BACKEND_UNIT_TYPE } from '../constants/propertyMapStatus';
+import { MAP_TYPE, UNIT_STATUS } from '../constants/propertyMapStatus';
 import { PROPERTY_MAP_ENDPOINTS } from '@/api/endpoints';
 
 /* ===== MOCK DATA FALLBACK ===== */
@@ -10,7 +10,7 @@ const MOCK_UNITS: UnitItem[] = [
     id: 101,
     unitCode: 'SH-01',
     isHot: true,
-    unitTypeCode: BACKEND_UNIT_TYPE.SHOPHOUSE,
+    unitTypeCode: 'SHOPHOUSE',
     areaLand: 120,
     areaBuilding: 300,
     basePrice: 15000000000,
@@ -22,7 +22,7 @@ const MOCK_UNITS: UnitItem[] = [
     id: 102,
     unitCode: 'DL-15',
     isHot: false,
-    unitTypeCode: BACKEND_UNIT_TYPE.DETACHED,
+    unitTypeCode: 'DETACHED',
     areaLand: 350,
     areaBuilding: 450,
     basePrice: 45000000000,
@@ -34,7 +34,7 @@ const MOCK_UNITS: UnitItem[] = [
     id: 103,
     unitCode: 'SL-88',
     isHot: true,
-    unitTypeCode: BACKEND_UNIT_TYPE.SEMI_DETACHED,
+    unitTypeCode: 'SEMI_DETACHED',
     areaLand: 200,
     areaBuilding: 250,
     basePrice: 22000000000,
@@ -46,7 +46,7 @@ const MOCK_UNITS: UnitItem[] = [
     id: 104,
     unitCode: 'LK-12',
     isHot: false,
-    unitTypeCode: BACKEND_UNIT_TYPE.TOWNHOUSE,
+    unitTypeCode: 'TOWNHOUSE',
     areaLand: 90,
     areaBuilding: 200,
     basePrice: 11000000000,

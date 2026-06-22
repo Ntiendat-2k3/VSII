@@ -1,20 +1,13 @@
-import { useCallback, memo } from 'react';
+import { useCallback, memo, useMemo } from 'react';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import AppCheckbox from '@/components/ui/AppCheckbox';
-import { FilterType, UNIT_TYPE_ICONS } from '../constants/propertyMapStatus';
+import type { FilterType } from '../constants/propertyMapStatus';
+import { getUnitTypeIcon } from '../constants/propertyMapStatus';
 import { useAppDispatch, useAppSelector } from '@/store';
 import { setFilters } from '@/store/slices/property-map/propertyMapSlice';
 import { PALETTE, BORDER_RADIUS } from '@/theme';
-
-const NORMAL_FILTERS: FilterType[] = [
-  FilterType.DON_LAP,
-  FilterType.SONG_LAP,
-  FilterType.TU_LAP,
-  FilterType.LIEN_KE,
-  FilterType.SHOPHOUSE,
-];
 
 interface FilterChipProps {
   type: FilterType;
@@ -53,7 +46,7 @@ const FilterChip = memo(({ type, isActive, onClick }: FilterChipProps) => {
       {type && (
         <Box
           component="img"
-          src={UNIT_TYPE_ICONS[type]}
+          src={getUnitTypeIcon(type)}
           alt={unitTypes[type] || type}
           sx={{
             width: 18,
@@ -82,6 +75,17 @@ FilterChip.displayName = 'FilterChip';
 const FilterBar = () => {
   const dispatch = useAppDispatch();
   const activeFilters = useAppSelector((state) => state.propertyMap.filterTypes);
+  const units = useAppSelector((state) => state.propertyMap.units);
+
+  const uniqueUnitTypes = useMemo(() => {
+    return Array.from(
+      new Set(
+        units
+          .map((u) => u.unitTypeCode)
+          .filter((code): code is string => !!code)
+      )
+    );
+  }, [units]);
 
   const handleToggleFilter = useCallback(
     (type: FilterType) => {
@@ -93,7 +97,7 @@ const FilterBar = () => {
     [activeFilters, dispatch],
   );
 
-  const isHotActive = activeFilters.includes(FilterType.HOT);
+  const isHotActive = activeFilters.includes('HOT');
 
   return (
     <Stack
@@ -110,7 +114,7 @@ const FilterBar = () => {
       <Stack
         direction="row"
         spacing={1}
-        onClick={() => handleToggleFilter(FilterType.HOT)}
+        onClick={() => handleToggleFilter('HOT')}
         sx={{
           px: '16px',
           py: '8px',
@@ -150,7 +154,7 @@ const FilterBar = () => {
         </Typography>
       </Stack>
 
-      {NORMAL_FILTERS.map((type) => (
+      {uniqueUnitTypes.map((type) => (
         <FilterChip
           key={type}
           type={type}
@@ -163,3 +167,4 @@ const FilterBar = () => {
 };
 
 export default FilterBar;
+

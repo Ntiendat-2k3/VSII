@@ -1,7 +1,7 @@
 import type { UnitItem } from '../types/PropertyMapModel';
 import { PALETTE } from '@/theme';
 import { formatShortPrice } from '@/utils/format/formatPrice';
-import { UNIT_TYPE_ICONS } from '../constants/propertyMapStatus';
+import { getUnitTypeIcon } from '../constants/propertyMapStatus';
 
 // Fixed dimensions for the marker card
 export const MARKER_WIDTH = 130;
@@ -46,7 +46,7 @@ const iconImages = new Map<string, HTMLImageElement>();
 
 export function getIconImage(type: string): HTMLImageElement | null {
   if (typeof window === 'undefined') return null;
-  const path = UNIT_TYPE_ICONS[type];
+  const path = getUnitTypeIcon(type);
   if (!path) return null;
 
   if (iconImages.has(type)) {
@@ -68,7 +68,7 @@ export function getIconImage(type: string): HTMLImageElement | null {
 
 // Proactively preload on module load in browser
 if (typeof window !== 'undefined') {
-  Object.keys(UNIT_TYPE_ICONS).forEach((type) => {
+  ['DETACHED', 'SEMI_DETACHED', 'QUADRUPLEX', 'TOWNHOUSE', 'SHOPHOUSE'].forEach((type) => {
     getIconImage(type);
   });
 }

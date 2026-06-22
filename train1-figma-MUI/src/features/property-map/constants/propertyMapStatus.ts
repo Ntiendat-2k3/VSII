@@ -15,37 +15,21 @@ export type UnitStatus = typeof UNIT_STATUS[keyof typeof UNIT_STATUS];
 
 export type InquiryStatus = 'PENDING' | 'COMPLETED' | 'REJECTED' | 'EXPIRE';
 
-export const BACKEND_UNIT_TYPE = {
-  TOWNHOUSE: 'TOWNHOUSE',
-  SEMI_DETACHED: 'SEMI_DETACHED',
-  DETACHED: 'DETACHED',
-  QUADRANGLE: 'QUADRANGLE',
-  TU_LAP: 'TU_LAP',
-  SHOPHOUSE: 'SHOPHOUSE',
-} as const;
+export type FilterType = string;
 
-export type BackendUnitType = typeof BACKEND_UNIT_TYPE[keyof typeof BACKEND_UNIT_TYPE];
+/**
+ * Dynamic helper to map any unit type code from backend to its local icon asset path.
+ * Matches keywords to support both Vietnamese and English backend values dynamically.
+ */
+export const getUnitTypeIcon = (code: string | undefined): string => {
+  if (!code) return '/icon_type/donlap.png';
+  const c = code.toUpperCase();
+  if (c === 'HOT') return '/icon_type/hot.png';
+  if (c.includes('DON_LAP') || c.includes('DETACHED')) return '/icon_type/donlap.png';
+  if (c.includes('SONG_LAP') || c.includes('SEMI_DETACHED')) return '/icon_type/songlap.png';
+  if (c.includes('TU_LAP') || c.includes('QUADRANGLE') || c.includes('QUADRUPLEX')) return '/icon_type/tulap.png';
+  if (c.includes('LIEN_KE') || c.includes('TOWNHOUSE')) return '/icon_type/lienke.png';
+  if (c.includes('SHOPHOUSE')) return '/icon_type/shophouse.png';
+  return '/icon_type/donlap.png'; // fallback icon
+};
 
-export const FilterType = {
-  HOT: 'HOT',
-  DON_LAP: 'DON_LAP',
-  SONG_LAP: 'SONG_LAP',
-  TU_LAP: 'TU_LAP',
-  LIEN_KE: 'LIEN_KE',
-  SHOPHOUSE: 'SHOPHOUSE',
-} as const;
-
-export type FilterType = typeof FilterType[keyof typeof FilterType];
-
-export const UNIT_TYPE_ICONS: Record<string, string> = {
-  DON_LAP: '/icon_type/donlap.png',
-  DETACHED: '/icon_type/donlap.png',
-  SONG_LAP: '/icon_type/songlap.png',
-  SEMI_DETACHED: '/icon_type/songlap.png',
-  TU_LAP: '/icon_type/tulap.png',
-  QUADRANGLE: '/icon_type/tulap.png',
-  LIEN_KE: '/icon_type/lienke.png',
-  TOWNHOUSE: '/icon_type/lienke.png',
-  SHOPHOUSE: '/icon_type/shophouse.png',
-  HOT: '/icon_type/hot.png',
-} as const;
