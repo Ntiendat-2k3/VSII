@@ -1,0 +1,45 @@
+<div class="login-card">
+  <div class="icon-wrapper">
+    <mat-icon class="lock-icon">lock</mat-icon>
+  </div>
+
+  <h2>Yêu cầu đăng nhập</h2>
+  <p class="subtitle">Vui lòng đăng nhập để xem thông tin mặt bằng quỹ căn dự án.</p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="login-form">
+    <mat-form-field appearance="outline" class="full-width">
+      <input matInput formControlName="username" placeholder="Tên đăng nhập" [disabled]="isLoading()" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <input 
+        matInput 
+        [type]="hidePassword() ? 'password' : 'text'" 
+        formControlName="password" 
+        placeholder="Mật khẩu" 
+        [disabled]="isLoading()"
+      />
+      <button 
+        mat-icon-button 
+        matSuffix 
+        (click)="togglePasswordVisibility()" 
+        [attr.aria-label]="'Hide password'" 
+        [attr.aria-pressed]="hidePassword()"
+        type="button">
+        <mat-icon>{{hidePassword() ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <button 
+      mat-flat-button 
+      type="submit" 
+      class="submit-btn full-width"
+      [disabled]="isLoading()">
+      @if (isLoading()) {
+        <mat-spinner diameter="24" color="inherit"></mat-spinner>
+      } @else {
+        Đăng nhập
+      }
+    </button>
+  </form>
+</div>

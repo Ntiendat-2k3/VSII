@@ -1,0 +1,14 @@
+{
+  "/api-proxy": {
+    "target": "https://api-uat.vinhomes.biz.vn/hovixi/api/v1",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api-proxy": ""
+    },
+    "headers": {
+      "Origin": "https://api-uat.vinhomes.biz.vn",
+      "Referer": "https://api-uat.vinhomes.biz.vn/"
+    }
+  }
+}

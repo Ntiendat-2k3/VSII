@@ -1,0 +1,56 @@
+<div class="header-wrapper">
+  <h1 class="header-title">Mặt bằng quỹ căn</h1>
+
+  <div class="search-container">
+    <div class="search-input-wrapper">
+      <span class="search-icon-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </span>
+      <input 
+        #searchInput
+        type="text" 
+        [ngModel]="keyword()" 
+        (ngModelChange)="onSearchInput($event)"
+        (focus)="onInputFocus()"
+        (blur)="onInputBlur()"
+        (keydown)="onKeyDown($event)"
+        placeholder="Tìm vị trí căn theo mã căn" 
+        class="search-input"
+        aria-label="Tìm vị trí căn theo mã căn"
+      />
+      <div class="search-status-right">
+        @if (isLoadingSuggestions()) {
+          <span class="spinner"></span>
+        }
+        @if (keyword()) {
+          <button type="button" class="clear-btn" (click)="clearSearch($event)" aria-label="Xóa">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Suggestion Dropdown -->
+    @if (showSuggestions() && suggestions().length > 0) {
+      <div class="suggestions-dropdown" (mousedown)="$event.preventDefault()">
+        @for (code of suggestions(); track code; let index = $index) {
+          <div 
+            class="suggestion-item" 
+            [class.active]="index === activeIndex()"
+            (click)="selectSuggestion(code)"
+            (mouseenter)="activeIndex.set(index)"
+          >
+            <span class="item-search-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </span>
+            <span class="item-text">{{ code }}</span>
+          </div>
+        }
+      </div>
+    } @else if (showSuggestions() && keyword().trim() !== '' && !isLoadingSuggestions() && suggestions().length === 0) {
+      <div class="suggestions-dropdown empty-state">
+        <div class="no-options">Không tìm thấy mã căn</div>
+      </div>
+    }
+  </div>
+</div>

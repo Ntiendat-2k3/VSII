@@ -1,0 +1,85 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.property-map-page-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 16px;
+
+  @media (min-width: 960px) {
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+.map-section-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @media (min-width: 960px) {
+    gap: 24px;
+  }
+}
+
+.section-padding-container {
+  padding-left: 12px;
+  padding-right: 12px;
+
+  @media (min-width: 960px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.map-canvas-relative-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0;
+
+  @media (min-width: 960px) {
+    border-radius: var(--radius-lg);
+  }
+}
+
+// Map Loading Overlay
+.map-overlay-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(2px);
+  border-radius: 0;
+
+  @media (min-width: 960px) {
+    border-radius: var(--radius-lg);
+  }
+}
+
+// Map Login Overlay
+.map-overlay-login {
+  position: absolute;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 0;
+
+  @media (min-width: 960px) {
+    border-radius: var(--radius-lg);
+  }
+}

@@ -1,0 +1,47 @@
+<header class="navbar-header">
+  <div class="navbar-container">
+    <!-- Logo -->
+    <div class="logo-wrapper">
+      <img src="/logo.png" alt="Realestate Logo" class="logo-img" />
+    </div>
+
+    <!-- Desktop Menu -->
+    <nav class="desktop-nav">
+      @for (item of navItems; track item) {
+        <a class="nav-link">{{ item }}</a>
+      }
+    </nav>
+
+    <!-- Right Side -->
+    <div class="right-actions">
+      <!-- Online Counter -->
+      <div class="online-counter">
+        <span class="pulse-dot"></span>
+        <span class="counter-text">100 người đang Online</span>
+      </div>
+
+      <!-- User Profile Circle -->
+      <div class="profile-circle">
+        <span class="user-icon">👤</span>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button type="button" class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Mở menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Dropdown Menu -->
+  @if (mobileOpen()) {
+    <div class="mobile-menu-dropdown">
+      @for (item of navItems; track item) {
+        <a class="mobile-nav-link" (click)="toggleMobileMenu()">{{ item }}</a>
+      }
+      <div class="mobile-online-counter">
+        <span class="pulse-dot"></span>
+        <span class="counter-text">100 người đang Online</span>
+      </div>
+    </div>
+  }
+</header>

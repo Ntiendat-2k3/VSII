@@ -1,0 +1,2326 @@
+{
+  "version": "1.0.0",
+  "gitCommitHash": "0f50b5f932f10ba486604aac2332fe7d53e1898a",
+  "generatedAt": "2026-06-10T19:32:52.614Z",
+  "files": {
+    ".github/workflows/react-doctor.yml": {
+      "filePath": ".github/workflows/react-doctor.yml",
+      "contentHash": "de0d719d788db4cbb352eab5d9243bc4a38f9f8c2a959c165fd108ca48dea9f0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 46,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/.understandignore": {
+      "filePath": ".understand-anything/.understandignore",
+      "contentHash": "4ca7c795feb4472bacd82ac252f6c84105ee900a5db7c600dc9be0101bb01dd0",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 35,
+      "hasStructuralAnalysis": false
+    },
+    ".understand-anything/diff-overlay.json": {
+      "filePath": ".understand-anything/diff-overlay.json",
+      "contentHash": "2762fb2ccadfec8cc2062adf9bef50d76dc4310f01e4ed00623ee2dfc653f0ba",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/fingerprints.json": {
+      "filePath": ".understand-anything/fingerprints.json",
+      "contentHash": "5aa0bb65e3856dffc5c81a61d097a2c23bfb1a3e79cf7df92041197833dd5d73",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 1929,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/knowledge-graph.json": {
+      "filePath": ".understand-anything/knowledge-graph.json",
+      "contentHash": "00540a9859cf3723cb5a760c822e47f8d282afad478327d47bec827d51b72dee",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 2437,
+      "hasStructuralAnalysis": true
+    },
+    ".understand-anything/meta.json": {
+      "filePath": ".understand-anything/meta.json",
+      "contentHash": "f80f5e2993d1602221f08b8c94ce6f50e0655b4f6d3c57826b6ec14ceccd5064",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 6,
+      "hasStructuralAnalysis": true
+    },
+    "eslint.config.js": {
+      "filePath": "eslint.config.js",
+      "contentHash": "cf80a7510234dcd5ae594b30b44682b8b45ba13c0fcb5bf8928bea143802aa1c",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@eslint/js",
+          "specifiers": [
+            "js"
+          ]
+        },
+        {
+          "source": "globals",
+          "specifiers": [
+            "globals"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-hooks",
+          "specifiers": [
+            "reactHooks"
+          ]
+        },
+        {
+          "source": "eslint-plugin-react-refresh",
+          "specifiers": [
+            "reactRefresh"
+          ]
+        },
+        {
+          "source": "typescript-eslint",
+          "specifiers": [
+            "tseslint"
+          ]
+        },
+        {
+          "source": "eslint/config",
+          "specifiers": [
+            "defineConfig",
+            "globalIgnores"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "extract_schemas.cjs": {
+      "filePath": "extract_schemas.cjs",
+      "contentHash": "fe1df1716141fc18a1a9bafd2769fc39e568d94d8379d7356ca7611cb8a15dbd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 15,
+      "hasStructuralAnalysis": true
+    },
+    "extract_swagger.cjs": {
+      "filePath": "extract_swagger.cjs",
+      "contentHash": "68f3c0882433f1f74e247442627144eb0f0205842594d629cfe522c2c952ad92",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "index.html": {
+      "filePath": "index.html",
+      "contentHash": "73edc0e91ce636b5eca361a583be12300e89ab5faeb3bcd5ccd1da3c48a865fc",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": false
+    },
+    "map_feature_implementation_report.md": {
+      "filePath": "map_feature_implementation_report.md",
+      "contentHash": "a4263b57a2434b0979e2d8b66191de630c7e628e0e5f315925d3a199bbc16c1a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "package.json": {
+      "filePath": "package.json",
+      "contentHash": "f140e5e0186383c7da29ace051ae7f92524c283da46e44792fa1b13e5fbc8c8d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 55,
+      "hasStructuralAnalysis": true
+    },
+    "prompt.md": {
+      "filePath": "prompt.md",
+      "contentHash": "9b00851e399693f3ed5a35d5e0c6b155145f279fb239222f8927254cd0de41aa",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 161,
+      "hasStructuralAnalysis": true
+    },
+    "public/vips-properties.xml": {
+      "filePath": "public/vips-properties.xml",
+      "contentHash": "4a1add64e7b2b313f364149ba45ede066bdc2f541cd7d87ebaeef0059037a08d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": false
+    },
+    "README.md": {
+      "filePath": "README.md",
+      "contentHash": "8dc9e0ee2281acb3324624fbe6eb7e1377cc626f616ea4dc90e3a90ae094374d",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 74,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/generate-tiles.js": {
+      "filePath": "scripts/generate-tiles.js",
+      "contentHash": "d97a41c616f8c510cd779bf31e1d2771336d3b624f87de211d40b20a2c08c737",
+      "functions": [
+        {
+          "name": "generateTiles",
+          "params": [],
+          "exported": false,
+          "lineCount": 20
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sharp",
+          "specifiers": [
+            "sharp"
+          ]
+        },
+        {
+          "source": "path",
+          "specifiers": [
+            "path"
+          ]
+        },
+        {
+          "source": "fs",
+          "specifiers": [
+            "fs"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 30,
+      "hasStructuralAnalysis": true
+    },
+    "scripts/start-dashboard.cjs": {
+      "filePath": "scripts/start-dashboard.cjs",
+      "contentHash": "626ce6f144dca255097e2de8ea056a8da38b5f3ef8b2a246a790e2f846157c79",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "SCRUM/Report-Scrum106.md": {
+      "filePath": "SCRUM/Report-Scrum106.md",
+      "contentHash": "9e042951fb1467c9db491f7fb18cd7cd79a354a69c6e83a06fb28f6b2017d409",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 214,
+      "hasStructuralAnalysis": true
+    },
+    "SCRUM/SCRUM-106.md": {
+      "filePath": "SCRUM/SCRUM-106.md",
+      "contentHash": "890918c6b3ac089a9293639bdc19b8a35dd69d6c11854b1235fe19a407ac7fcf",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 119,
+      "hasStructuralAnalysis": true
+    },
+    "src/App.tsx": {
+      "filePath": "src/App.tsx",
+      "contentHash": "72fb7d0687eddba93265711b3dd6874721d82155d6318d6c608505fa39d6268c",
+      "functions": [
+        {
+          "name": "App",
+          "params": [],
+          "exported": false,
+          "lineCount": 51
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/styles",
+          "specifiers": [
+            "ThemeProvider"
+          ]
+        },
+        {
+          "source": "@mui/material/CssBaseline",
+          "specifiers": [
+            "CssBaseline"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "MotionConfig",
+            "LazyMotion",
+            "domAnimation"
+          ]
+        },
+        {
+          "source": "sonner",
+          "specifiers": [
+            "Toaster"
+          ]
+        },
+        {
+          "source": "./theme",
+          "specifiers": [
+            "theme"
+          ]
+        },
+        {
+          "source": "./components/Layout/Navbar",
+          "specifiers": [
+            "Navbar"
+          ]
+        },
+        {
+          "source": "./components/Layout/HeroSection",
+          "specifiers": [
+            "HeroSection"
+          ]
+        },
+        {
+          "source": "./components/PropertyMap",
+          "specifiers": [
+            "PropertyMap"
+          ]
+        },
+        {
+          "source": "./components/Layout/Footer",
+          "specifiers": [
+            "Footer"
+          ]
+        },
+        {
+          "source": "./components/ErrorBoundary",
+          "specifiers": [
+            "ErrorBoundary"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 67,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ErrorBoundary.tsx": {
+      "filePath": "src/components/ErrorBoundary.tsx",
+      "contentHash": "d46dc830856451ed1f621067b3416b87703970af0c7fe826d4d435abc55975eb",
+      "functions": [],
+      "classes": [
+        {
+          "name": "ErrorBoundary",
+          "methods": [
+            "getDerivedStateFromError",
+            "componentDidCatch",
+            "render"
+          ],
+          "properties": [
+            "state",
+            "handleReset"
+          ],
+          "exported": false,
+          "lineCount": 51
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "Component"
+          ]
+        },
+        {
+          "source": "react",
+          "specifiers": [
+            "ReactNode"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 71,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/form/FormTextField.tsx": {
+      "filePath": "src/components/form/FormTextField.tsx",
+      "contentHash": "af7871aa81d96890749e937e1c877e711a6e480972e4d73ecc9bc7428f9c9bdb",
+      "functions": [
+        {
+          "name": "FormTextField",
+          "params": [
+            "{\n  name,\n  control,\n  helperText,\n  ...props\n}"
+          ],
+          "exported": false,
+          "lineCount": 24
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "Controller"
+          ]
+        },
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "Control",
+            "FieldPath",
+            "FieldValues"
+          ]
+        },
+        {
+          "source": "../ui/AppTextField",
+          "specifiers": [
+            "AppTextField",
+            "AppTextFieldProps"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 39,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Layout/Footer.tsx": {
+      "filePath": "src/components/Layout/Footer.tsx",
+      "contentHash": "04b483093d063cc73dcc6a817afd9b37b45a57e9b204af1c6e31e6cc49f97c0b",
+      "functions": [
+        {
+          "name": "Footer",
+          "params": [],
+          "exported": false,
+          "lineCount": 152
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "m"
+          ]
+        },
+        {
+          "source": "@mui/icons-material/Facebook",
+          "specifiers": [
+            "FacebookIcon"
+          ]
+        },
+        {
+          "source": "@mui/icons-material/YouTube",
+          "specifiers": [
+            "YouTubeIcon"
+          ]
+        },
+        {
+          "source": "@mui/icons-material/Instagram",
+          "specifiers": [
+            "InstagramIcon"
+          ]
+        },
+        {
+          "source": "@mui/icons-material/Twitter",
+          "specifiers": [
+            "TwitterIcon"
+          ]
+        },
+        {
+          "source": "./FooterCompanyInfo",
+          "specifiers": [
+            "FooterCompanyInfo"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "GRADIENT"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 168,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Layout/FooterCompanyInfo.tsx": {
+      "filePath": "src/components/Layout/FooterCompanyInfo.tsx",
+      "contentHash": "27a083284c03093a6064bed8dfc9f03d347de65edf53cae7709a3d3b5da06b64",
+      "functions": [
+        {
+          "name": "FooterCompanyInfo",
+          "params": [],
+          "exported": false,
+          "lineCount": 86
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Phone",
+            "Mail",
+            "MapPin"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 95,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Layout/HeroSection.tsx": {
+      "filePath": "src/components/Layout/HeroSection.tsx",
+      "contentHash": "1b455c32ad688d05bbf2a7bb4324aca60c3ea43f78ab6a44b420c161246e6eaa",
+      "functions": [
+        {
+          "name": "HeroSection",
+          "params": [],
+          "exported": false,
+          "lineCount": 163
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "m"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "Variants"
+          ]
+        },
+        {
+          "source": "./HeroTabs",
+          "specifiers": [
+            "HeroTabs"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "GRADIENT"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 191,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Layout/HeroTabs.tsx": {
+      "filePath": "src/components/Layout/HeroTabs.tsx",
+      "contentHash": "2491438ee19f504aee517637f51bf15344d6570d11ca6e7d90b9b1d9c7138e9e",
+      "functions": [
+        {
+          "name": "HeroTabs",
+          "params": [],
+          "exported": false,
+          "lineCount": 54
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "m"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Home",
+            "MapPin",
+            "Compass",
+            "Map",
+            "Building2",
+            "ClipboardList",
+            "Globe"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "GRADIENT"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 76,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Layout/Navbar.tsx": {
+      "filePath": "src/components/Layout/Navbar.tsx",
+      "contentHash": "6943227ae8f990aae0d14e149f229ae9506439bf18f8a0c7f2ea43e6d91f64cb",
+      "functions": [
+        {
+          "name": "Navbar",
+          "params": [],
+          "exported": false,
+          "lineCount": 152
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/IconButton",
+          "specifiers": [
+            "IconButton"
+          ]
+        },
+        {
+          "source": "@mui/icons-material/Menu",
+          "specifiers": [
+            "MenuIcon"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "m"
+          ]
+        },
+        {
+          "source": "./NavbarDrawer",
+          "specifiers": [
+            "NavbarDrawer"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "SHADOW"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 170,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/Layout/NavbarDrawer.tsx": {
+      "filePath": "src/components/Layout/NavbarDrawer.tsx",
+      "contentHash": "210763aea77f6193ef4c9935ec4336e5def9ca77bce2ea95bf12d55009e581f2",
+      "functions": [
+        {
+          "name": "NavbarDrawer",
+          "params": [
+            "{ open, onClose, navItems }"
+          ],
+          "exported": false,
+          "lineCount": 67
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/IconButton",
+          "specifiers": [
+            "IconButton"
+          ]
+        },
+        {
+          "source": "@mui/icons-material/Close",
+          "specifiers": [
+            "CloseIcon"
+          ]
+        },
+        {
+          "source": "@mui/material/Drawer",
+          "specifiers": [
+            "Drawer"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "m"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 87,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/CanvasMarkerLayer.tsx": {
+      "filePath": "src/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "contentHash": "056661fb83e1e6ac73644fa3493d9f3b6ddedfd25c56e93ec2447e0b62b5e3e3",
+      "functions": [
+        {
+          "name": "CanvasMarkerLayer",
+          "params": [
+            "{\n  properties,\n  selectedId,\n  onSelectProperty,\n}"
+          ],
+          "exported": false,
+          "lineCount": 166
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-leaflet",
+          "specifiers": [
+            "useMap"
+          ]
+        },
+        {
+          "source": "leaflet",
+          "specifiers": [
+            "L"
+          ]
+        },
+        {
+          "source": "../../utils/mapUtils",
+          "specifiers": [
+            "convertPercentToLatLng"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitItem"
+          ]
+        },
+        {
+          "source": "../../utils/canvasMarkerRenderer",
+          "specifiers": [
+            "drawPropertyMarker",
+            "MARKER_WIDTH",
+            "clearMarkerCache"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 192,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/FilterBar.tsx": {
+      "filePath": "src/components/PropertyMap/FilterBar.tsx",
+      "contentHash": "f5eec1cb85634ccb8dc1b57c949310a707a1710a5f08b0eda1bdcb0ad13b8e99",
+      "functions": [
+        {
+          "name": "FilterBar",
+          "params": [],
+          "exported": false,
+          "lineCount": 73
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "memo"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "../ui/AppCheckbox",
+          "specifiers": [
+            "AppCheckbox"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Flame"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "FilterType",
+            "UNIT_TYPE_LABELS"
+          ]
+        },
+        {
+          "source": "../../store",
+          "specifiers": [
+            "useAppDispatch",
+            "useAppSelector"
+          ]
+        },
+        {
+          "source": "../../store/slices/propertyMapSlice",
+          "specifiers": [
+            "setFilters"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "BORDER_RADIUS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 141,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/FlyToHandler.tsx": {
+      "filePath": "src/components/PropertyMap/FlyToHandler.tsx",
+      "contentHash": "9e057970bad976882ab63573f695fe044e5a7184ba4aaed44d458c0d4e04be03",
+      "functions": [
+        {
+          "name": "FlyToHandler",
+          "params": [
+            "{ target }"
+          ],
+          "exported": false,
+          "lineCount": 22
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useEffect",
+            "useRef"
+          ]
+        },
+        {
+          "source": "react-leaflet",
+          "specifiers": [
+            "useMap"
+          ]
+        },
+        {
+          "source": "leaflet",
+          "specifiers": [
+            "L"
+          ]
+        },
+        {
+          "source": "../../utils/mapUtils",
+          "specifiers": [
+            "convertPercentToLatLng"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/index.tsx": {
+      "filePath": "src/components/PropertyMap/index.tsx",
+      "contentHash": "644547c56a9761a80b4952a5ea911228b107a8eac3aaf44606697ec5c6750c65",
+      "functions": [
+        {
+          "name": "PropertyMap",
+          "params": [],
+          "exported": false,
+          "lineCount": 141
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useCallback",
+            "useEffect"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "./MapHeader",
+          "specifiers": [
+            "MapHeader"
+          ]
+        },
+        {
+          "source": "./FilterBar",
+          "specifiers": [
+            "FilterBar"
+          ]
+        },
+        {
+          "source": "./MapCanvas",
+          "specifiers": [
+            "MapCanvas"
+          ]
+        },
+        {
+          "source": "../../features/property-map/components/LoginForm",
+          "specifiers": [
+            "LoginForm",
+            "LoginFormData"
+          ]
+        },
+        {
+          "source": "../../services/mapService",
+          "specifiers": [
+            "mapService"
+          ]
+        },
+        {
+          "source": "../../services/apiClient",
+          "specifiers": [
+            "apiClient"
+          ]
+        },
+        {
+          "source": "../../utils/toast",
+          "specifiers": [
+            "showToast"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../store",
+          "specifiers": [
+            "useAppDispatch",
+            "useAppSelector"
+          ]
+        },
+        {
+          "source": "../../store/slices/propertyMapSlice",
+          "specifiers": [
+            "fetchUnits",
+            "fetchMapData",
+            "setFocusUnit"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 161,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/MapCanvas.tsx": {
+      "filePath": "src/components/PropertyMap/MapCanvas.tsx",
+      "contentHash": "74055f67639771a2863c75e6eb202eaf6679699029c04cb0d265e047605f5777",
+      "functions": [
+        {
+          "name": "MapCanvas",
+          "params": [
+            "{\n  properties,\n  selectedId,\n  onSelectProperty,\n  focusTarget,\n  projectId,\n}"
+          ],
+          "exported": false,
+          "lineCount": 204
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useCallback",
+            "useState",
+            "useMemo"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/ClickAwayListener",
+          "specifiers": [
+            "ClickAwayListener"
+          ]
+        },
+        {
+          "source": "@mui/material/Drawer",
+          "specifiers": [
+            "Drawer"
+          ]
+        },
+        {
+          "source": "@mui/material/useMediaQuery",
+          "specifiers": [
+            "useMediaQuery"
+          ]
+        },
+        {
+          "source": "@mui/material/styles",
+          "specifiers": [
+            "useTheme",
+            "styled"
+          ]
+        },
+        {
+          "source": "@mui/material/GlobalStyles",
+          "specifiers": [
+            "GlobalStyles"
+          ]
+        },
+        {
+          "source": "react-leaflet",
+          "specifiers": [
+            "MapContainer",
+            "TileLayer",
+            "Popup"
+          ]
+        },
+        {
+          "source": "leaflet",
+          "specifiers": [
+            "L"
+          ]
+        },
+        {
+          "source": "leaflet/dist/leaflet.css",
+          "specifiers": []
+        },
+        {
+          "source": "./CanvasMarkerLayer",
+          "specifiers": [
+            "CanvasMarkerLayer"
+          ]
+        },
+        {
+          "source": "./PropertyPopup",
+          "specifiers": [
+            "PropertyPopup"
+          ]
+        },
+        {
+          "source": "./FlyToHandler",
+          "specifiers": [
+            "FlyToHandler"
+          ]
+        },
+        {
+          "source": "./MapPagination",
+          "specifiers": [
+            "MapPagination"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitItem"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../utils/mapUtils",
+          "specifiers": [
+            "convertPercentToLatLng",
+            "IMAGE_WIDTH",
+            "IMAGE_HEIGHT"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 242,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/MapHeader.tsx": {
+      "filePath": "src/components/PropertyMap/MapHeader.tsx",
+      "contentHash": "200a08eae9aef070286351d49685786c5925f4f980e825d66b863536925a3fa5",
+      "functions": [
+        {
+          "name": "MapHeader",
+          "params": [
+            "{ projectId, onSelectUnit }"
+          ],
+          "exported": false,
+          "lineCount": 138
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useEffect",
+            "useCallback",
+            "useRef"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Autocomplete",
+          "specifiers": [
+            "Autocomplete"
+          ]
+        },
+        {
+          "source": "../ui/AppTextField",
+          "specifiers": [
+            "AppTextField"
+          ]
+        },
+        {
+          "source": "@mui/material/InputAdornment",
+          "specifiers": [
+            "InputAdornment"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Search"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../services/mapService",
+          "specifiers": [
+            "mapService"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 159,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/MapPagination.tsx": {
+      "filePath": "src/components/PropertyMap/MapPagination.tsx",
+      "contentHash": "b285af411d35f4fcee5d9e16d129a10070b64188e0e96f5399866ca053adc767",
+      "functions": [
+        {
+          "name": "MapPagination",
+          "params": [
+            "{\n  currentPage,\n  totalPages,\n  rangeStart,\n  rangeEnd,\n  total,\n  onPrevPage,\n  onNextPage,\n}"
+          ],
+          "exported": false,
+          "lineCount": 67
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/IconButton",
+          "specifiers": [
+            "IconButton"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "ChevronLeft",
+            "ChevronRight"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "BORDER_RADIUS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 86,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/PopupDetails.tsx": {
+      "filePath": "src/components/PropertyMap/PopupDetails.tsx",
+      "contentHash": "c2bad1fe7a5409c1350ffd30249b44d9ebf502669829e02d4e1ab2ea7bdfe484",
+      "functions": [
+        {
+          "name": "PopupDetails",
+          "params": [
+            "{ area, type }"
+          ],
+          "exported": false,
+          "lineCount": 36
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Maximize",
+            "Building"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UNIT_TYPE_LABELS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 50,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/PopupFooter.tsx": {
+      "filePath": "src/components/PropertyMap/PopupFooter.tsx",
+      "contentHash": "4a3908ed4713267d008fa0daf18068db9098bd948950792ee5bf7914d825d45d",
+      "functions": [
+        {
+          "name": "PopupFooter",
+          "params": [
+            "{\n  statusCode,\n  listedPrice,\n  loanPrice,\n  inquiryStatusCode: initialInquiryStatus,\n  unitCode,\n  projectId,\n}"
+          ],
+          "exported": false,
+          "lineCount": 151
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "useState",
+            "useCallback"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@mui/material/Chip",
+          "specifiers": [
+            "Chip"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitStatusCode",
+            "InquiryStatusCode"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "INQUIRY_STATUS_LABELS"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "GRADIENT",
+            "BORDER_RADIUS"
+          ]
+        },
+        {
+          "source": "../../utils/formatters",
+          "specifiers": [
+            "formatPrice"
+          ]
+        },
+        {
+          "source": "../../services/unitInquiryService",
+          "specifiers": [
+            "unitInquiryService"
+          ]
+        },
+        {
+          "source": "../../utils/toast",
+          "specifiers": [
+            "showToast"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 176,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/PopupHeader.tsx": {
+      "filePath": "src/components/PropertyMap/PopupHeader.tsx",
+      "contentHash": "2d6ee86bb6a68aff95ad01155daf23528d2ad424beecba89bf3a879ed4b24811",
+      "functions": [
+        {
+          "name": "PopupHeader",
+          "params": [
+            "{ code, isHot }"
+          ],
+          "exported": false,
+          "lineCount": 29
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Flame"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "BORDER_RADIUS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/PropertyMap/PropertyPopup.tsx": {
+      "filePath": "src/components/PropertyMap/PropertyPopup.tsx",
+      "contentHash": "6ba597e0e9f805f176e9ba210c557cb5ca9089f879d2f23d3ab13b9836f96312",
+      "functions": [
+        {
+          "name": "PropertyPopup",
+          "params": [
+            "{ property, projectId }"
+          ],
+          "exported": false,
+          "lineCount": 78
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "framer-motion",
+          "specifiers": [
+            "m",
+            "AnimatePresence"
+          ]
+        },
+        {
+          "source": "./PopupHeader",
+          "specifiers": [
+            "PopupHeader"
+          ]
+        },
+        {
+          "source": "./PopupDetails",
+          "specifiers": [
+            "PopupDetails"
+          ]
+        },
+        {
+          "source": "./PopupFooter",
+          "specifiers": [
+            "PopupFooter"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitItem"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE",
+            "BORDER_RADIUS",
+            "SHADOW"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 97,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/AppCheckbox.tsx": {
+      "filePath": "src/components/ui/AppCheckbox.tsx",
+      "contentHash": "6ceadbaa9f564f37b6e151e1c9fb7494dde71794afc637d448488a260673090a",
+      "functions": [
+        {
+          "name": "AppCheckbox",
+          "params": [
+            "{ icon, checkedIcon, sx, ...props }"
+          ],
+          "exported": false,
+          "lineCount": 10
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/Checkbox",
+          "specifiers": [
+            "Checkbox",
+            "CheckboxProps"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "SquareCheck",
+            "Square"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 19,
+      "hasStructuralAnalysis": true
+    },
+    "src/components/ui/AppTextField.tsx": {
+      "filePath": "src/components/ui/AppTextField.tsx",
+      "contentHash": "e2e00a6f939e3ce1961142b29c9a3b75ec96657d1405930401e2bfd8d6d39f78",
+      "functions": [
+        {
+          "name": "AppTextField",
+          "params": [
+            "{ sx, ...props }"
+          ],
+          "exported": false,
+          "lineCount": 14
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/TextField",
+          "specifiers": [
+            "TextField",
+            "TextFieldProps"
+          ]
+        },
+        {
+          "source": "../../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "src/features/property-map/components/LoginForm.tsx": {
+      "filePath": "src/features/property-map/components/LoginForm.tsx",
+      "contentHash": "cb5e9302be83676af525e4f417dc0f0195a10ec547446ef24f4864f506967380",
+      "functions": [
+        {
+          "name": "LoginForm",
+          "params": [
+            "{ onLogin, isLoggingIn }"
+          ],
+          "exported": false,
+          "lineCount": 107
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react-hook-form",
+          "specifiers": [
+            "useForm",
+            "Resolver"
+          ]
+        },
+        {
+          "source": "@hookform/resolvers/yup",
+          "specifiers": [
+            "yupResolver"
+          ]
+        },
+        {
+          "source": "yup",
+          "specifiers": [
+            "* as yup"
+          ]
+        },
+        {
+          "source": "@mui/material/Box",
+          "specifiers": [
+            "Box"
+          ]
+        },
+        {
+          "source": "@mui/material/Stack",
+          "specifiers": [
+            "Stack"
+          ]
+        },
+        {
+          "source": "@mui/material/Typography",
+          "specifiers": [
+            "Typography"
+          ]
+        },
+        {
+          "source": "@mui/material/Button",
+          "specifiers": [
+            "Button"
+          ]
+        },
+        {
+          "source": "@mui/material/CircularProgress",
+          "specifiers": [
+            "CircularProgress"
+          ]
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            "Lock"
+          ]
+        },
+        {
+          "source": "../../../components/form/FormTextField",
+          "specifiers": [
+            "FormTextField"
+          ]
+        },
+        {
+          "source": "../../../theme",
+          "specifiers": [
+            "PALETTE",
+            "GRADIENT",
+            "SHADOW",
+            "BORDER_RADIUS"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 134,
+      "hasStructuralAnalysis": true
+    },
+    "src/features/property-map/types.ts": {
+      "filePath": "src/features/property-map/types.ts",
+      "contentHash": "c23f1b93a9f8ab615bbae8fba13f98068eb0abfbf18607e140f82e012b59ac95",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "FilterType",
+        "INQUIRY_STATUS_LABELS",
+        "UNIT_TYPE_LABELS"
+      ],
+      "totalLines": 103,
+      "hasStructuralAnalysis": true
+    },
+    "src/main.tsx": {
+      "filePath": "src/main.tsx",
+      "contentHash": "21f8eb722b70af5894691cb8ff5462edca0260d507cf9326255da674ef5380b4",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            "StrictMode"
+          ]
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            "createRoot"
+          ]
+        },
+        {
+          "source": "react-redux",
+          "specifiers": [
+            "Provider"
+          ]
+        },
+        {
+          "source": "./store",
+          "specifiers": [
+            "store"
+          ]
+        },
+        {
+          "source": "./App",
+          "specifiers": [
+            "App"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 20,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/apiClient.ts": {
+      "filePath": "src/services/apiClient.ts",
+      "contentHash": "3c63ca5ac58a7be2fe5fea9723fb6cfcab77ebd35dd5362a3b0109f1858f1e6a",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "axios",
+          "specifiers": [
+            "axios"
+          ]
+        },
+        {
+          "source": "uuid",
+          "specifiers": [
+            "uuidv4"
+          ]
+        }
+      ],
+      "exports": [
+        "apiClient"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/mapService.ts": {
+      "filePath": "src/services/mapService.ts",
+      "contentHash": "16def19ab9a7c391890feaaa615764815e7d292f863c62ae7838bb88e4684eb5",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./apiClient",
+          "specifiers": [
+            "apiClient"
+          ]
+        },
+        {
+          "source": "../features/property-map/types",
+          "specifiers": [
+            "MapGetRequest",
+            "MapGetResponse",
+            "MapSearchRequest",
+            "MapGetCodesRequest",
+            "UnitItem"
+          ]
+        }
+      ],
+      "exports": [
+        "mapService"
+      ],
+      "totalLines": 121,
+      "hasStructuralAnalysis": true
+    },
+    "src/services/unitInquiryService.ts": {
+      "filePath": "src/services/unitInquiryService.ts",
+      "contentHash": "df18849f284efde6c35118484fd60abdccd800bac65cb0f85df6a299eb9166c0",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "./apiClient",
+          "specifiers": [
+            "apiClient"
+          ]
+        },
+        {
+          "source": "../features/property-map/types",
+          "specifiers": [
+            "UnitInquiryCreateRequest",
+            "InquiryCreateResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "unitInquiryService"
+      ],
+      "totalLines": 12,
+      "hasStructuralAnalysis": true
+    },
+    "src/store/index.ts": {
+      "filePath": "src/store/index.ts",
+      "contentHash": "5b93b3cdd4a132a680303de2f390604a34615960a5dbd13d1ba2b114e050fc81",
+      "functions": [
+        {
+          "name": "useAppDispatch",
+          "params": [],
+          "exported": true,
+          "lineCount": 1
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@reduxjs/toolkit",
+          "specifiers": [
+            "configureStore"
+          ]
+        },
+        {
+          "source": "react-redux",
+          "specifiers": [
+            "useDispatch",
+            "useSelector"
+          ]
+        },
+        {
+          "source": "react-redux",
+          "specifiers": [
+            "TypedUseSelectorHook"
+          ]
+        },
+        {
+          "source": "./slices/propertyMapSlice",
+          "specifiers": [
+            "propertyMapReducer"
+          ]
+        }
+      ],
+      "exports": [
+        "store",
+        "useAppDispatch",
+        "useAppSelector"
+      ],
+      "totalLines": 17,
+      "hasStructuralAnalysis": true
+    },
+    "src/store/slices/propertyMapSlice.ts": {
+      "filePath": "src/store/slices/propertyMapSlice.ts",
+      "contentHash": "2b210ebde61fe174734e1f9412bbbc59a19d50723b0ccd8a5bb9a7b9cd996e74",
+      "functions": [
+        {
+          "name": "applyFilters",
+          "params": [
+            "units",
+            "activeFilters"
+          ],
+          "returnType": "UnitItem[]",
+          "exported": false,
+          "lineCount": 13
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@reduxjs/toolkit",
+          "specifiers": [
+            "createSlice",
+            "createAsyncThunk"
+          ]
+        },
+        {
+          "source": "@reduxjs/toolkit",
+          "specifiers": [
+            "PayloadAction"
+          ]
+        },
+        {
+          "source": "../../services/mapService",
+          "specifiers": [
+            "mapService"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "FilterType"
+          ]
+        },
+        {
+          "source": "../../features/property-map/types",
+          "specifiers": [
+            "UnitItem",
+            "MapGetResponse"
+          ]
+        }
+      ],
+      "exports": [
+        "fetchMapData",
+        "fetchUnits",
+        "{ setFilters, setSearchKeyword, setFocusUnit, resetMap }"
+      ],
+      "totalLines": 143,
+      "hasStructuralAnalysis": true
+    },
+    "src/theme.ts": {
+      "filePath": "src/theme.ts",
+      "contentHash": "23ce954844589d9047102c01a02ba7f7dfee7801809ae13ae7ac1ad892e970e0",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "@mui/material/styles",
+          "specifiers": [
+            "createTheme"
+          ]
+        }
+      ],
+      "exports": [
+        "PALETTE",
+        "GRADIENT",
+        "BORDER_RADIUS",
+        "SHADOW"
+      ],
+      "totalLines": 144,
+      "hasStructuralAnalysis": true
+    },
+    "src/types/api-spec.ts": {
+      "filePath": "src/types/api-spec.ts",
+      "contentHash": "105aebbaf39d62806b0f11f06162d303f5c61f0253e26bac94933a3fda74a31a",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 7697,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/canvasMarkerRenderer.ts": {
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "contentHash": "390af9bb4f861511d136becbbe6db17fec92895b8ef83018168b5b448c5566dd",
+      "functions": [
+        {
+          "name": "drawRoundRect",
+          "params": [
+            "ctx",
+            "x",
+            "y",
+            "w",
+            "h",
+            "r"
+          ],
+          "exported": false,
+          "lineCount": 9
+        },
+        {
+          "name": "clearMarkerCache",
+          "params": [],
+          "exported": true,
+          "lineCount": 3
+        },
+        {
+          "name": "drawPropertyMarker",
+          "params": [
+            "ctx",
+            "property",
+            "x",
+            "y",
+            "isSelected"
+          ],
+          "returnType": "number",
+          "exported": true,
+          "lineCount": 56
+        },
+        {
+          "name": "renderMarkerToContext",
+          "params": [
+            "ctx",
+            "property",
+            "x",
+            "y",
+            "isSelected"
+          ],
+          "returnType": "number",
+          "exported": false,
+          "lineCount": 74
+        }
+      ],
+      "classes": [],
+      "imports": [
+        {
+          "source": "../features/property-map/types",
+          "specifiers": [
+            "UnitItem"
+          ]
+        },
+        {
+          "source": "../theme",
+          "specifiers": [
+            "PALETTE"
+          ]
+        }
+      ],
+      "exports": [
+        "MARKER_WIDTH",
+        "MARKER_ARROW_HEIGHT",
+        "MARKER_ARROW_WIDTH",
+        "MARKER_BORDER_RADIUS",
+        "clearMarkerCache",
+        "drawPropertyMarker"
+      ],
+      "totalLines": 181,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/formatters.test.ts": {
+      "filePath": "src/utils/formatters.test.ts",
+      "contentHash": "185eebf881e6aa63b08b7c68414cc154aa495fe7399cd8636280c532fc5506ee",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vitest",
+          "specifiers": [
+            "describe",
+            "it",
+            "expect"
+          ]
+        },
+        {
+          "source": "./formatters",
+          "specifiers": [
+            "formatPrice"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 23,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/formatters.ts": {
+      "filePath": "src/utils/formatters.ts",
+      "contentHash": "9a9fe1fbf9e0ef9f0f132b741dedab1e063b72aa93efa8a080896bf1403b169a",
+      "functions": [
+        {
+          "name": "formatPrice",
+          "params": [
+            "value"
+          ],
+          "returnType": "string",
+          "exported": true,
+          "lineCount": 6
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "formatPrice"
+      ],
+      "totalLines": 14,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/mapUtils.ts": {
+      "filePath": "src/utils/mapUtils.ts",
+      "contentHash": "3cf636766687aa5d89d3709317cc96519a43176c945ad940f141d61282a5e3e3",
+      "functions": [
+        {
+          "name": "convertPercentToLatLng",
+          "params": [
+            "percentX",
+            "percentY"
+          ],
+          "returnType": "[number, number]",
+          "exported": true,
+          "lineCount": 9
+        }
+      ],
+      "classes": [],
+      "imports": [],
+      "exports": [
+        "IMAGE_WIDTH",
+        "IMAGE_HEIGHT",
+        "convertPercentToLatLng"
+      ],
+      "totalLines": 22,
+      "hasStructuralAnalysis": true
+    },
+    "src/utils/toast.ts": {
+      "filePath": "src/utils/toast.ts",
+      "contentHash": "3499bbddcfa2b39f589fe555ec95a063ac50bf53a1dcae2e60e26bfe1bfbc870",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "sonner",
+          "specifiers": [
+            "toast"
+          ]
+        }
+      ],
+      "exports": [
+        "showToast"
+      ],
+      "totalLines": 42,
+      "hasStructuralAnalysis": true
+    },
+    "swagger.json": {
+      "filePath": "swagger.json",
+      "contentHash": "44bf49cafece54cd73524880f2671a9e65ee5c135b4e321ae68885a40d0283b2",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8032,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.app.json": {
+      "filePath": "tsconfig.app.json",
+      "contentHash": "b1eac9ba6cd1c01d59ebca159805e052c798d9d4ab904680b79ce3e306ea0bbd",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 26,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.json": {
+      "filePath": "tsconfig.json",
+      "contentHash": "770b4140bbb581e2dfd9ea9946ffc9c75a1d86ba7d2db5f77c83e37cbdf9d808",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 8,
+      "hasStructuralAnalysis": true
+    },
+    "tsconfig.node.json": {
+      "filePath": "tsconfig.node.json",
+      "contentHash": "90a22c920cbc14624fb4658b58f15c875abf3234224f3933f211849c3ada3242",
+      "functions": [],
+      "classes": [],
+      "imports": [],
+      "exports": [],
+      "totalLines": 25,
+      "hasStructuralAnalysis": true
+    },
+    "vite.config.ts": {
+      "filePath": "vite.config.ts",
+      "contentHash": "da3caeba99e077872db06760847b2eb86da9ca67a01fc32c0efa87730b5e58c8",
+      "functions": [],
+      "classes": [],
+      "imports": [
+        {
+          "source": "vite",
+          "specifiers": [
+            "defineConfig"
+          ]
+        },
+        {
+          "source": "@vitejs/plugin-react",
+          "specifiers": [
+            "react"
+          ]
+        }
+      ],
+      "exports": [],
+      "totalLines": 34,
+      "hasStructuralAnalysis": true
+    }
+  }
+}

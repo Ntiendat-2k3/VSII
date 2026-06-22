@@ -1,0 +1,32 @@
+<div class="map-wrapper">
+  <!-- Map container -->
+  <div #mapContainer class="leaflet-map-container"></div>
+
+  <!-- Canvas marker layer component -->
+  @if (map) {
+    <app-canvas-marker-layer
+      [map]="map"
+      [properties]="propertiesForMap()"
+      [selectedId]="selectedId()"
+      [mapWidth]="imgWidth"
+      [mapHeight]="imgHeight"
+      [mapMaxZoom]="dziMaxLevel"
+      [mapScale]="1"
+      (selectProperty)="handleSelectProperty($event)"
+    ></app-canvas-marker-layer>
+  }
+
+  <!-- Mobile bottom drawer panel -->
+  @if (isMobile() && selectedProperty()) {
+    <div class="mobile-drawer-backdrop" (click)="handleCloseDrawer()">
+      <div class="mobile-drawer-content" (click)="$event.stopPropagation()">
+        <div class="drawer-drag-handle"></div>
+        <app-property-marker
+          [unit]="selectedProperty()!"
+          [hideArrow]="true"
+          (close)="handleCloseDrawer()"
+        ></app-property-marker>
+      </div>
+    </div>
+  }
+</div>

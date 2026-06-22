@@ -1,0 +1,95 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.filters-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  justify-content: flex-start;
+  padding-bottom: 8px;
+
+  @media (min-width: 960px) {
+    justify-content: center;
+    padding-bottom: 0;
+  }
+}
+
+.filter-chip {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  background-color: var(--palette-bg-paper);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+
+  .chip-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--palette-text-secondary);
+  }
+
+  .chip-image {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    transition: filter 0.2s ease;
+  }
+
+  .chip-label {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 0.8125rem;
+    color: var(--palette-text-secondary);
+  }
+
+  // Active state for normal chips
+  &.active {
+    background-color: var(--palette-primary);
+
+    .chip-checkbox {
+      color: var(--palette-white);
+    }
+
+    .chip-image {
+      filter: brightness(0) invert(1);
+    }
+
+    .chip-label {
+      color: var(--palette-white);
+    }
+  }
+
+  // Hot chip styling
+  &.chip-hot {
+    &.active {
+      background-color: var(--palette-error);
+
+      .chip-checkbox {
+        color: var(--palette-white);
+      }
+
+      .chip-image {
+        filter: brightness(0) invert(1);
+      }
+
+      .chip-label {
+        color: var(--palette-white);
+      }
+    }
+  }
+}

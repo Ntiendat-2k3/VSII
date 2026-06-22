@@ -1,0 +1,89 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 360px;
+  padding: 32px;
+  border-radius: 16px;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--shadow-popup);
+  font-family: 'Inter', sans-serif;
+  box-sizing: border-box;
+
+  .icon-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 24px; // Spacing logic matching React's Stack spacing (spacing={2.5} => 20px basically, plus implicit from typography, we set it specifically)
+
+    .lock-icon {
+      color: var(--palette-white);
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem; // MUI h2 default or adapted
+    font-weight: 700;
+    color: var(--palette-text-primary);
+    text-align: center;
+    margin: 0 0 16px 0;
+  }
+
+  .subtitle {
+    font-size: 0.875rem; // body2
+    color: var(--palette-text-secondary);
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-btn {
+  height: 48px;
+  background: var(--gradient-primary);
+  color: var(--palette-white);
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  box-shadow: none;
+
+  &:hover {
+    background: var(--gradient-primary);
+    opacity: 0.9;
+    box-shadow: none;
+  }
+
+  &:disabled {
+    background: rgba(0, 0, 0, 0.12) !important;
+    color: rgba(0, 0, 0, 0.26) !important;
+  }
+
+  ::ng-deep .mat-mdc-button-touch-target {
+    display: none;
+  }
+}

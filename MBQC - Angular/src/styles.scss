@@ -1,0 +1,149 @@
+@use '@angular/material' as mat;
+
+@import 'leaflet/dist/leaflet.css';
+
+:root {
+  --palette-primary: #2A52BE;
+  --palette-primary-light: rgba(42, 82, 190, 0.2);
+  --palette-primary-light-bg: #E8EFFF;
+  --palette-secondary: #00B4D8;
+  --palette-error: #FF383C;
+  --palette-error-light: rgba(255, 56, 60, 0.2);
+  --palette-text-primary: #38393D;
+  --palette-text-secondary: #595A60;
+  --palette-text-disabled: #7C7D84;
+  --palette-text-hint: #A2A3A8;
+  --palette-bg-default: #FFFFFF;
+  --palette-bg-paper: #F0F1F1;
+  --palette-border: #C9CACC;
+  --palette-accent-border: #BFC7F8;
+  --palette-surface-light: #EEF0FD;
+  --palette-accent-green: #00C8B3;
+  --palette-grey-light: #EAEAEA;
+  --palette-hover-light: #F5F5F5;
+  --palette-white: #FFFFFF;
+  
+  --shadow-popup: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  --shadow-header: 0px 2px 8px 0px rgba(42, 82, 190, 0.2);
+  --shadow-light: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 100px;
+
+  --gradient-primary: linear-gradient(90deg, rgba(42, 82, 190, 1) 0%, rgba(0, 180, 216, 1) 100%);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+  background-color: var(--palette-bg-default);
+  color: var(--palette-text-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Material overrides based on React theme */
+.mat-mdc-button {
+  border-radius: var(--radius-md) !important;
+  text-transform: none !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.8125rem !important;
+}
+
+.mat-mdc-form-field {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: var(--palette-border) !important;
+  }
+  
+  &:hover {
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: var(--palette-primary) !important;
+    }
+  }
+
+  .mdc-text-field--outlined {
+    border-radius: var(--radius-md) !important;
+    font-family: "Inter", sans-serif !important;
+    font-weight: 500 !important;
+    font-size: 0.9375rem !important;
+    background-color: var(--palette-bg-default);
+  }
+}
+
+.mat-mdc-chip {
+  border-radius: var(--radius-pill) !important;
+  font-family: "Inter", sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 0.8125rem !important;
+}
+
+/* Typography globals */
+h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 0.9375rem;
+  margin: 0;
+}
+
+/* Custom leaflet popup overrides */
+.custom-leaflet-popup .leaflet-popup-content-wrapper {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.custom-leaflet-popup .leaflet-popup-content { margin: 0; }
+.custom-leaflet-popup .leaflet-popup-content p { margin: 0; }
+.custom-leaflet-popup .leaflet-popup-tip-container { display: none; }
+.custom-leaflet-popup a.leaflet-popup-close-button { display: none; }
+.leaflet-container { touch-action: none !important; }
+
+/* Custom Toast SnackBar overrides */
+.cdk-overlay-pane:has(.toast-snack-container) {
+  margin-top: 16px;
+  margin-right: 16px;
+}
+
+.toast-snack-container.mat-mdc-snack-bar-container {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  
+  .mdc-snackbar__surface {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    min-width: 0 !important;
+    max-width: none !important;
+  }
+  
+  .mat-mdc-snack-bar-label {
+    padding: 0 !important;
+    display: block !important;
+    width: 100%;
+  }
+
+  .mat-mdc-snack-bar-actions {
+    display: none !important;
+  }
+}
+
+
+

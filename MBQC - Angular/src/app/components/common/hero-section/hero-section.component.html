@@ -1,0 +1,44 @@
+<div class="hero-wrapper">
+  <!-- Breadcrumb -->
+  <div class="breadcrumb-row">
+    <span class="breadcrumb-link">Dự án</span>
+    <span class="breadcrumb-separator">/</span>
+    <span class="breadcrumb-active">Vinhomes Ocean Park 3</span>
+  </div>
+
+  <!-- Title & Action -->
+  <div class="title-action-row">
+    <div class="title-column">
+      <h1 class="hero-title">Vinhomes Ocean Park 3</h1>
+      <p class="hero-subtitle">
+        Theo dõi thông tin chi tiết và bảng giá, mặt bằng, tiến độ và chính sách bán hàng dự án VINHOMES OCEAN PARK 3.
+      </p>
+    </div>
+
+    <!-- Share Button -->
+    <div class="share-btn-wrapper">
+      <div class="share-btn">
+        <span class="share-icon">↗</span>
+        <span class="share-text">Chia sẻ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Image -->
+  <div class="hero-image-container">
+    <img src="/hero.png" alt="Vinhomes Ocean Park 3" class="hero-img" />
+  </div>
+
+  <!-- Tab Navigation Bar -->
+  <div class="tabs-nav-bar">
+    @for (tab of tabs; track tab.label) {
+      <div 
+        class="tab-item" 
+        [class.active]="tab.active"
+      >
+        <span class="tab-icon" [innerHTML]="tab.icon"></span>
+        <span class="tab-label">{{ tab.label }}</span>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="toast-container" [ngClass]="data.type">
+  <div class="toast-icon-wrapper">
+    <mat-icon class="toast-icon">{{ icon }}</mat-icon>
+  </div>
+  
+  <div class="toast-content">
+    <div class="toast-title">{{ title }}</div>
+    <div class="toast-message">{{ data.message }}</div>
+  </div>
+
+  <button mat-icon-button class="toast-close-btn" (click)="dismiss()" aria-label="Đóng thông báo">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

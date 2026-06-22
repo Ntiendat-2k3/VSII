@@ -1,0 +1,2386 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "VSII",
+    "languages": [
+      "typescript",
+      "javascript",
+      "html",
+      "css",
+      "markdown"
+    ],
+    "frameworks": [
+      "React",
+      "Vite",
+      "MUI v9",
+      "Redux Toolkit",
+      "React Hook Form"
+    ],
+    "description": "Vinhomes Ocean Park 3 Real Estate Property Map Application built with React, MUI v9, Redux Toolkit, and React Hook Form.",
+    "analyzedAt": "2026-06-16T19:46:51.329Z",
+    "gitCommitHash": "07c1852b52e6dceb1f660b5ccf472cb6bb9338d4"
+  },
+  "nodes": [
+    {
+      "id": "file:src/App.tsx",
+      "type": "file",
+      "name": "App.tsx",
+      "filePath": "src/App.tsx",
+      "summary": "Main React application component that handles routing, layouts, and mounts key features.",
+      "tags": [
+        "entry-point",
+        "component",
+        "routing"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/App.tsx:App",
+      "type": "function",
+      "name": "App",
+      "filePath": "src/App.tsx",
+      "lineRange": [
+        14,
+        64
+      ],
+      "summary": "Main React application component that mounts the view and sets up providers.",
+      "tags": [
+        "component",
+        "entry-point"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ErrorBoundary.tsx",
+      "type": "file",
+      "name": "ErrorBoundary.tsx",
+      "filePath": "src/components/ErrorBoundary.tsx",
+      "summary": "React error boundary component that catches rendering errors and displays a fallback UI.",
+      "tags": [
+        "component",
+        "error-handling"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "class:src/components/ErrorBoundary.tsx:ErrorBoundary",
+      "type": "class",
+      "name": "ErrorBoundary",
+      "filePath": "src/components/ErrorBoundary.tsx",
+      "lineRange": [
+        18,
+        68
+      ],
+      "summary": "React Component class that catches runtime rendering errors in its child component tree.",
+      "tags": [
+        "class",
+        "component",
+        "error-boundary"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/common/Layout/Footer.tsx",
+      "type": "file",
+      "name": "Footer.tsx",
+      "filePath": "src/components/common/Layout/Footer.tsx",
+      "summary": "Footer component displaying company information, address, and social links.",
+      "tags": [
+        "component",
+        "layout",
+        "footer"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/common/Layout/Footer.tsx:Footer",
+      "type": "function",
+      "name": "Footer",
+      "filePath": "src/components/common/Layout/Footer.tsx",
+      "lineRange": [
+        14,
+        165
+      ],
+      "summary": "Footer layout component rendering brand info and footer columns.",
+      "tags": [
+        "component",
+        "layout"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+      "type": "file",
+      "name": "FooterCompanyInfo.tsx",
+      "filePath": "src/components/common/Layout/FooterCompanyInfo.tsx",
+      "summary": "Subcomponent of Footer that displays detailed company history and contact information.",
+      "tags": [
+        "component",
+        "layout",
+        "footer"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/common/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
+      "type": "function",
+      "name": "FooterCompanyInfo",
+      "filePath": "src/components/common/Layout/FooterCompanyInfo.tsx",
+      "lineRange": [
+        7,
+        92
+      ],
+      "summary": "Function FooterCompanyInfo in FooterCompanyInfo.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/common/Layout/HeroSection.tsx",
+      "type": "file",
+      "name": "HeroSection.tsx",
+      "filePath": "src/components/common/Layout/HeroSection.tsx",
+      "summary": "Homepage banner section showcasing key real estate projects with modern layout.",
+      "tags": [
+        "component",
+        "layout",
+        "hero"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/common/Layout/HeroSection.tsx:HeroSection",
+      "type": "function",
+      "name": "HeroSection",
+      "filePath": "src/components/common/Layout/HeroSection.tsx",
+      "lineRange": [
+        27,
+        189
+      ],
+      "summary": "Function HeroSection in HeroSection.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/common/Layout/HeroTabs.tsx",
+      "type": "file",
+      "name": "HeroTabs.tsx",
+      "filePath": "src/components/common/Layout/HeroTabs.tsx",
+      "summary": "Component displaying navigation or filtering tabs inside the Hero section.",
+      "tags": [
+        "component",
+        "layout",
+        "hero"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/common/Layout/HeroTabs.tsx:HeroTabs",
+      "type": "function",
+      "name": "HeroTabs",
+      "filePath": "src/components/common/Layout/HeroTabs.tsx",
+      "lineRange": [
+        20,
+        73
+      ],
+      "summary": "Function HeroTabs in HeroTabs.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/common/Layout/Navbar.tsx",
+      "type": "file",
+      "name": "Navbar.tsx",
+      "filePath": "src/components/common/Layout/Navbar.tsx",
+      "summary": "Header navigation bar with links, branding, and responsive layout.",
+      "tags": [
+        "component",
+        "layout",
+        "navbar"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/common/Layout/Navbar.tsx:Navbar",
+      "type": "function",
+      "name": "Navbar",
+      "filePath": "src/components/common/Layout/Navbar.tsx",
+      "lineRange": [
+        16,
+        167
+      ],
+      "summary": "Header navigation component showing logo and route menu.",
+      "tags": [
+        "component",
+        "layout",
+        "navbar"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/common/Layout/NavbarDrawer.tsx",
+      "type": "file",
+      "name": "NavbarDrawer.tsx",
+      "filePath": "src/components/common/Layout/NavbarDrawer.tsx",
+      "summary": "Sidebar drawer component for mobile navigation.",
+      "tags": [
+        "component",
+        "layout",
+        "navbar"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/common/Layout/NavbarDrawer.tsx:NavbarDrawer",
+      "type": "function",
+      "name": "NavbarDrawer",
+      "filePath": "src/components/common/Layout/NavbarDrawer.tsx",
+      "lineRange": [
+        18,
+        84
+      ],
+      "summary": "Function NavbarDrawer in NavbarDrawer.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "type": "file",
+      "name": "PopupDetails.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "summary": "Details pane in property popup displaying unit price, area, layout, and photos.",
+      "tags": [
+        "component",
+        "map",
+        "popup"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/PopupDetails.tsx:PopupDetails",
+      "type": "function",
+      "name": "PopupDetails",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "lineRange": [
+        12,
+        47
+      ],
+      "summary": "Function PopupDetails in PopupDetails.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "type": "file",
+      "name": "PopupHeader.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "summary": "Header section of the property popup showing title, status, and code.",
+      "tags": [
+        "component",
+        "map",
+        "popup"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/PopupHeader.tsx:PopupHeader",
+      "type": "function",
+      "name": "PopupHeader",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "lineRange": [
+        11,
+        39
+      ],
+      "summary": "Function PopupHeader in PopupHeader.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "type": "file",
+      "name": "PropertyPopup.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "summary": "Container component organizing the popup details, header, and footer.",
+      "tags": [
+        "component",
+        "map",
+        "popup"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
+      "type": "function",
+      "name": "PropertyPopup",
+      "filePath": "src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "lineRange": [
+        17,
+        94
+      ],
+      "summary": "Function PropertyPopup in PropertyPopup.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/components/ui/AppCheckbox.tsx",
+      "type": "file",
+      "name": "AppCheckbox.tsx",
+      "filePath": "src/components/ui/AppCheckbox.tsx",
+      "summary": "Custom reusable checkbox component styled with MUI theme.",
+      "tags": [
+        "ui-atom",
+        "checkbox",
+        "mui"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/ui/AppCheckbox.tsx:AppCheckbox",
+      "type": "function",
+      "name": "AppCheckbox",
+      "filePath": "src/components/ui/AppCheckbox.tsx",
+      "lineRange": [
+        7,
+        16
+      ],
+      "summary": "Function AppCheckbox in AppCheckbox.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/main.tsx",
+      "type": "file",
+      "name": "main.tsx",
+      "filePath": "src/main.tsx",
+      "summary": "Client-side entry point that bootstraps the React application, configures Redux store, and mounts theme.",
+      "tags": [
+        "entry-point",
+        "bootstrap"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "file:src/theme.ts",
+      "type": "file",
+      "name": "theme.ts",
+      "filePath": "src/theme.ts",
+      "summary": "Custom MUI theme definition specifying colors, typography, borders, and component styles.",
+      "tags": [
+        "theme",
+        "mui",
+        "styles"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "type": "file",
+      "name": "FilterBar.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "summary": "UI panel for filtering properties on the map by status, type, and search keyword.",
+      "tags": [
+        "component",
+        "map",
+        "filters"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "type": "function",
+      "name": "FilterBar",
+      "filePath": "src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "lineRange": [
+        66,
+        138
+      ],
+      "summary": "Function FilterBar in FilterBar.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "type": "file",
+      "name": "MapHeader.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "summary": "Header of the property map search page containing the search bar and stats.",
+      "tags": [
+        "component",
+        "map",
+        "search"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/MapHeader.tsx:MapHeader",
+      "type": "function",
+      "name": "MapHeader",
+      "filePath": "src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "lineRange": [
+        19,
+        156
+      ],
+      "summary": "Function MapHeader in MapHeader.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "type": "file",
+      "name": "index.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/index.tsx",
+      "summary": "Parent component for the property map page, coordinating map state, search, and login overlays.",
+      "tags": [
+        "component",
+        "map",
+        "page"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/index.tsx:PropertyMap",
+      "type": "function",
+      "name": "PropertyMap",
+      "filePath": "src/features/property-map/components/PropertyMap/index.tsx",
+      "lineRange": [
+        18,
+        158
+      ],
+      "summary": "Function PropertyMap in index.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/components/form/FormTextField.tsx",
+      "type": "file",
+      "name": "FormTextField.tsx",
+      "filePath": "src/components/form/FormTextField.tsx",
+      "summary": "Reusable form text field component wrapping MUI TextField with React Hook Form Controller.",
+      "tags": [
+        "form-atom",
+        "component",
+        "validation"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/form/FormTextField.tsx:FormTextField",
+      "type": "function",
+      "name": "FormTextField",
+      "filePath": "src/components/form/FormTextField.tsx",
+      "lineRange": [
+        13,
+        36
+      ],
+      "summary": "Function FormTextField in FormTextField.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/components/ui/AppTextField.tsx",
+      "type": "file",
+      "name": "AppTextField.tsx",
+      "filePath": "src/components/ui/AppTextField.tsx",
+      "summary": "Custom reusable text input component styled with MUI theme.",
+      "tags": [
+        "ui-atom",
+        "textfield",
+        "mui"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/components/ui/AppTextField.tsx:AppTextField",
+      "type": "function",
+      "name": "AppTextField",
+      "filePath": "src/components/ui/AppTextField.tsx",
+      "lineRange": [
+        6,
+        19
+      ],
+      "summary": "Function AppTextField in AppTextField.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/property-map/components/LoginForm.tsx",
+      "type": "file",
+      "name": "LoginForm.tsx",
+      "filePath": "src/features/property-map/components/LoginForm.tsx",
+      "summary": "Organism component implementing the user login form with React Hook Form and Yup validation.",
+      "tags": [
+        "form-organism",
+        "login",
+        "validation"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/LoginForm.tsx:LoginForm",
+      "type": "function",
+      "name": "LoginForm",
+      "filePath": "src/features/property-map/components/LoginForm.tsx",
+      "lineRange": [
+        25,
+        131
+      ],
+      "summary": "Organism component displaying and processing the login form with validations.",
+      "tags": [
+        "component",
+        "form",
+        "organism"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/services/apiClient.ts",
+      "type": "file",
+      "name": "apiClient.ts",
+      "filePath": "src/services/apiClient.ts",
+      "summary": "Axios client configured with base URL, headers, and interceptors for API communication.",
+      "tags": [
+        "service",
+        "api-client"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "file:src/services/mapService.ts",
+      "type": "file",
+      "name": "mapService.ts",
+      "filePath": "src/services/mapService.ts",
+      "summary": "Service module containing API call functions for fetching property maps and layouts.",
+      "tags": [
+        "service",
+        "api"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "file:src/store/index.ts",
+      "type": "file",
+      "name": "index.ts",
+      "filePath": "src/store/index.ts",
+      "summary": "Redux Toolkit store configuration integrating slices and exporting typed hooks.",
+      "tags": [
+        "state-management",
+        "redux",
+        "store"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "function:src/store/index.ts:useAppDispatch",
+      "type": "function",
+      "name": "useAppDispatch",
+      "filePath": "src/store/index.ts",
+      "lineRange": [
+        15,
+        15
+      ],
+      "summary": "Custom React hook for handling AppDispatch state and logic.",
+      "tags": [
+        "hook",
+        "react"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/store/slices/propertyMapSlice.ts",
+      "type": "file",
+      "name": "propertyMapSlice.ts",
+      "filePath": "src/store/slices/propertyMapSlice.ts",
+      "summary": "Redux slice managing property map state (markers, filters, loading states).",
+      "tags": [
+        "state-management",
+        "redux",
+        "slice"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "function:src/store/slices/propertyMapSlice.ts:applyFilters",
+      "type": "function",
+      "name": "applyFilters",
+      "filePath": "src/store/slices/propertyMapSlice.ts",
+      "lineRange": [
+        70,
+        82
+      ],
+      "summary": "Function applyFilters in propertyMapSlice.ts.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "type": "file",
+      "name": "CanvasMarkerLayer.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "summary": "Leaflet custom layer that renders thousands of markers efficiently using HTML5 Canvas.",
+      "tags": [
+        "component",
+        "map",
+        "canvas"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "type": "function",
+      "name": "CanvasMarkerLayer",
+      "filePath": "src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "lineRange": [
+        24,
+        189
+      ],
+      "summary": "Function CanvasMarkerLayer in CanvasMarkerLayer.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "type": "file",
+      "name": "FlyToHandler.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "summary": "Custom Leaflet map behavior to smoothly pan/zoom to a selected property using useMap.",
+      "tags": [
+        "component",
+        "map",
+        "navigation"
+      ],
+      "complexity": "simple",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
+      "type": "function",
+      "name": "FlyToHandler",
+      "filePath": "src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "lineRange": [
+        10,
+        31
+      ],
+      "summary": "Function FlyToHandler in FlyToHandler.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "type": "file",
+      "name": "MapCanvas.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "summary": "Core Leaflet map wrapper that integrates layers, markers, zoom controls, and pagination.",
+      "tags": [
+        "component",
+        "map",
+        "leaflet"
+      ],
+      "complexity": "complex",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "type": "function",
+      "name": "MapCanvas",
+      "filePath": "src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "lineRange": [
+        36,
+        239
+      ],
+      "summary": "Function MapCanvas in MapCanvas.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/features/property-map/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/features/property-map/types.ts",
+      "summary": "TypeScript type definitions and constants for the property map feature (properties, units, inquiries).",
+      "tags": [
+        "type-definition",
+        "types"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "file:src/utils/canvasMarkerRenderer.ts",
+      "type": "file",
+      "name": "canvasMarkerRenderer.ts",
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "summary": "High-performance utility for drawing customizable property markers on a Canvas element.",
+      "tags": [
+        "utility",
+        "canvas",
+        "renderer"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "function:src/utils/canvasMarkerRenderer.ts:clearMarkerCache",
+      "type": "function",
+      "name": "clearMarkerCache",
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "lineRange": [
+        42,
+        44
+      ],
+      "summary": "Resets the internal canvas marker cache to allow redrawing.",
+      "tags": [
+        "canvas",
+        "cache-clear"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "function",
+      "name": "drawPropertyMarker",
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "lineRange": [
+        50,
+        105
+      ],
+      "summary": "High-performance drawing function rendering a property marker onto HTML5 Canvas context.",
+      "tags": [
+        "canvas",
+        "marker-draw"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/utils/canvasMarkerRenderer.ts:renderMarkerToContext",
+      "type": "function",
+      "name": "renderMarkerToContext",
+      "filePath": "src/utils/canvasMarkerRenderer.ts",
+      "lineRange": [
+        107,
+        180
+      ],
+      "summary": "Function renderMarkerToContext in canvasMarkerRenderer.ts.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/utils/mapUtils.ts",
+      "type": "file",
+      "name": "mapUtils.ts",
+      "filePath": "src/utils/mapUtils.ts",
+      "summary": "Map helper utilities, including coordinates converters and scaling ratios.",
+      "tags": [
+        "utility",
+        "coordinates"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "function",
+      "name": "convertPercentToLatLng",
+      "filePath": "src/utils/mapUtils.ts",
+      "lineRange": [
+        13,
+        21
+      ],
+      "summary": "Helper function to convert percentage-based coordinates to Leaflet LatLng coordinates.",
+      "tags": [
+        "utility",
+        "map-coordinate"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "type": "file",
+      "name": "PopupFooter.tsx",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "summary": "Footer section of the property popup with buttons to send inquiries and call agents.",
+      "tags": [
+        "component",
+        "map",
+        "popup"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "React Component in TypeScript using MUI components and styling."
+    },
+    {
+      "id": "function:src/features/property-map/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "type": "function",
+      "name": "PopupFooter",
+      "filePath": "src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "lineRange": [
+        23,
+        173
+      ],
+      "summary": "Function PopupFooter in PopupFooter.tsx.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/services/unitInquiryService.ts",
+      "type": "file",
+      "name": "unitInquiryService.ts",
+      "filePath": "src/services/unitInquiryService.ts",
+      "summary": "Service module handling API calls for submitting property inquiries.",
+      "tags": [
+        "service",
+        "api"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "file:src/utils/formatters.test.ts",
+      "type": "file",
+      "name": "formatters.test.ts",
+      "filePath": "src/utils/formatters.test.ts",
+      "summary": "Unit tests verifying the price formatter utilities.",
+      "tags": [
+        "test",
+        "unit-test"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "file:src/utils/formatters.ts",
+      "type": "file",
+      "name": "formatters.ts",
+      "filePath": "src/utils/formatters.ts",
+      "summary": "Helper utilities for formatting prices, numbers, and dates.",
+      "tags": [
+        "utility",
+        "formatting",
+        "tested"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "function:src/utils/formatters.ts:formatPrice",
+      "type": "function",
+      "name": "formatPrice",
+      "filePath": "src/utils/formatters.ts",
+      "lineRange": [
+        8,
+        13
+      ],
+      "summary": "Utility function to format raw numeric price value into a formatted Vietnamese Dong currency string.",
+      "tags": [
+        "utility",
+        "formatter"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/utils/toast.ts",
+      "type": "file",
+      "name": "toast.ts",
+      "filePath": "src/utils/toast.ts",
+      "summary": "Simple wrapper for showing notifications/toasts to the user.",
+      "tags": [
+        "utility",
+        "notifications"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "pipeline:.github/workflows/react-doctor.yml",
+      "type": "pipeline",
+      "name": "react-doctor.yml",
+      "filePath": ".github/workflows/react-doctor.yml",
+      "summary": "GitHub Actions workflow to check code quality and React best practices.",
+      "tags": [
+        "ci-cd",
+        "pipeline"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.understand-anything/diff-overlay.json",
+      "type": "config",
+      "name": "diff-overlay.json",
+      "filePath": ".understand-anything/diff-overlay.json",
+      "summary": "VCS differences metadata for incremental updates.",
+      "tags": [
+        "configuration",
+        "understand-anything"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:.understand-anything/fingerprints.json",
+      "type": "config",
+      "name": "fingerprints.json",
+      "filePath": ".understand-anything/fingerprints.json",
+      "summary": "AST fingerprints for auto-update change tracking.",
+      "tags": [
+        "configuration",
+        "understand-anything"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:.understand-anything/knowledge-graph.json",
+      "type": "config",
+      "name": "knowledge-graph.json",
+      "filePath": ".understand-anything/knowledge-graph.json",
+      "summary": "Configuration file knowledge-graph.json for the project settings.",
+      "tags": [
+        "configuration"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:.understand-anything/meta.json",
+      "type": "config",
+      "name": "meta.json",
+      "filePath": ".understand-anything/meta.json",
+      "summary": "Analysis metadata tracking the last commit and time analyzed.",
+      "tags": [
+        "configuration",
+        "understand-anything"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "Documentation providing project overview and installation guide.",
+      "tags": [
+        "documentation",
+        "overview"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "File index.html in the project.",
+      "tags": [
+        "file"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:map_feature_implementation_report.md",
+      "type": "document",
+      "name": "map_feature_implementation_report.md",
+      "filePath": "map_feature_implementation_report.md",
+      "summary": "Technical report detailing the map feature implementation.",
+      "tags": [
+        "documentation",
+        "report"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:package.json",
+      "type": "config",
+      "name": "package.json",
+      "filePath": "package.json",
+      "summary": "NPM package metadata and dependency configuration.",
+      "tags": [
+        "configuration",
+        "dependencies"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:prompt.md",
+      "type": "document",
+      "name": "prompt.md",
+      "filePath": "prompt.md",
+      "summary": "AI system prompts or guidelines document.",
+      "tags": [
+        "documentation",
+        "prompts"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "endpoint:swagger.json",
+      "type": "endpoint",
+      "name": "swagger.json",
+      "filePath": "swagger.json",
+      "summary": "OpenAPI/Swagger schema defining the backend API endpoints and structures.",
+      "tags": [
+        "api-schema",
+        "endpoint"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:tsconfig.app.json",
+      "type": "config",
+      "name": "tsconfig.app.json",
+      "filePath": "tsconfig.app.json",
+      "summary": "TypeScript app configuration.",
+      "tags": [
+        "configuration",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.json",
+      "type": "config",
+      "name": "tsconfig.json",
+      "filePath": "tsconfig.json",
+      "summary": "Main TypeScript configuration file.",
+      "tags": [
+        "configuration",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:tsconfig.node.json",
+      "type": "config",
+      "name": "tsconfig.node.json",
+      "filePath": "tsconfig.node.json",
+      "summary": "TypeScript node/build configuration.",
+      "tags": [
+        "configuration",
+        "typescript"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": "Ignore configurations for codebase analysis.",
+      "tags": [
+        "configuration",
+        "understand-anything"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:eslint.config.js",
+      "type": "config",
+      "name": "eslint.config.js",
+      "filePath": "eslint.config.js",
+      "summary": "ESLint rules configuration file.",
+      "tags": [
+        "configuration",
+        "linter"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:extract_schemas.cjs",
+      "type": "file",
+      "name": "extract_schemas.cjs",
+      "filePath": "extract_schemas.cjs",
+      "summary": "File extract_schemas.cjs in the project.",
+      "tags": [
+        "file"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:extract_swagger.cjs",
+      "type": "file",
+      "name": "extract_swagger.cjs",
+      "filePath": "extract_swagger.cjs",
+      "summary": "File extract_swagger.cjs in the project.",
+      "tags": [
+        "file"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:public/vips-properties.xml",
+      "type": "config",
+      "name": "vips-properties.xml",
+      "filePath": "public/vips-properties.xml",
+      "summary": "XML data file containing property coordinates and metadata.",
+      "tags": [
+        "data",
+        "xml"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/generate-tiles.js",
+      "type": "file",
+      "name": "generate-tiles.js",
+      "filePath": "scripts/generate-tiles.js",
+      "summary": "Script for slicing map images into Leaflet-compatible tiles.",
+      "tags": [
+        "script",
+        "image-processing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:scripts/generate-tiles.js:generateTiles",
+      "type": "function",
+      "name": "generateTiles",
+      "filePath": "scripts/generate-tiles.js",
+      "lineRange": [
+        8,
+        27
+      ],
+      "summary": "Function generateTiles in generate-tiles.js.",
+      "tags": [
+        "function"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/start-dashboard.cjs",
+      "type": "file",
+      "name": "start-dashboard.cjs",
+      "filePath": "scripts/start-dashboard.cjs",
+      "summary": "Script to start the interactive architecture dashboard.",
+      "tags": [
+        "script",
+        "dashboard"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "document:SCRUM/Report-Scrum106.md",
+      "type": "document",
+      "name": "Report-Scrum106.md",
+      "filePath": "SCRUM/Report-Scrum106.md",
+      "summary": "Scrum report for SCRUM-106 task completion.",
+      "tags": [
+        "documentation",
+        "scrum"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "document:SCRUM/SCRUM-106.md",
+      "type": "document",
+      "name": "SCRUM-106.md",
+      "filePath": "SCRUM/SCRUM-106.md",
+      "summary": "Scrum task description document.",
+      "tags": [
+        "documentation",
+        "scrum"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/types/api-spec.ts",
+      "type": "file",
+      "name": "api-spec.ts",
+      "filePath": "src/types/api-spec.ts",
+      "summary": "Auto-generated TypeScript types representing API schemas.",
+      "tags": [
+        "type-definition",
+        "api-spec"
+      ],
+      "complexity": "complex",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    },
+    {
+      "id": "config:vite.config.ts",
+      "type": "config",
+      "name": "vite.config.ts",
+      "filePath": "vite.config.ts",
+      "summary": "Vite build and server configuration.",
+      "tags": [
+        "configuration",
+        "build-system"
+      ],
+      "complexity": "simple",
+      "languageNotes": "TypeScript utility, service, or configuration module."
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/App.tsx",
+      "target": "function:src/App.tsx:App",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/ErrorBoundary.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/common/Layout/Footer.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/common/Layout/HeroSection.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/components/common/Layout/Navbar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/App.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ErrorBoundary.tsx",
+      "target": "class:src/components/ErrorBoundary.tsx:ErrorBoundary",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ErrorBoundary.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/Footer.tsx",
+      "target": "function:src/components/common/Layout/Footer.tsx:Footer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/common/Layout/Footer.tsx",
+      "target": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/Footer.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+      "target": "function:src/components/common/Layout/FooterCompanyInfo.tsx:FooterCompanyInfo",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/HeroSection.tsx",
+      "target": "function:src/components/common/Layout/HeroSection.tsx:HeroSection",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/common/Layout/HeroSection.tsx",
+      "target": "file:src/components/common/Layout/HeroTabs.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/HeroSection.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/HeroTabs.tsx",
+      "target": "function:src/components/common/Layout/HeroTabs.tsx:HeroTabs",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/common/Layout/HeroTabs.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/Navbar.tsx",
+      "target": "function:src/components/common/Layout/Navbar.tsx:Navbar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/common/Layout/Navbar.tsx",
+      "target": "file:src/components/common/Layout/NavbarDrawer.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/Navbar.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/common/Layout/NavbarDrawer.tsx",
+      "target": "function:src/components/common/Layout/NavbarDrawer.tsx:NavbarDrawer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/common/Layout/NavbarDrawer.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PopupDetails.tsx:PopupDetails",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PopupHeader.tsx:PopupHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PropertyPopup.tsx:PropertyPopup",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/AppCheckbox.tsx",
+      "target": "function:src/components/ui/AppCheckbox.tsx:AppCheckbox",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/AppCheckbox.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/main.tsx",
+      "target": "file:src/App.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/main.tsx",
+      "target": "file:src/store/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "file:src/components/ui/AppCheckbox.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "file:src/store/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "file:src/store/slices/propertyMapSlice.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/features/property-map/components/PropertyMap/FilterBar.tsx:FilterBar",
+      "target": "function:src/store/index.ts:useAppDispatch",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls useAppDispatch at line 67"
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/MapHeader.tsx:MapHeader",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "target": "file:src/components/ui/AppTextField.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "target": "file:src/services/mapService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/index.tsx:PropertyMap",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/features/property-map/components/LoginForm.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/services/apiClient.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/services/mapService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/store/index.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/store/slices/propertyMapSlice.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/index.tsx",
+      "target": "file:src/utils/toast.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/features/property-map/components/PropertyMap/index.tsx:PropertyMap",
+      "target": "function:src/store/index.ts:useAppDispatch",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls useAppDispatch at line 19"
+    },
+    {
+      "source": "file:src/components/form/FormTextField.tsx",
+      "target": "function:src/components/form/FormTextField.tsx:FormTextField",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/form/FormTextField.tsx",
+      "target": "file:src/components/ui/AppTextField.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/components/ui/AppTextField.tsx",
+      "target": "function:src/components/ui/AppTextField.tsx:AppTextField",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/components/ui/AppTextField.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/LoginForm.tsx",
+      "target": "function:src/features/property-map/components/LoginForm.tsx:LoginForm",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/LoginForm.tsx",
+      "target": "file:src/components/form/FormTextField.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/LoginForm.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/services/mapService.ts",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/services/mapService.ts",
+      "target": "file:src/services/apiClient.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/store/index.ts",
+      "target": "function:src/store/index.ts:useAppDispatch",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store/index.ts",
+      "target": "function:src/store/index.ts:useAppDispatch",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/store/index.ts",
+      "target": "file:src/store/slices/propertyMapSlice.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/store/slices/propertyMapSlice.ts",
+      "target": "function:src/store/slices/propertyMapSlice.ts:applyFilters",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store/slices/propertyMapSlice.ts",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/store/slices/propertyMapSlice.ts",
+      "target": "file:src/services/mapService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "file:src/utils/canvasMarkerRenderer.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "file:src/utils/mapUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls convertPercentToLatLng at line 90"
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls drawPropertyMarker at line 99"
+    },
+    {
+      "source": "function:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx:CanvasMarkerLayer",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:clearMarkerCache",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls clearMarkerCache at line 178"
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "target": "file:src/utils/mapUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/features/property-map/components/PropertyMap/FlyToHandler.tsx:FlyToHandler",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls convertPercentToLatLng at line 26"
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+      "target": "file:src/utils/mapUtils.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/features/property-map/components/PropertyMap/MapCanvas.tsx:MapCanvas",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls convertPercentToLatLng at line 188"
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:clearMarkerCache",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:clearMarkerCache",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:drawPropertyMarker",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "function:src/utils/canvasMarkerRenderer.ts:renderMarkerToContext",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/canvasMarkerRenderer.ts",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/mapUtils.ts",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/mapUtils.ts",
+      "target": "function:src/utils/mapUtils.ts:convertPercentToLatLng",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "function:src/features/property-map/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "file:src/services/unitInquiryService.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "file:src/theme.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "file:src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+      "target": "file:src/utils/toast.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "function:src/features/property-map/components/PropertyMap/PopupFooter.tsx:PopupFooter",
+      "target": "function:src/utils/formatters.ts:formatPrice",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.8,
+      "description": "Calls formatPrice at line 71"
+    },
+    {
+      "source": "file:src/services/unitInquiryService.ts",
+      "target": "file:src/features/property-map/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/services/unitInquiryService.ts",
+      "target": "file:src/services/apiClient.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/formatters.test.ts",
+      "target": "file:src/utils/formatters.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/utils/formatters.ts",
+      "target": "file:src/utils/formatters.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "file:src/utils/formatters.ts",
+      "target": "function:src/utils/formatters.ts:formatPrice",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/utils/formatters.ts",
+      "target": "function:src/utils/formatters.ts:formatPrice",
+      "type": "exports",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "pipeline:.github/workflows/react-doctor.yml",
+      "target": "file:src/main.tsx",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.understand-anything/diff-overlay.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.understand-anything/fingerprints.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.understand-anything/knowledge-graph.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:.understand-anything/meta.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:map_feature_implementation_report.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:package.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "document:prompt.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:tsconfig.app.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:tsconfig.node.json",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:eslint.config.js",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "config:public/vips-properties.xml",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    },
+    {
+      "source": "file:scripts/generate-tiles.js",
+      "target": "function:scripts/generate-tiles.js:generateTiles",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "document:SCRUM/Report-Scrum106.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "document:SCRUM/SCRUM-106.md",
+      "target": "file:src/main.tsx",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.5
+    },
+    {
+      "source": "config:vite.config.ts",
+      "target": "file:src/main.tsx",
+      "type": "configures",
+      "direction": "forward",
+      "weight": 0.6
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:core-app",
+      "name": "Cốt Lõi Ứng Dụng (Core App)",
+      "description": "Lớp nền tảng khởi chạy ứng dụng, thiết lập Error Boundary và bọc Layout giao diện chính (Navbar, Footer, Hero) cùng các component Form/UI nguyên tử.",
+      "nodeIds": [
+        "file:src/App.tsx",
+        "file:src/components/ErrorBoundary.tsx",
+        "file:src/components/common/Layout/Footer.tsx",
+        "file:src/components/common/Layout/FooterCompanyInfo.tsx",
+        "file:src/components/common/Layout/HeroSection.tsx",
+        "file:src/components/common/Layout/HeroTabs.tsx",
+        "file:src/components/common/Layout/Navbar.tsx",
+        "file:src/components/common/Layout/NavbarDrawer.tsx",
+        "file:src/components/ui/AppCheckbox.tsx",
+        "file:src/main.tsx",
+        "file:src/components/form/FormTextField.tsx",
+        "file:src/components/ui/AppTextField.tsx"
+      ]
+    },
+    {
+      "id": "layer:map-feature",
+      "name": "Tính Năng Bản Đồ (Property Map Feature)",
+      "description": "Lớp logic bản đồ Leaflet, bộ lọc FilterBar, Canvas Marker Layer vẽ marker, các Popup thông tin chi tiết và service tương tác dữ liệu.",
+      "nodeIds": [
+        "file:src/features/property-map/components/PropertyMap/PopupDetails.tsx",
+        "file:src/features/property-map/components/PropertyMap/PopupHeader.tsx",
+        "file:src/features/property-map/components/PropertyMap/PropertyPopup.tsx",
+        "file:src/features/property-map/components/PropertyMap/FilterBar.tsx",
+        "file:src/features/property-map/components/PropertyMap/MapHeader.tsx",
+        "file:src/features/property-map/components/PropertyMap/index.tsx",
+        "file:src/features/property-map/components/LoginForm.tsx",
+        "file:src/services/mapService.ts",
+        "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+        "file:src/features/property-map/components/PropertyMap/FlyToHandler.tsx",
+        "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx",
+        "file:src/features/property-map/types.ts",
+        "file:src/utils/canvasMarkerRenderer.ts",
+        "file:src/utils/mapUtils.ts",
+        "file:src/features/property-map/components/PropertyMap/PopupFooter.tsx",
+        "file:src/services/unitInquiryService.ts",
+        "file:src/utils/toast.ts"
+      ]
+    },
+    {
+      "id": "layer:data-and-config",
+      "name": "Dữ Liệu & Cấu Hình (Data & Config)",
+      "description": "Lớp chứa các kiểu dữ liệu (Types), thunk và slice Redux Toolkit, theme giao diện tùy chỉnh, dữ liệu giả lập, các scripts và các tệp tin cấu hình dự án.",
+      "nodeIds": [
+        "file:src/theme.ts",
+        "file:src/services/apiClient.ts",
+        "file:src/store/index.ts",
+        "file:src/store/slices/propertyMapSlice.ts",
+        "file:src/utils/formatters.test.ts",
+        "file:src/utils/formatters.ts",
+        "file:index.html",
+        "config:package.json",
+        "config:tsconfig.app.json",
+        "config:tsconfig.json",
+        "config:tsconfig.node.json",
+        "config:eslint.config.js",
+        "file:extract_schemas.cjs",
+        "file:extract_swagger.cjs",
+        "config:public/vips-properties.xml",
+        "file:scripts/generate-tiles.js",
+        "file:scripts/start-dashboard.cjs",
+        "file:src/types/api-spec.ts",
+        "config:vite.config.ts"
+      ]
+    },
+    {
+      "id": "layer:docs-and-meta",
+      "name": "Tài Liệu & Metadata (Documentation & Meta)",
+      "description": "Các file tài liệu hướng dẫn và cấu hình metadata hỗ trợ phát triển sơ đồ.",
+      "nodeIds": [
+        "pipeline:.github/workflows/react-doctor.yml",
+        "config:.understand-anything/diff-overlay.json",
+        "config:.understand-anything/fingerprints.json",
+        "config:.understand-anything/knowledge-graph.json",
+        "config:.understand-anything/meta.json",
+        "document:README.md",
+        "document:map_feature_implementation_report.md",
+        "document:prompt.md",
+        "endpoint:swagger.json",
+        "file:.understand-anything/.understandignore",
+        "document:SCRUM/Report-Scrum106.md",
+        "document:SCRUM/SCRUM-106.md"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "1. Tổng quan dự án & Đặc tả kỹ thuật",
+      "description": "Bắt đầu từ tài liệu README.md và prompt đặc tả thiết kế để hiểu mục tiêu, stack công nghệ và ý tưởng thiết kế của ứng dụng bản đồ bất động sản Property Map tích hợp Leaflet.",
+      "nodeIds": [
+        "document:README.md",
+        "document:prompt.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "2. Khởi động ứng dụng & Cấu hình Theme Sleek",
+      "description": "Tìm hiểu cách ứng dụng boot thông qua main.tsx, khởi chạy component gốc App.tsx và áp dụng Custom Theme Provider (theme.ts) được thiết kế theo chuẩn Figma cao cấp.",
+      "nodeIds": [
+        "file:src/main.tsx",
+        "file:src/App.tsx",
+        "file:src/theme.ts"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "3. Thanh điều hướng & Footer chung",
+      "description": "Khám phá các thành phần bố cục chung như Navbar (NavbarDrawer) và Footer (FooterCompanyInfo) giúp xây dựng giao diện thống nhất, chuyên nghiệp.",
+      "nodeIds": [
+        "file:src/components/common/Layout/Navbar.tsx",
+        "file:src/components/common/Layout/Footer.tsx"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "4. Giao diện Hero & Tìm kiếm",
+      "description": "Điểm nhấn đầu tiên khi truy cập trang web với HeroSection giới thiệu dự án và bộ HeroTabs cho phép người dùng chọn danh mục mua/bán/thuê nhanh chóng.",
+      "nodeIds": [
+        "file:src/components/common/Layout/HeroSection.tsx",
+        "file:src/components/common/Layout/HeroTabs.tsx"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "5. Trung tâm Bản đồ Leaflet & Dữ liệu",
+      "description": "Xem cách tính năng bản đồ cốt lõi được lắp ráp trong PropertyMap/index.tsx và hiển thị trên MapCanvas (React-Leaflet) sử dụng CRS.Simple, kết hợp dữ liệu giả lập từ mockData.ts.",
+      "nodeIds": [
+        "file:src/features/property-map/components/PropertyMap/index.tsx",
+        "file:src/features/property-map/components/PropertyMap/MapCanvas.tsx"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "6. Vẽ Marker trên HTML5 Canvas hiệu năng cao",
+      "description": "Nghiên cứu cách CanvasMarkerLayer vẽ hàng loạt marker cực kỳ mượt mà trực tiếp lên Canvas thay vì render từng HTML element, sử dụng bộ renderer chuyên nghiệp canvasMarkerRenderer.ts.",
+      "nodeIds": [
+        "file:src/features/property-map/components/PropertyMap/CanvasMarkerLayer.tsx",
+        "file:src/utils/canvasMarkerRenderer.ts"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "7. Kỹ thuật băm bản đồ & Chuyển đổi tọa độ",
+      "description": "Tìm hiểu kĩ thuật băm ảnh sơ đồ chất lượng cao thành các mảnh nhỏ (tiles) qua scripts/generate-tiles.js và cách chuyển đổi toạ độ địa lý ảo CRS.Simple qua src/utils/mapUtils.ts.",
+      "nodeIds": [
+        "file:scripts/generate-tiles.js",
+        "file:src/utils/mapUtils.ts"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "8. Bọc lỗi UI & Trải nghiệm ổn định",
+      "description": "Tìm hiểu cách ErrorBoundary.tsx bọc quanh các component lớn để ngăn lỗi phát sinh làm sập ứng dụng.",
+      "nodeIds": [
+        "file:src/components/ErrorBoundary.tsx"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+<div class="property-map-page-wrapper">
+  <!-- Hero Section -->
+  <app-hero-section></app-hero-section>
+
+  <!-- Map Content Section -->
+  <div class="map-section-stack">
+    <!-- Map Header -->
+    <div class="section-padding-container">
+      <app-map-header></app-map-header>
+    </div>
+
+    <!-- Filter Bar -->
+    @if (isLoggedIn()) {
+      <div class="section-padding-container">
+        <app-filter-bar></app-filter-bar>
+      </div>
+    }
+
+    <!-- Map Canvas with overlays -->
+    <div class="map-canvas-relative-container">
+      <!-- Loading spinner overlay -->
+      @if (isLoggedIn() && (isLoadingMap() || isLoadingUnits())) {
+        <div class="map-overlay-loading">
+          <mat-spinner diameter="40" color="primary"></mat-spinner>
+        </div>
+      }
+      
+      <!-- Login form overlay -->
+      @if (!isLoggedIn()) {
+        <div class="map-overlay-login">
+          <app-login-form></app-login-form>
+        </div>
+      }
+
+      <!-- Map Canvas Component -->
+      <app-map-canvas></app-map-canvas>
+    </div>
+  </div>
+</div>

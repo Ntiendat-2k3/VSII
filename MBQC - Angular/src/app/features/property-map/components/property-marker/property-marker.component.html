@@ -1,0 +1,104 @@
+<div 
+  class="popup-card-wrapper"
+  [class.hide-arrow]="hideArrow"
+>
+  <!-- Header Section -->
+  <div class="popup-header-block" [class.is-hot]="unit.isHot && unit.statusCode !== 'SOLD'">
+    <div class="code-badge-container" [class.is-hot]="unit.isHot && unit.statusCode !== 'SOLD'">
+      @if (unit.isHot && unit.statusCode !== 'SOLD') {
+        <span class="flame-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-flame"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+        </span>
+      }
+      <span class="badge-text">{{ unit.unitCode }}</span>
+    </div>
+  </div>
+
+  <!-- Body Section -->
+  <div class="popup-body-block">
+    <div class="details-row">
+      <!-- Area land -->
+      <div class="detail-col">
+        <span class="detail-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-maximize"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+        </span>
+        <span class="detail-text">{{ unit.areaLand ?? '—' }}m²</span>
+      </div>
+
+      <!-- Unit Type Icon & Label -->
+      <div class="detail-col">
+        @if (unit.unitTypeCode) {
+          <img 
+            [src]="icons[unit.unitTypeCode] || '/icon_type/donlap.png'" 
+            [alt]="(unit.unitTypeCode | masterDataLabel:'unitTypes':masterData())"
+            class="type-icon" 
+          />
+        } @else {
+          <span class="detail-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M8 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M16 14h.01"/></svg>
+          </span>
+        }
+        <span class="detail-text truncate-text" [title]="(unit.unitTypeCode | masterDataLabel:'unitTypes':masterData())">{{ (unit.unitTypeCode | masterDataLabel:'unitTypes':masterData()) }}</span>
+      </div>
+    </div>
+
+    <!-- Divider and Actions -->
+    <div class="actions-section">
+      <!-- 1. Available state -->
+      @if (unit.statusCode === 'AVAILABLE') {
+        <div class="price-stack">
+          <div class="price-item">
+            <span class="price-label">Giá niêm yết:</span>
+            <span class="price-val">{{ unit.basePrice != null ? (unit.basePrice | formatPrice) : 'Liên hệ' }}</span>
+          </div>
+          <div class="price-item">
+            <span class="price-label">Giá vay:</span>
+            <span class="price-val">{{ unit.loanPrice != null ? (unit.loanPrice | formatPrice) : 'Đang cập nhật' }}</span>
+          </div>
+        </div>
+      }
+
+      <!-- 2. Sold state -->
+      @else if (unit.statusCode === 'SOLD') {
+        <div class="sold-chip">
+          {{ (unit.statusCode | masterDataLabel:'unitStatuses':masterData()) }}
+        </div>
+      }
+
+      <!-- 3. Inquiry status active -->
+      @else if (unit.inquiryStatusCode) {
+        <div class="inquiry-status-text">
+          {{ (unit.inquiryStatusCode | masterDataLabel:'inquiryStatuses':masterData():unit.inquiryStatusName) }}
+        </div>
+      }
+
+      <!-- 4. Hidden state without inquiry -->
+      @else {
+        <div class="hidden-stack">
+          <div class="hidden-text">Quỹ hàng ẩn</div>
+          <button 
+            type="button" 
+            class="inquiry-btn" 
+            [disabled]="isSubmitting()"
+            (click)="handleInquiry($event)"
+          >
+            @if (isSubmitting()) {
+              <span class="inquiry-spinner"></span>
+            } @else {
+              Xin thông tin
+            }
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Bottom Arrow Triangle SVG -->
+  @if (!hideArrow) {
+    <div class="popup-arrow-wrapper">
+      <svg viewBox="0 0 200 18" class="arrow-svg">
+        <path d="M0,0 L90,0 L100,18 L110,0 L200,0" fill="var(--palette-bg-default)" />
+      </svg>
+    </div>
+  }
+</div>
